@@ -1,19 +1,22 @@
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 public class Customer {
     private String username;
     private char[] password;
     private int accountNumber;
-    private ArrayList<String> accountLog;
+    private ArrayList<Transaction> transactionLog;
     private boolean authenticated = false;
     private int balance;
+    private int citizenIdentificationNum;
 
-    public Customer(String username, char[] password, int accountNumber) {
+    public Customer(String username, char[] password, int accountNumber, int citzenIdentificationNum) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
+        this.citizenIdentificationNum = citzenIdentificationNum;
         balance = 0;
     }
 
