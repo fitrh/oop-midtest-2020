@@ -7,7 +7,7 @@ public class Bank {
     private ArrayList<Customer> customers = new ArrayList<>();
 
     private void addCustomer(String username, char[] password, int accountNumber) {
-        customers.add(new Customer());
+        customers.add(new Customer(username, password, accountNumber));
     }
 
     public void registerCustomer() {
