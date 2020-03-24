@@ -1,6 +1,6 @@
 # Object Oriented Programming Mid Test Project
 
-## Alur Pengumpulan *Project* ke Repositori Ini
+## Alur Pengumpulan *Project*
 
 1. **Fork** Repositori ini.
 2. Pada hasil *fork* anda, Buat **Branch** dengan nama **NIM** anda.
@@ -31,83 +31,7 @@
 
 9. Jika anda memiliki tema sendiri diluar dari tema yang disediakan, silahkan didiskusikan terlebih dahulu di grup.
 
-## Tema *Project*
-
-### Pet Clinic
-
-- Sistem Penitipan dan Jual Beli Hewan Peliharaan
-- Setiap *Pet* yang dititipkan, memiliki *Owner*
-- Setiap *Pet* hanya memiliki 1 *Owner*, dan *Owner* dapat memiliki lebih dari 1 *Pet*
-- Setiap *Pet* memiliki status, titipan atau dijual
-- Setiap *Owner*, memiliki data pribadi, seperti nama, alamat, no. telepon, dll
-- Terdapat aktifitas untuk menitipkan, membeli, atau menjual *Pet*
-- Untuk aktifitas menitipkan, terdapat jadwal penitipan dan pengembalian
-- Terdapat aktifitas melihat daftar *Pet* Keseluruhan, yang dititipkan, dan yang dijual
-- Terdapat aktifitas untuk melihat detail dari sebuah *Pet*, termasuk spesifikasi dari *Pet* tersebut, struktur spesifikasi dari *Pet* bergantung pada jenisnya (Ayam, Kucing, Anjing, dll)
-- Untuk data pribadi dari *Owner*, hanya dapat dilihat oleh *Owner* itu sendiri, Pemilik *Pet Clinic* atau pegawai dari *Pet Clinic*
-
-### TO DO List
-
-- Sistem untuk Mencatat Jadwal Kegiatan yang akan dilakukan
-- Daftar kegiatan dimiliki oleh satu *User*
-- Setiap kegiatan memiliki deskripsi
-- Setiap kegiatan memiliki jadwal mulai dan jadwal selesai
-- Setiap Kegiatan memiliki status selesai, sedang dikerjakan, dan belum dikerjakan
-- Setiap Kegiatan memiliki prioritas
-- *User* hanya dapat melihat daftar kegiatan yang dibuatnya
-- *User* dapat menampilkan daftar kegitan berdasarkan jadwal, prioritas, atau status
-- *User* dapat menghapus dan menambah kegiatan
-  
-### Bank
-
-- Sistem Bank Sederhana
-- Terdapat Bank
-- Terdapat Nasabah, setiap nasabah dapat memiliki lebih dari 1 akun, namun hanya terdapat 1 akun dalam 1 bank
-- Setiap Nasabah memiliki Rekening, jika nasabah memiliki akun dibeberapa bank, maka masing-masing akun memiliki detail rekening yang berbeda-beda
-- Nasabah dapat melakukan aktifitas menabung, transfer dan menarik uang
-- Aktifitas menabung dan menarik uang hanya dapat dilakukan jika nasabah menggunakan akun yang sesuai dengan bank yang dikunjungi
-- Untuk aktifitas transfer, terdapat nasabah lain yang ditransferkan
-- Setiap nasabah dapat melihat log aktifitas mereka, log aktifitas dikategorikan berdasarkan aktifitas menabung, menarik, mentransfer dan ditarnsferkan
-- Setiap aktifitas diatas hanya dapat dilihat oleh nasabah yang bersangkutan setelah melakukan proses autentikasi
-
-### Library
-
-- Sistem Peminjaman Buku Perpustakaan
-- Terdapat *User*
-- Terdapat daftar *User* yang berkunjung
-- *User* dapat mengambil buku untuk dibaca
-- *User* yang ingin meminjam buku, harus menjadi *Member* perpustakaan
-- Setiap buku memiliki detail buku yang memuat jenis buku, penulis, penerbit, jumlah halaman, dll
-- Aktifitas peminjaman buku memiliki jadwal peminjaman dan jadwal pengemblian
-- Jika *User* mengembalikan buku setelah jadwal pengembalian, maka akan dikenai denda yang dihitung perhari
-- Terdapat log yang berisi daftar proses peminjaman
-- *User* dapat melihat riwayat buku yang dibaca dan buku yang dipinjaman
-- Riwayat yang dapat dilihat oleh user, hanya riwayat milikinya
-  
-### Item Store
-
-- Sistem Jual Beli Item
-- Terdapat *Store*, masing-masing *Store* memiliki *Owner* dan daftar *Item* yang dijual
-- Setiap *Item* memiliki harga, kuantitas, dan detail
-- Terdapat *User*, yang dapat berperan sebagai *Player*, *Store Owner*, atau keduanya
-- Setiap *User* memiliki Uang
-- Setiap *User* dapat memiliki lebih dari 1 *Item*
-- Terdapat Aktifitas Membeli dan Menjual
-- Jika *User* membeli *Item*, maka daftar itemnya bertambah, namun jika *Item* yang dibeli telah ada dalam daftarnya, maka yang bertambah adalah kuantitas dari *Item* tersebut
-- Aktifitas membeli hanya dapat terjadi jika uang dari *User* mencukupu harga *Item*
-- Uang dari *User* akan bertambah jika menjual *Item*
-- Proses Jual Beli *Item* dapat dilakukan antar *Player-Player*, *Player-Store*, atau *Store-Store*
-
-### Burger Store
-
-- Sistem Penjualan *Hamburger*
-- Terdapat Pesanan, setiap Pesanan dapat memilki lebih dari 1 item
-- Terdapat beberapa jenis *Humburger*, setiap jenis memiliki harga *default*
-- Terdapat *Addition* sperti *Drink*, *Ketchup*, *Potato*, *Tomato*, dll
-- Setiap *Addition* memiliki harga
-- Setiap Pesanan *Hamburger*, dapat memiliki lebih dari 1 *Addition*
-- *Addition* dapat ditambahkan sekaligus atau satu persatu
-- Harga akhir pesanan bergantung pada harga *Hamburger* yang dipesan beserta *Addition*nya
+## Tema *Project* yang saya pilih
   
 ### Academic System
 
