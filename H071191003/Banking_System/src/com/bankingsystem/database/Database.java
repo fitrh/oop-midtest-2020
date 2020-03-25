@@ -1,3 +1,8 @@
+package com.bankingsystem.database;
+
+import com.bankingsystem.Bank;
+import com.bankingsystem.Customer;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +18,7 @@ public class Database {
         putBanks();
     }
 
-    public static Database getInstance() {
+    protected static Database getInstance() {
         try {
             if (database == null) {
                 database = new Database();
@@ -25,7 +30,7 @@ public class Database {
         return database;
     }
 
-    public void putBanks() throws IOException {
+    private void putBanks() throws IOException {
         String[] bankNames = {"MANDIRI","BNI","BTN","BRI"};
         for (String name : bankNames) {
             BufferedReader br;
@@ -41,7 +46,7 @@ public class Database {
                 bankCode = Integer.parseInt(data[1]);
             }
 
-            HashMap<Integer ,Customer> customers = new HashMap<>();
+            HashMap<Integer , Customer> customers = new HashMap<>();
             File folder = new File(String.format("Banks/%s/Customers", name));
             File[] listOfFiles = folder.listFiles();
 
@@ -53,7 +58,7 @@ public class Database {
                         data = br.readLine().split(";");
                     }
                     assert data != null;
-                    customers.put(Integer.parseInt(data[2]), new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
+                    customers.put(Integer.parseInt(data[2]), new Customer(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3])));
 
                     registeredKTP.add(Integer.parseInt(data[3]));
                     data = null;
@@ -65,8 +70,10 @@ public class Database {
 
     }
 
-    public Bank getBank(int index) {
+    protected Bank getBank(int index) {
         return banks.get(index);
     }
-
+    protected ArrayList<Bank> getBanks() {
+        return banks;
+    }
 }

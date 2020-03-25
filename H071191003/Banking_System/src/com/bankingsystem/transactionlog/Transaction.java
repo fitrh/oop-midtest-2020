@@ -1,4 +1,4 @@
-package TransactionLog;
+package com.bankingsystem.transactionlog;
 
 import java.util.Date;
 

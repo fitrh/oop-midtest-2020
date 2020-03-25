@@ -1,4 +1,6 @@
-import TransactionLog.*;
+package com.bankingsystem;
+
+import com.bankingsystem.transactionlog.*;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -7,14 +9,14 @@ import java.util.Date;
 
 public class Customer {
     private String username;
-    private char[] password;
+    private String password;
     private int accountNumber;
     private ArrayList<Transaction> transactionLog;
     private boolean authenticated = false;
     private int balance;
     private int KTPNumber;
 
-    public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam) {
+    public Customer(String username, String password, int accountNumber, int citizenIdentificationNam) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
@@ -22,9 +24,8 @@ public class Customer {
         balance = 0;
     }
 
-    public void Authenticate(String password) {
-        char[] charPassword = password.toCharArray();
-        if (Arrays.equals(this.password, charPassword)) {
+    public void login(String password) {
+        if (this.password.equals(password)) {
             authenticated = true;
         }
     }
@@ -61,21 +62,16 @@ public class Customer {
     }
 
 
-    public boolean getAuthenticationStatus() {
+    public boolean isAuthenticated() {
         return authenticated;
     }
 
     public void changePassword() {
         if (authenticated) {
             Console input = System.console();
-            char[] oldPassword = input.readPassword("Input old password : ");
-            if (Arrays.equals(this.password, oldPassword)) {
-                java.util.Arrays.fill(oldPassword, ' ');
-                char[] newPassword = input.readPassword("Input Password : ");
-                password = newPassword;
-                java.util.Arrays.fill(newPassword, ' ');
-            } else {
-                System.out.println("Invalid password!");
+            String oldPassword = Arrays.toString(input.readPassword("Input old password : "));
+            if (this.password.equals(oldPassword)) {
+                password = Arrays.toString(input.readPassword("Input new password : "));
             }
         }
     }
@@ -91,15 +87,22 @@ public class Customer {
             System.out.printf("Account number : %d", accountNumber);
         }
     }
-
-    public void printTransactionLof() {
+    public String getUsername() {
+        if (authenticated) {
+            return username;
+        }
+        return null;
+    }
+    public void printTransactionLog() {
         if (authenticated) {
             Console input = System.console();
             System.out.println("===Transaction History===");
-            System.out.println("1. Deposits");
-            System.out.println("2. Withdrawals");
-            System.out.println("3. Outbound Transfers");
-            System.out.println("4. Inbound Transfers");
+            for (Transaction transaction:
+                 transactionLog) {
+                System.out.println("-------------------------");
+                transaction.printDetails();
+                System.out.println("-------------------------");
+            }
         }
     }
 }
