@@ -21,12 +21,18 @@ public abstract class Item
 	}
 
 	// Checks whetever the items are equal
-	public final boolean equals(Item item)
+	@Override
+	public boolean equals(Object item)
 	{
-		return item.uuid.equals(uuid);
+		if (item instanceof Item)
+			return ((Item) item).uuid.equals(uuid);
+
+		return false;
 	}
-	
+
+	// Quantity of the item
 	protected int amount;
+	// UUID/identifier of the item
 	protected final String uuid;
 
 	protected Item(String uuid, int amount)

@@ -55,6 +55,16 @@ public class StoreItem
 		return result;
 	}
 
+	// Override equals method
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof StoreItem)
+			return ((StoreItem) obj).item.equals(this);
+		
+		return false;
+	}
+
 	// Item object
 	private Item item;
 	// Item price
