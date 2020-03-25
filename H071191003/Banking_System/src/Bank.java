@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.io.Console;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Bank {
     private String bankName;
     private int bankCode;
-    private ArrayList<Customer> customers = new ArrayList<>();
-    private HashSet<Integer> registeredKTP = new HashSet<>();
+    private ArrayList<Customer> customers ;
+    private HashSet<Integer> registeredKTP;
+
+    public Bank(String bankName, int bankCode, ArrayList<Customer> customers, HashSet<Integer> registeredKTP) {
+        this.bankName = bankName;
+        this.bankCode = bankCode;
+        this.customers = customers;
+        this.registeredKTP = registeredKTP;
+    }
     private void addCustomer(String username, char[] password, int accountNumber, int citizenIdentificationNum) {
         customers.add(new Customer(username, password, accountNumber, citizenIdentificationNum));
     }

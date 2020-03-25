@@ -47,6 +47,7 @@ public class Database {
                     }
                     assert data != null;
                     customers.add(new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
+
                     registeredKTP.add(Integer.parseInt(data[3]));
                     data = null;
                     br.close();

@@ -1,3 +1,5 @@
+import TransactionLog.*;
+
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +14,11 @@ public class Customer {
     private int balance;
     private int citizenIdentificationNum;
 
-    public Customer(String username, char[] password, int accountNumber, int citzenIdentificationNum) {
+    public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
-        this.citizenIdentificationNum = citzenIdentificationNum;
+        this.citizenIdentificationNum = citizenIdentificationNam;
         balance = 0;
     }
 
@@ -29,12 +31,14 @@ public class Customer {
     public void deposit(int amount) {
         if (authenticated) {
             balance += amount;
+            transactionLog.add(new Deposit(new Date(), amount));
         }
     }
 
     public void withdraw(int amount) {
         if (authenticated) {
             balance -= amount;
+            transactionLog.add(new Withdrawal(new Date(), amount));
         }
     }
 
@@ -42,8 +46,22 @@ public class Customer {
         authenticated = false;
     }
 
-    public void transfer(int amount, Customer recipient) {
+    public void outboundTransfer(int amount, Customer recipient) {
+        if (authenticated && balance >= amount){
+            recipient.inboundTransfer(amount, accountNumber);
+            balance -= amount;
+            transactionLog.add(new OutboundTransfer(new Date(),amount, recipient.getAccountNumber()));
+        }
+    }
 
+    private void inboundTransfer(int amount, int accountNumber) {
+        balance += amount;
+        transactionLog.add(new InboundTransfer(new Date(), amount, accountNumber));
+    }
+
+
+    public boolean getAuthenticationStatus() {
+        return authenticated;
     }
 
     public void changePassword() {
@@ -61,5 +79,15 @@ public class Customer {
         }
     }
 
+    public int getAccountNumber() {
+        return accountNumber;
+    }
 
+    public void printUserDetails() {
+        if (authenticated){
+            System.out.printf("Name : %s\n", username);
+            System.out.printf("Citizen Identification Number : %d", citizenIdentificationNum);
+            System.out.printf("Account number : %d", accountNumber);
+        }
+    }
 }
