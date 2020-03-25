@@ -3,18 +3,25 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Database {
     private static Database database = null;
     private ArrayList<Bank> banks = new ArrayList<>();
-    private Database() {
-
+    private Database() throws IOException {
+        putBanks();
     }
+
     public static Database getInstance() {
-        if (database == null) {
-            database = new Database();
+        try {
+            if (database == null) {
+                database = new Database();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         return database;
     }
 
@@ -25,7 +32,7 @@ public class Database {
             int bankCode = 0;
             HashSet<Integer> registeredKTP = new HashSet<>();
             String bankName = null;
-            br = new BufferedReader(new FileReader(String.format("/Banks/%s/info.txt", name)));
+            br = new BufferedReader(new FileReader(String.format("Banks/%s/info.txt", name)));
             String[] data = null;
 
             while (br.ready()) {
@@ -34,8 +41,8 @@ public class Database {
                 bankCode = Integer.parseInt(data[1]);
             }
 
-            ArrayList<Customer> customers = new ArrayList<>();
-            File folder = new File(String.format("/Banks/%s/Customers", name));
+            HashMap<Integer ,Customer> customers = new HashMap<>();
+            File folder = new File(String.format("Banks/%s/Customers", name));
             File[] listOfFiles = folder.listFiles();
 
             assert listOfFiles != null;
@@ -46,7 +53,7 @@ public class Database {
                         data = br.readLine().split(";");
                     }
                     assert data != null;
-                    customers.add(new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
+                    customers.put(Integer.parseInt(data[2]), new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
 
                     registeredKTP.add(Integer.parseInt(data[3]));
                     data = null;
@@ -56,6 +63,10 @@ public class Database {
             banks.add(new Bank(bankName, bankCode, customers, registeredKTP));
         }
 
+    }
+
+    public Bank getBank(int index) {
+        return banks.get(index);
     }
 
 }

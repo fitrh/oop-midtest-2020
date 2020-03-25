@@ -12,18 +12,19 @@ public class Customer {
     private ArrayList<Transaction> transactionLog;
     private boolean authenticated = false;
     private int balance;
-    private int citizenIdentificationNum;
+    private int KTPNumber;
 
     public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
-        this.citizenIdentificationNum = citizenIdentificationNam;
+        this.KTPNumber = citizenIdentificationNam;
         balance = 0;
     }
 
-    public void Authenticate(char[] password) {
-        if (Arrays.equals(this.password, password)) {
+    public void Authenticate(String password) {
+        char[] charPassword = password.toCharArray();
+        if (Arrays.equals(this.password, charPassword)) {
             authenticated = true;
         }
     }
@@ -86,8 +87,19 @@ public class Customer {
     public void printUserDetails() {
         if (authenticated){
             System.out.printf("Name : %s\n", username);
-            System.out.printf("Citizen Identification Number : %d", citizenIdentificationNum);
+            System.out.printf("Citizen Identification Number : %d", KTPNumber);
             System.out.printf("Account number : %d", accountNumber);
+        }
+    }
+
+    public void printTransactionLof() {
+        if (authenticated) {
+            Console input = System.console();
+            System.out.println("===Transaction History===");
+            System.out.println("1. Deposits");
+            System.out.println("2. Withdrawals");
+            System.out.println("3. Outbound Transfers");
+            System.out.println("4. Inbound Transfers");
         }
     }
 }
