@@ -72,6 +72,17 @@ public class StoreItem
 		return item.hashCode() + store.hashCode() + price;
 	}
 
+	// Check whetever an Item is encapsulated in this StoreItem
+	public boolean isContainedItem(Item item)
+	{
+		return this.item.equals(item);
+	}
+
+	public void add(Item item)
+	{
+		this.item.add(item);
+	}
+
 	// Item object
 	private Item item;
 	// Item price

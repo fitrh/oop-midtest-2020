@@ -20,6 +20,19 @@ public abstract class Item
 		return amount;
 	}
 
+	// Add item only if it's equal. The passed item object
+	// has amount of 0 after this function called.
+	public final void add(Item item)
+	{
+		if (equals(item))
+		{
+			this.amount += item.amount;
+			item.amount = 0;
+		}
+		else
+			throw new IllegalArgumentException("this != item");
+	}
+
 	// Checks whetever the items are equal
 	@Override
 	public boolean equals(Object item)
