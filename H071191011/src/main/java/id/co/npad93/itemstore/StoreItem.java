@@ -65,6 +65,13 @@ public class StoreItem
 		return false;
 	}
 
+	// Override hashCode method
+	@Override
+	public int hashCode()
+	{
+		return item.hashCode() + store.hashCode() + price;
+	}
+
 	// Item object
 	private Item item;
 	// Item price

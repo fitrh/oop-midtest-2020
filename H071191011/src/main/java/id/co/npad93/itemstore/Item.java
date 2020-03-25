@@ -30,6 +30,13 @@ public abstract class Item
 		return false;
 	}
 
+	// Override hashCode method for HashMap
+	@Override
+	public int hashCode()
+	{
+		return uuid.hashCode();
+	}
+
 	// Quantity of the item
 	protected int amount;
 	// UUID/identifier of the item
