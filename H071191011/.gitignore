@@ -3,6 +3,7 @@
 .vscode
 buildNumber.properties
 dependency-reduced-pom.xml
+itemstore.db.sqlite3
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup

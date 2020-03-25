@@ -5,26 +5,34 @@ package id.co.npad93.itemstore;
 // methods below to be implemented
 public abstract class Item
 {
-	protected int amount;
-
-	protected Item()
-	{
-		amount = 1;
-	}
-
+	// Retrieve the name of the item
 	public abstract String getName();
 
+	// Retrieve the description of the item
 	public abstract String getDescription();
 
-	public abstract int getPrice();
+	// Separate the item into new item
+	public abstract Item separate(int amount);
 
-	public int getAmount()
+	// Retrieve the quantity of the item
+	public final int getAmount()
 	{
 		return amount;
 	}
 
-	public void use(User user)
-	{}
+	// Checks whetever the items are equal
+	public final boolean equals(Item item)
+	{
+		return item.uuid.equals(uuid);
+	}
+	
+	protected int amount;
+	protected final String uuid;
 
-	public abstract Item separate(int amount);
+	protected Item(String uuid, int amount)
+	{
+		if (amount <= 0) throw new IllegalArgumentException("amount <= 0");
+		this.amount = amount;
+		this.uuid = uuid;
+	}
 }
