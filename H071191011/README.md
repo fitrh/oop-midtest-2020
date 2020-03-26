@@ -16,3 +16,20 @@ Intinya, itemstore adalah sebagai berikut
 - Aktifitas membeli hanya dapat terjadi jika uang dari *User* mencukupu harga *Item*
 - Uang dari *User* akan bertambah jika menjual *Item*
 - Proses Jual Beli *Item* dapat dilakukan antar *Player-Player*, *Player-Store*, atau *Store-Store*
+
+Spesifikasi
+=====
+
+* Setidaknya Java 8 diperlukan untuk menjalankan project ini.
+
+* Yang sedikit berbeda adalah hanya ada 1 kelas _Player_ & _Store Owner_ yaitu _User_.
+
+* Contoh input output tidak diberikan karena output nantinya dibuat secara acak.
+
+Bagian-bagian yang menerapkan konsep OOP hampir semuanya, dengan beberapa informasi sebagai berikut:
+
+* _Item_ menggunakan teknik abstract
+
+* Class yang mewarisi _Item_ mengimplementasikan interface _Consumable_ atau _Usable_
+
+* _Item_ dan turunannya menggunakan konsep polimorfisme.
