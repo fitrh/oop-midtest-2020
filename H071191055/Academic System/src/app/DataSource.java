@@ -40,7 +40,8 @@ public class DataSource {
 
             while (isInteger(tempData[0])) {
                 mahasiswaMap.put(tempData[0],
-                        new Mahasiswa(Integer.valueOf(tempData[0]), tempData[1], tempData[2]));
+                    new Mahasiswa(Integer.valueOf(tempData[0]), tempData[1], tempData[2], 
+                    detailMahasiswaMap.get(Integer.valueOf(tempData[0]))));
             }
         }
         tempData = null;
