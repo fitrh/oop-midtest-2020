@@ -1,9 +1,17 @@
 package id.co.npad93.itemstore;
 
-// Item object encapsulated to prevent item stealing
+/**
+ * Item object encapsulated to prevent item stealing
+ */
 public class StoreItem
 {
-	// Construct new StoreItem
+	/**
+	 * Construct new StoreItem
+	 * 
+	 * @param item The {@link Item} object to encapsulate
+	 * @param price The item price
+	 * @param store {@link Store} who owns the item
+	 **/
 	public StoreItem(Item item, int price, Store store)
 	{
 		this.item = item;
@@ -11,31 +19,56 @@ public class StoreItem
 		this.store = store;
 	}
 
-	// Retrieve the name of the item
+	/**
+	 * Retrieve the name of the item
+	 * 
+	 * @return Encapsulated {@link Item} name
+	 **/
 	public String getName()
 	{
 		return item.getName();
 	}
 
-	// Retrieve item description
+	/**
+	 * Retrieve item description
+	 * 
+	 * @return Encapsulated {@link Item} description
+	 **/
 	public String getDescription()
 	{
 		return item.getDescription();
 	}
 
-	// Retrieve the quantity of the item
+	/**
+	 * Retrieve the quantity of the item
+	 * 
+	 * @return Encapsulated {@link Item} quantity
+	 **/
 	public int getAmount()
 	{
 		return item.getAmount();
 	}
 
-	// Retrieve the price of the item
+	/**
+	 * Retrieve the price of the item
+	 * 
+	 * @return Price of the {@link Item} sale
+	 **/
 	public int getPrice()
 	{
 		return price;
 	}
 
-	// Buy item
+	/**
+	 * Buy this item
+	 * 
+	 * @param player {@link User Player} who want to bought the item
+	 * @param amount Amount to bought
+	 * @return {@link Item} with specified <code>amount</code> of quantity
+	 * @exception IllegalArgumentException if the player doesn't have enough
+	 *              money or if the amount requested is more than
+	 *              {@link #getAmount()}
+	 **/
 	public Item buy(User player, int amount)
 	{
 		if (amount > item.getAmount())
@@ -55,7 +88,30 @@ public class StoreItem
 		return result;
 	}
 
-	// Override equals method
+	/**
+	 * Check whetever an {@link Item} is encapsulated in this <code>StoreItem</code>
+	 * 
+	 * @param item Item to compare with
+	 * @return <code>true</code> if specified item is same as one that's encapsulated
+	 *   inside this <code>StoreItem</code>, <code>false</code> otherwise.
+	 **/
+	public boolean isContainedItem(Item item)
+	{
+		return this.item.equals(item);
+	}
+
+	/**
+	 * Add quantity of the encapsulated {@link Item}
+	 * 
+	 * @param item Same encapsulated item which has quantity > 0
+	 * @exception IllegalArgumentException if encapsulated item is not equal to
+	 *              passed item.
+	 **/
+	public void add(Item item)
+	{
+		this.item.add(item);
+	}
+
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -65,28 +121,17 @@ public class StoreItem
 		return false;
 	}
 
-	// Override hashCode method
 	@Override
 	public int hashCode()
 	{
 		return item.hashCode() + store.hashCode() + price;
 	}
 
-	// Check whetever an Item is encapsulated in this StoreItem
-	public boolean isContainedItem(Item item)
-	{
-		return this.item.equals(item);
-	}
-
-	public void add(Item item)
-	{
-		this.item.add(item);
-	}
-
-	// Item object
+	
+	/** Item object */
 	private Item item;
-	// Item price
+	/** Item price */
 	private int price;
-	// Store parent object
+	/** Store parent object */
 	private Store store;
 }
