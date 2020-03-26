@@ -9,7 +9,6 @@ public class MataKuliah {
     private String name;
     private int sks;
     private String namaDosen;
-    // private Map<Integer, DataSource> matKulMap = new HashMap<>();
 
     public MataKuliah(int id, String name, int sks, String namaDosen) {
         this.id = id;
@@ -28,5 +27,9 @@ public class MataKuliah {
 
     public int getSks() {
         return sks;
+    }
+
+    public String getNamaDosen() {
+        return namaDosen;
     }
 }
