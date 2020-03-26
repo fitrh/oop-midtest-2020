@@ -26,7 +26,7 @@ class Biodata extends TodoList {
 
     @Override
     public String getDescription() {
-        String data = "\nNama           : " + getName() + "\n" + "Nama panggilan : " + super.getCallName() + "\n"
+        String data = "Nama           : " + getName() + "\n" + "Nama panggilan : " + super.getCallName() + "\n"
                 + "Tanggal lahir  : " + getDateOfBirth() + "\n" + "Umur           : " + getAge() + "\n"
                 + "NIM            : " + getNim() + "\n" + "Fakultas       : " + getFaculty() + "\n"
                 + "Angkatan       : " + getRegisterYear() + "\n" + "Email          : " + getEmail() + "\n";

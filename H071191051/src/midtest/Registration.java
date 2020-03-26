@@ -51,6 +51,7 @@ class Registration extends TodoList {
                     System.out.println("\nFormat tanggal lahir tidak sesuai (gunakan format dd-MM-yyyy)\n");
                 } else {
                     System.out.println("\nPendaftaran Berhasil");
+                    System.out.println("-----------------------------------------------");
                     this.calledName = callName;
                     this.biodata = bio.getDescription();
                     break;
