@@ -8,7 +8,7 @@ public class User {
     String userName;
     int id;
     String password;
-    private boolean checkPass = false;
+    private boolean check = false;
 
     public User(int id, String userName, String password) {
         this.id = id;
@@ -17,9 +17,16 @@ public class User {
 
     public boolean verifyPassword(String password) {
         if (this.password.equals(password)) {
-            return checkPass = true;
+            return check = true;
         }
-        return checkPass;
+        return check;
+    }
+
+    public boolean verifyUsername(String userName) {
+        if (this.userName.equals(userName)) {
+            return check = true;
+        }
+        return check;
     }
 
     // public void getDetail(DataSource dataSource) {
