@@ -14,8 +14,8 @@ public class DataSource {
     
     
     public void listMatKul() throws IOException {
-    FileReader file = new FileReader("ListMatKul.txt");
-    BufferedReader reader = new BufferedReader(file);
+        FileReader file = new FileReader("ListMatKul.txt");
+        BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
             tempData = reader.readLine().split(";");
@@ -30,7 +30,7 @@ public class DataSource {
 
     }
 
-        public boolean isInteger(String s) {
+    public boolean isInteger(String s) {
         boolean isAnInteger = false;
         try {
             Integer.parseInt(s);
