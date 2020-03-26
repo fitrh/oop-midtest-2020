@@ -3,9 +3,9 @@ package midtest;
 import java.text.*;
 import java.util.*;
 
-class Registration extends TodoList {
+class Registration {
     private String biodata;
-    private String calledName;
+    private String callName;
     private Scanner sc = new Scanner(System.in);
 
     public void registration() {
@@ -52,8 +52,8 @@ class Registration extends TodoList {
                 } else {
                     System.out.println("\nPendaftaran Berhasil");
                     System.out.println("-----------------------------------------------");
-                    this.calledName = callName;
                     this.biodata = bio.getDescription();
+                    this.callName = bio.getCallName();
                     break;
                 }
             }
@@ -71,8 +71,7 @@ class Registration extends TodoList {
         return biodata;
     }
 
-    @Override
     public String getCallName() {
-        return calledName;
+        return callName;
     }
 }

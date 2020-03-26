@@ -2,6 +2,9 @@ package midtest;
 
 class TodoList {
     private String callName;
+    private String activityName;
+    private String activityStatus;
+    private String activityPriority;
 
     public TodoList() {
 

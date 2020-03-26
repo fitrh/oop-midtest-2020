@@ -11,46 +11,53 @@ class InitialDisplay {
     public void mainMenu() {
         // registrasi terlebih dahulu
         registration.registration();
+        clearScreen();
 
         // setelah registrasi maka akan muncul tampilan menu
         while (true) {
             homeMenu();
             System.out.print("> ");
             int choice = sc.nextInt();
-
             if (choice == 1) {
-                System.out.println("+------------ To-Do-List Hari ini ------------+\n");
-                setTime();
-                System.out.println("1. Hapus kegiatan");
-                System.out.println("2. Edit kegiatan");
-                System.out.println("3. Tambahkan kegiatan");
-                System.out.println("4. Lihat Deskripsi kegiatan");
-                System.out.print("> ");
-                String choice_2 = sc.next();
+                clearScreen();
+                // menampilkan semua jadwal kegiatan
+                boolean condition = true;
+                while (condition) {
+                    System.out.println("+------------ To-Do-List Hari ini ------------+\n");
+                    setTime();
 
-                switch (choice_2) {
-                    case "1":
-                        break;
-                    case "2":
-                        break;
-                    case "3":
-                        break;
-                    default:
-                        break;
+                    System.out.println("1. Hapus kegiatan");
+                    System.out.println("2. Edit kegiatan");
+                    System.out.println("3. Tambahkan kegiatan");
+                    System.out.println("4. Lihat Deskripsi kegiatan");
+                    System.out.println("0. Exit");
+                    System.out.print("> ");
+                    String choice_2 = sc.next();
+                    switch (choice_2) {
+                        case "1":
+                            break;
+                        case "2":
+                            break;
+                        case "3":
+                            break;
+                        case "4":
+                        default:
+                            condition = false;
+                            break;
+                    }
                 }
-
             } else if (choice == 2) {
+                clearScreen();
                 System.out.println("+------------------ Biodata ------------------+");
                 System.out.print(registration.getBiodata());
                 System.out.println("+---------------------------------------------+");
-
-            } else if (choice == 3) {
+            } else if (choice == 0) {
                 break;
             }
         }
     }
 
-    public void homeMenu() {
+    private void homeMenu() {
         System.out.println("\n+---------------- To-Do-List -----------------+");
         System.out.println("\n" + "Hello " + registration.getCallName() + " ^_^" + "\n");
         setTime();
@@ -58,14 +65,25 @@ class InitialDisplay {
         System.out.println("2. Lihat Biodata");
         System.out.println("3. Exit");
     }
-
-    public void setTime() {
+    // setTime-Method untuk menampilkan tahun,bulan,tanggal,hari,jam saat ini.
+    private void setTime() {
         DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String s = LocalDate.now().getDayOfWeek().name();
-
         System.out.println("Today is : " + s.toLowerCase() + ", " + date.format(now) + ".");
         System.out.println("it's     : " + time.format(now) + "\n");
+    }
+    // clearScreen-Method untuk me-refresh terminal atau menghapus entry set sebelumnya pada terminal 
+    private void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.println("\033\143");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
