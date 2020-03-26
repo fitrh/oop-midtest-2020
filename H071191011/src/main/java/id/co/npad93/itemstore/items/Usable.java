@@ -5,7 +5,7 @@ import id.co.npad93.itemstore.*;
 /**
  * {@link Item Items} which can be wear/equipped implements this interface
  */
-interface Usable
+public interface Usable
 {
 	/**
 	 * Equip the item

@@ -5,7 +5,7 @@ import id.co.npad93.itemstore.*;
 /**
  * {@link Item Items} which can be consumed implements this interface
  */
-interface Consumable
+public interface Consumable
 {
 	/**
 	 * Consume the item

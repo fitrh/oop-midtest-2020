@@ -6,6 +6,13 @@ import id.co.npad93.itemstore.*;
 
 public final class ItemFactory
 {
+	/**
+	 * Create new {@link Item} based on specified UUID
+	 * 
+	 * @param uuid Item identifier/UUID
+	 * @param amount Amount to create
+	 * @return Newly created Item or <code>null</code> on failure
+	 */
 	public static Item newItemFromUUID(UUID uuid, int amount)
 	{
 		// If item factory is null, create new one
@@ -15,6 +22,7 @@ public final class ItemFactory
 
 			// TODO: Put more items here
 			itemFactory.put(Water.uuid, Water.class);
+			itemFactory.put(HPRestorator50.uuid, HPRestorator50.class);
 		}
 
 		// Get object class
@@ -42,6 +50,20 @@ public final class ItemFactory
 		}
 
 		return null;
+	}
+
+	/**
+	 * Create new {@link Item} based on specified UUID
+	 * 
+	 * @param uuid Item identifier/UUID
+	 * @param amount Amount to create
+	 * @return Newly created Item or <code>null</code> on failure
+	 * @exception IllegalArgumentException if string passed is not a
+	 *              {@link java.util.UUID#toString valid} UUID
+	 */
+	public static Item newItemFromUUID(String uuid, int amount)
+	{
+		return newItemFromUUID(UUID.fromString(uuid), amount);
 	}
 
 	/** List of complete {@link Item} classes */
