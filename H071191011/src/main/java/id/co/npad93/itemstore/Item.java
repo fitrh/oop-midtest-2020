@@ -1,11 +1,23 @@
 package id.co.npad93.itemstore;
 
+import java.util.UUID;
+
 /**
  * Abstract Item class. Any class derive this class requires methods below to
  * be implemented.
  */
 public abstract class Item
 {
+	/**
+	 * Retrieve the identifier of the item
+	 * 
+	 * @return {@link java.util.UUID identifier} of the item
+	 */
+	public UUID getID()
+	{
+		return uuid;
+	}
+
 	/**
 	 * Retrieve the name of the item
 	 * 
@@ -28,7 +40,15 @@ public abstract class Item
 	 * @exception IllegalArgumentException if amount specified is bigger
 	 *              than or equal to current item {@link #getAmount quantity}
 	 */
-	public abstract Item separate(int amount);
+	public Item separate(int amount)
+	{
+		if (amount >= this.amount)
+			throw new IllegalArgumentException("amount >= this.amount");
+		
+		Item result = clone(amount);
+		this.amount -= amount;
+		return result;
+	}
 
 	/**
 	 * Retrieve the quantity of the item
@@ -79,7 +99,7 @@ public abstract class Item
 	/** Quantity of the item */
 	protected int amount;
 	/** UUID/identifier of the item */
-	protected final String uuid;
+	protected final UUID uuid;
 
 	/**
 	 * All class which derive this class MUST call this constructor!
@@ -89,10 +109,18 @@ public abstract class Item
 	 * @exception IllegalArgumentException if <code>amount</code> is 0 or
 	 *              negative
 	 */
-	protected Item(String uuid, int amount)
+	protected Item(UUID uuid, int amount)
 	{
 		if (amount <= 0) throw new IllegalArgumentException("amount <= 0");
 		this.amount = amount;
 		this.uuid = uuid;
 	}
+
+	/**
+	 * Clone the current item with specified amount
+	 * 
+	 * @param amount Amount to clone
+	 * @return Newly cloned item
+	 */
+	protected abstract Item clone(int amount);
 }
