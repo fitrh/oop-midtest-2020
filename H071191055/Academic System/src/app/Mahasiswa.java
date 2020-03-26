@@ -14,4 +14,8 @@ public class Mahasiswa extends User {
     public boolean verifyPassword(String password) {
         return super.verifyPassword(password);
     }
+
+    public String getUserName() {
+        return userName;
+    }
 }
