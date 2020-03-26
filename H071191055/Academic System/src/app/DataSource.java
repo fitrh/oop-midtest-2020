@@ -9,7 +9,7 @@ import java.util.*;
 public class DataSource {
 
     private Map<Integer, MataKuliah> matKulMap = new HashMap<>();
-    //private Map<Integer, Mahasiswa> mahasiswaMap = new HashMap<>();
+    private Map<Integer, Mahasiswa> mahasiswaMap = new HashMap<>();
     //private Map<Integer, DosenPA> dosenMap = new HashMap<>();
     
     
@@ -28,6 +28,27 @@ public class DataSource {
         tempData = null;
         reader.close();
 
+    }
+
+    public void listAkunMahasiswa() throws IOException {
+        FileReader file = new FileReader("ListAkunMahasiswa.txt");
+        BufferedReader reader = new BufferedReader(file);
+        String tempData[];
+        while (reader.ready()) {
+            tempData = reader.readLine().split(";");
+
+            while (isInteger(tempData[0])) {
+                mahasiswaMap.put(Integer.valueOf(tempData[0]),
+                        new Mahasiswa(Integer.valueOf(tempData[0]), tempData[1], tempData[2]));
+            }
+        }
+        tempData = null;
+        reader.close();
+
+    }
+
+    public Mahasiswa getUser(String key) {
+        return mahasiswaMap.get(key);
     }
 
     public boolean isInteger(String s) {
