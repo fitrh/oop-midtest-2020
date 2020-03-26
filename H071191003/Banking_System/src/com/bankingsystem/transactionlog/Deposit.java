@@ -9,8 +9,8 @@ public class Deposit extends Transaction {
 
     @Override
     public void printDetails() {
-        System.out.printf("Date : %s\n", dateOfTransaction);
-        System.out.println("Transaction type : Deposit");
-        System.out.printf("Amount : %s\n", amount);
+        System.out.printf("Date              : %s\n", dateOfTransaction);
+        System.out.println("Transaction type  : Deposit");
+        System.out.printf("Amount            : %s\n", amount);
     }
 }

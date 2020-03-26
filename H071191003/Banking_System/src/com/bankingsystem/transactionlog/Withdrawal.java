@@ -9,8 +9,8 @@ public class Withdrawal extends Transaction {
 
     @Override
     public void printDetails() {
-        System.out.printf("Date : %s\n", dateOfTransaction);
-        System.out.println("Transaction type : Withdrawal");
-        System.out.printf("Amount : %s\n", amount);
+        System.out.printf("Date              : %s\n", dateOfTransaction);
+        System.out.println("Transaction type  : Withdrawal");
+        System.out.printf("Amount            : %s\n", amount);
     }
 }

@@ -9,10 +9,10 @@ public class OutboundTransfer extends Transaction {
 
     @Override
     public void printDetails() {
-        System.out.printf("Date : %s\n", dateOfTransaction);
-        System.out.println("Transaction type : Outbound Transfer");
-        System.out.printf("Amount : %s\n", amount);
-        System.out.printf("To : %s\n", recipientOrigin);
+        System.out.printf("Date              : %s\n", dateOfTransaction);
+        System.out.println("Transaction type  : Outbound Transfer");
+        System.out.printf("Amount            : %s\n", amount);
+        System.out.printf("To                : %s\n", recipientOrigin);
 
     }
 }

@@ -9,23 +9,26 @@ import java.util.Date;
 
 public class Customer {
     private String username;
-    private String password;
+    private char[] password;
     private int accountNumber;
     private ArrayList<Transaction> transactionLog;
     private boolean authenticated = false;
     private int balance;
     private int KTPNumber;
 
-    public Customer(String username, String password, int accountNumber, int citizenIdentificationNam) {
+    public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
         this.KTPNumber = citizenIdentificationNam;
         balance = 0;
+        transactionLog = new ArrayList<>();
     }
-
-    public void login(String password) {
-        if (this.password.equals(password)) {
+    public int getBalance() {
+        return balance;
+    }
+    public void login(char[] password) {
+        if (Arrays.equals(this.password, password)) {
             authenticated = true;
         }
     }
@@ -37,22 +40,27 @@ public class Customer {
         }
     }
 
-    public void withdraw(int amount) {
-        if (authenticated) {
+    public boolean withdraw(int amount) {
+        if (authenticated && balance >= amount) {
             balance -= amount;
             transactionLog.add(new Withdrawal(new Date(), amount));
+            return true;
         }
+        return false;
     }
 
     public void logout() {
         authenticated = false;
     }
 
-    public void outboundTransfer(int amount, Customer recipient) {
+    public boolean outboundTransfer(int amount, Customer recipient) {
         if (authenticated && balance >= amount){
-            recipient.inboundTransfer(amount, accountNumber);
             balance -= amount;
-            transactionLog.add(new OutboundTransfer(new Date(),amount, recipient.getAccountNumber()));
+            recipient.inboundTransfer(amount, accountNumber);
+            transactionLog.add(new OutboundTransfer(new Date(), amount, recipient.getAccountNumber()));
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -69,9 +77,9 @@ public class Customer {
     public void changePassword() {
         if (authenticated) {
             Console input = System.console();
-            String oldPassword = Arrays.toString(input.readPassword("Input old password : "));
-            if (this.password.equals(oldPassword)) {
-                password = Arrays.toString(input.readPassword("Input new password : "));
+            char[] oldPassword = input.readPassword("Input old password : ");
+            if (Arrays.equals(this.password, oldPassword)) {
+                password = input.readPassword("Input new password : ");
             }
         }
     }
@@ -88,21 +96,22 @@ public class Customer {
         }
     }
     public String getUsername() {
-        if (authenticated) {
-            return username;
-        }
-        return null;
+        return username;
     }
     public void printTransactionLog() {
         if (authenticated) {
-            Console input = System.console();
             System.out.println("===Transaction History===");
+
             for (Transaction transaction:
                  transactionLog) {
                 System.out.println("-------------------------");
                 transaction.printDetails();
                 System.out.println("-------------------------");
             }
+            if (transactionLog.size() == 0) {
+                System.out.println("No transactions available");
+            }
+            System.out.println("=========================");
         }
     }
 }

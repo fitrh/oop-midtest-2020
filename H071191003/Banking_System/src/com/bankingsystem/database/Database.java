@@ -31,7 +31,7 @@ public class Database {
     }
 
     private void putBanks() throws IOException {
-        String[] bankNames = {"MANDIRI","BNI","BTN","BRI"};
+        String[] bankNames = {"BNI","BRI","BTN","MANDIRI"};
         for (String name : bankNames) {
             BufferedReader br;
             int bankCode = 0;
@@ -58,8 +58,7 @@ public class Database {
                         data = br.readLine().split(";");
                     }
                     assert data != null;
-                    customers.put(Integer.parseInt(data[2]), new Customer(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3])));
-
+                    customers.put(Integer.parseInt(data[2]), new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
                     registeredKTP.add(Integer.parseInt(data[3]));
                     data = null;
                     br.close();

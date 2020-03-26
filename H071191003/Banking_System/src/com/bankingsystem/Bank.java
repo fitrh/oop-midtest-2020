@@ -17,7 +17,7 @@ public class Bank {
         this.customers = customers;
         this.registeredKTP = registeredKTP;
     }
-    private void addCustomer(String username, String password, int accountNumber, int KTPNumber) {
+    private void addCustomer(String username, char[] password, int accountNumber, int KTPNumber) {
         customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber));
     }
 
@@ -29,7 +29,7 @@ public class Bank {
             return;
         }
         String username = input.readLine("Input full name : ");
-        String password = Arrays.toString(input.readPassword("Input Password : "));
+        char[] password = input.readPassword("Input Password : ");
         int accountNumber = Integer.parseInt( String.format("%d%05d", bankCode, customers.size()) );
         addCustomer(username, password, accountNumber, KTPNumber);
     }
