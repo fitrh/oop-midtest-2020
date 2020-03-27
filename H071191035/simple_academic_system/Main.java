@@ -20,6 +20,7 @@ public class Main {
         MataKuliah Wipteks = new MataKuliah("123", "Wawasan IPTEKS", "Dosen IPTEKS", 2, 3);
         MataKuliah Pkn = new MataKuliah("555", "Kewarganegaraan", "Dosen Kewarganegaraan", 3, 1);
 
+        // perulangan menu utama
         while (true) {
 
             System.out.println("--MENU--");
@@ -46,6 +47,7 @@ public class Main {
                     System.out.print("Password => ");
                     password = scan.next();
 
+                    // perulangan menu mahasiswa
                     while(login.authMahasiswa(userName, password)) {
                         System.out.println("--WELCOME MAHASISWA--");
                         System.out.println("1. Lihat profil");
@@ -126,6 +128,7 @@ public class Main {
                     System.out.print("Password => ");
                     password = scan.next();
 
+                    // perulangan menu dosen
                     while(login.authDosen(userName, password)) {
                         System.out.println("--WELCOME DOSEN--");
                         System.out.println("1. Lihat profil");
@@ -155,9 +158,7 @@ public class Main {
             } else {
                 break;
             }
-
         }
-
+        scan.close();
     }
-
 }
