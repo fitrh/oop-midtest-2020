@@ -9,3 +9,5 @@ Program ini merupakan progarap burger store sederhana
 * addiction yang bisa didapatkan secara gratis dapat dilihat pada menu addiction dengan keteranga "(FREE)"
 * setiap selesai pemesanan satu burger maupun addition, pelanggan perlu memberi keterangan apakah masih ingin menambah pesanan atau tidak
 * setiap selesai pemesanan satu burger maupun addition, akan muncul keterangan harga yang telah dijumlahkan dengan jumlah pieces yang dipesan
+
+program masih belum selesai :)

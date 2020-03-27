@@ -15,7 +15,7 @@ public class Addition{
     }
 }
 
-class Cola extends Burger {
+class Cola extends Addition {
 
     Cola(int piece) {
         this.name = "Cola";
@@ -34,7 +34,7 @@ class Cola extends Burger {
     }
 }
 
-class Sprite extends Burger {
+class Sprite extends Addition {
 
     Sprite(int piece) {
         this.name = "Sprite";
@@ -53,7 +53,7 @@ class Sprite extends Burger {
     }
 }
 
-class Fanta extends Burger {
+class Fanta extends Addition {
 
     Fanta(int piece) {
         this.name = "Fanta";
@@ -72,7 +72,7 @@ class Fanta extends Burger {
     }
 }
 
-class Potato extends Burger {
+class Potato extends Addition {
 
     Potato(int piece) {
         this.name = "Potato";
@@ -91,7 +91,7 @@ class Potato extends Burger {
     }
 }
 
-class Tomato extends Burger {
+class Tomato extends Addition {
 
     Tomato(int piece) {
         this.name = "Tomato";
@@ -107,7 +107,7 @@ class Tomato extends Burger {
     }
 }
 
-class Ketchup extends Burger {
+class Ketchup extends Addition {
 
     Ketchup(int piece) {
         this.name = "Ketchup";
@@ -123,7 +123,7 @@ class Ketchup extends Burger {
     } 
 }
 
-class AirMineral extends Burger {
+class AirMineral extends Addition {
 
     AirMineral(int piece) {
         this.name = "Air Mineral";
@@ -142,7 +142,7 @@ class AirMineral extends Burger {
     }
 }
 
-class IcedLemon extends Burger {
+class IcedLemon extends Addition {
 
     IcedLemon(int piece) {
         this.name = "Iced Lemon";
@@ -161,7 +161,7 @@ class IcedLemon extends Burger {
     }
 }
 
-class OrangeJuice extends Burger {
+class OrangeJuice extends Addition {
 
     OrangeJuice(int piece) {
         this.name = "Orange Juice";
@@ -180,7 +180,7 @@ class OrangeJuice extends Burger {
     }
 }
 
-class SundaeChocolate extends Burger {
+class SundaeChocolate extends Addition {
 
     SundaeChocolate(int piece) {
         this.name = "Sundae Chocolate";
@@ -199,7 +199,7 @@ class SundaeChocolate extends Burger {
     }
 }
 
-class SundaeStrawberry extends Burger {
+class SundaeStrawberry extends Addition {
 
     SundaeStrawberry(int piece) {
         this.name = "Sundae Strawberry";
