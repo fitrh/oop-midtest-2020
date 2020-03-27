@@ -43,12 +43,21 @@ public class DosenPa implements Dosen {
     // Overriding method untuk kelas Dosen
     @Override
     public void setMahasiswaBimbingan(Mahasiswa mahasiswa) {
-        // TODO Auto-generated method stub
+        mahasiswaBimbingan.add(mahasiswa);
     }
 
     @Override
     public void showMahasiswaBimmbingan() {
-        // TODO Auto-generated method stub
+        System.out.printf("Berikut adalah mahasiswa bimbingan dari %s\n", namaDosen);
+        if (mahasiswaBimbingan.isEmpty()) {
+            System.out.println("Tidak memiliki mahasiswa bimbingan...");
+        } else {
+        for (Mahasiswa mahasiswa : mahasiswaBimbingan) {
+            System.out.printf("Name\t\t: %s\n", mahasiswa.getNama());
+            System.out.printf("Email\t\t: %s\n", mahasiswa.getEmail());
+            System.out.println("-------------------------");
+            }
+        }
     }
 
 }
