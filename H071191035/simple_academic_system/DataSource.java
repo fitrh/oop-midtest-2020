@@ -26,4 +26,21 @@ public class DataSource {
     public DosenPa getDosenPa(int key) {
         return dosenPaMap.get(key);
     }
+
+    // untuk mengecek apakah String yang diberikan merupakan integer
+    public static boolean isInt(String str) {
+
+        boolean isInt = false;
+        
+        try {
+            Integer.parseInt(str);
+            isInt = true;
+        } catch (NumberFormatException nfe) {
+            System.out.println(nfe);
+        }
+        return isInt;
+    }
+
+    
+
 }
