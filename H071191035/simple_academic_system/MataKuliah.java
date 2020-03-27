@@ -42,4 +42,16 @@ public class MataKuliah {
         return kuota;
     }
 
+    // menambahkan mahasiswa ke dalam daftar mahasiswa yang mendaftar matkul ini
+    public void setMahasiswaTerdaftar(User mahasiswa) {
+        mahasiswaTerdaftar.add(mahasiswa);
+        kuota--;
+    }
+
+    // menghapus mahasiswa yang terdaftar dalam matkul ini
+    public void mahasiswaBatalMendaftar(User mahasiswa) {
+        mahasiswaTerdaftar.remove(mahasiswa);
+        kuota++;
+    }
+
 }
