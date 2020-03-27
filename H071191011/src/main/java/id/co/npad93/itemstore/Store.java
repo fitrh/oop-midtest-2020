@@ -2,20 +2,48 @@ package id.co.npad93.itemstore;
 
 import java.util.*;
 
-// Store
+/**
+ * Store allows {@link User player} to buy item
+ * which is also owned by player
+ */
 public class Store
 {
-	// New store object
+	/**
+	 * Create new Store which is owned by specified {@link User player}
+	 * 
+	 * @param owner The store owner
+	 */
 	public Store(User owner)
 	{
 		this.owner = owner;
 	}
 
-	// Add items. Rest assured items are unusable after passed to this function
+	/**
+	 * Check if specified player is the owner of this store
+	 * 
+	 * @param player {@link User player} to check
+	 * @return <code>true</code> if it's store owner, <code>false</code>
+	 *         otherwise
+	 */
+	public boolean isOwner(User player)
+	{
+		return owner == player;
+	}
+
+	/**
+	 * Add {@link Item} to store. Rest assured items passed are unusable
+	 * after passed to this function
+	 * @param player Store {@link #isOwner(User) owner}
+	 * @param items List of items to add
+	 * @param prices List of item prices
+	 * @exception IllegalArgumentException if player passed is not store owner
+	 * @exception IllegalArgumentException if <code>items.length</code> is not
+	 *              equal <code>prices.length</code>
+	 */
 	public void stockItems(User player, Item[] items, int[] prices)
 	{
 		// Sanity check: Ensure only store owner can stock items
-		if (owner.equals(player) == false)
+		if (owner != player)
 			throw new IllegalArgumentException("player != owner");
 
 		// Sanity check: ensure all the arrays have same length
@@ -40,11 +68,14 @@ public class Store
 
 			// If not found, add new StoreItem
 			if (!found)
-				this.items.add(new StoreItem(items[i], prices[i], this));
+				this.items.add(new StoreItem(items[i], prices[i], this, this.owner));
 		}
 	}
 
-	// Remove item
+	/**
+	 * Remove item from store
+	 * @param item {@link StoreItem encapsulated item} for this store
+	 */
 	public void removeItem(StoreItem item)
 	{
 		items.remove(item);
