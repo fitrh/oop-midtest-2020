@@ -84,4 +84,23 @@ public class User {
         }
     }
 
+    // remove mata kuliah
+    public void removeMataKuliah(MataKuliah matkul) {
+        try {
+            if (sksTerdaftar == 0) {
+                System.out.println("Tidak ada mata kuliah yang diprogramkan...");
+                System.out.println("-------------------------");
+            } else {
+                    this.matkul.remove(matkul);
+                    matkul.mahasiswaBatalMendaftar(this);
+                    sksTerdaftar -= matkul.getSks();
+                    System.out.printf("Mata kuliah %s telah dihapus dari program...\n", matkul.getNamaMatkul());
+                    System.out.printf("Kuota tersisa untuk mata kuliah %s sebanyak %d\n", matkul.getNamaMatkul(), matkul.getKuota());
+                    System.out.println("-------------------------");
+             }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }
