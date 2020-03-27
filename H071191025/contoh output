@@ -1,0 +1,27 @@
+rasa sapi ? nugget ?
+jumlah pesanan ?
+mau tambahan ? y/n
+mau tambahan apa ?
+1. drink
+2. saus
+3. potato
+4. tomato
+jumlah minuman?
+masih ingin nambah minuman? y/n
+mau tambahan ? y/n
+y
+
+mau tambahan apa?
+1. drink
+2. saus
+3. potato
+4. tomato
+jumlah potato?
+masih ingin nambah potato? y/n
+mau tambahan ? 
+n 
+
+anda memesan burger sapi 
+total burger : 2
+harga burger :36000
+total harga :60000
