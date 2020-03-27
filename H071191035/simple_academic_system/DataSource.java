@@ -84,4 +84,29 @@ public class DataSource {
 
     }
 
+    // baca tulis file untuk data mahasiswa
+    private void putMahasiswa() throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader("Mahasiswa.txt"));
+        BufferedReader reader2 = new BufferedReader(new FileReader("DosenPa.txt"));
+        String data[];
+        String data2[];
+
+        while(reader.ready() && reader2.ready()) {
+            
+            data = reader.readLine().split(";");
+            data2 = reader2.readLine().split(";");
+
+            if (isInt(data[0])) {
+                mahasiswaMap.put(Integer.valueOf(data[0]), new Mahasiswa(Integer.valueOf(data[0]), data[1], data[2], data2[1]));
+            }
+        }
+
+        data = null;
+        data2 = null;
+        reader.close();
+        reader2.close();
+
+    }
+
 }
