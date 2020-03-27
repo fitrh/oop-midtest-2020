@@ -16,13 +16,13 @@ public class Customer {
     private int balance;
     private int KTPNumber;
 
-    public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam) {
+    public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam, ArrayList<Transaction> transactionLog, int balance) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
         this.KTPNumber = citizenIdentificationNam;
-        balance = 0;
-        transactionLog = new ArrayList<>();
+        this.balance = balance;
+        this.transactionLog = transactionLog;
     }
     public int getBalance() {
         return balance;

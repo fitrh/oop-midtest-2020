@@ -2,11 +2,13 @@ package com.bankingsystem.database;
 
 import com.bankingsystem.Bank;
 import com.bankingsystem.Customer;
+import com.bankingsystem.transactionlog.*;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ import java.util.HashSet;
 public class Database {
     private static Database database = null;
     private ArrayList<Bank> banks = new ArrayList<>();
+    private ArrayList<String> errorLog = new ArrayList<>();
     private Database() throws IOException {
         putBanks();
     }
@@ -56,16 +59,36 @@ public class Database {
 
             assert listOfFiles != null;
             for (File file : listOfFiles) {
-                if (file.isFile()) {
-                    br = new BufferedReader(new FileReader(file));
-                    while (br.ready()) {
-                        data = br.readLine().split(";");
+                try {
+                    if (file.isFile()) {
+                        br = new BufferedReader(new FileReader(file));
+                        if (br.ready()) {
+                            data = br.readLine().split(";");
+                        }
+                        ArrayList<Transaction> transactionLog = new ArrayList<>();
+                        SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss z");
+                        while (br.ready()) {
+                            String[] temp = br.readLine().split(";");
+                            if (Integer.parseInt(temp[0]) == 0) {
+                                transactionLog.add(new Deposit(formatter.parse(temp[1]), Integer.parseInt(temp[2])));
+                            } else if (Integer.parseInt(temp[0]) == 1) {
+                                transactionLog.add(new Withdrawal(formatter.parse(temp[1]), Integer.parseInt(temp[2])));
+                            } else if (Integer.parseInt(temp[0]) == 2) {
+                                transactionLog.add(new OutboundTransfer(formatter.parse(temp[1]), Integer.parseInt(temp[2]), Integer.parseInt(temp[3])));
+                            } else if (Integer.parseInt(temp[0]) == 3) {
+                                transactionLog.add(new InboundTransfer(formatter.parse(temp[1]), Integer.parseInt(temp[2]), Integer.parseInt(temp[3])));
+                            }
+                            temp = null;
+                        }
+                        assert data != null;
+                        Customer customer = new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3]), transactionLog, Integer.parseInt(data[4]));
+                        customers.put(Integer.parseInt(data[2]),customer);
+                        registeredKTP.add(Integer.parseInt(data[3]));
+                        data = null;
+                        br.close();
                     }
-                    assert data != null;
-                    customers.put(Integer.parseInt(data[2]), new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3])));
-                    registeredKTP.add(Integer.parseInt(data[3]));
-                    data = null;
-                    br.close();
+                } catch (Exception e) {
+                    errorLog.add(String.format("%s is corrupted\n", file.getName()));
                 }
             }
             banks.add(new Bank(bankName, bankCode, customers, registeredKTP));
@@ -79,4 +102,18 @@ public class Database {
     protected ArrayList<Bank> getBanks() {
         return banks;
     }
+    public void printErrorLog() {
+        if (errorLog.size() > 0) {
+            System.out.print("\u001b[31m");
+            System.out.println("Errors : ");
+            for (String error:
+                 errorLog) {
+                System.out.println(error);
+            }
+            System.out.print("\u001b[0m");
+
+        }
+
+    }
+
 }

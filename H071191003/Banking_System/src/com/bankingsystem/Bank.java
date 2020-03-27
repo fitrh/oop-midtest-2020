@@ -1,7 +1,9 @@
 package com.bankingsystem;
 
+import com.bankingsystem.transactionlog.Transaction;
+
 import java.io.Console;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -18,7 +20,7 @@ public class Bank {
         this.registeredKTP = registeredKTP;
     }
     private void addCustomer(String username, char[] password, int accountNumber, int KTPNumber) {
-        customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber));
+        customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber, new ArrayList<Transaction>(),0));
     }
 
     public void registerCustomer() {

@@ -1,23 +1,24 @@
 package com.bankingsystem.transactionlog;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Transaction {
-    protected Date dateOfTransaction;
+abstract public class Transaction {
+    protected String dateOfTransaction;
     protected int amount;
     protected int recipientOrigin;
 
     public Transaction(Date dateOfTransaction, int amount) {
-        this.dateOfTransaction = dateOfTransaction;
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss z");
+        this.dateOfTransaction = formatter.format(dateOfTransaction);
         this.amount = amount;
     }
     public Transaction(Date dateOfTransaction, int amount, int recipientOrigin) {
-        this.dateOfTransaction = dateOfTransaction;
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss z ");
+        this.dateOfTransaction = formatter.format(dateOfTransaction);
         this.amount = amount;
         this.recipientOrigin = recipientOrigin;
     }
 
-    public void printDetails() {
-
-    }
+    abstract public void printDetails();
 }

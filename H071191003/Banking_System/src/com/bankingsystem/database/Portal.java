@@ -227,6 +227,7 @@ public class Portal {
         Bank bank;
         while (true) {
             clearScreen();
+            database.printErrorLog();
             System.out.println("===BANKS===");
             printBanks();
             try {
