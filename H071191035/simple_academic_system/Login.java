@@ -44,4 +44,24 @@ public class Login {
 
     }
 
+    // login dosen
+    public boolean authDosen(String userName, String password) throws NoSuchElementException {
+        
+        user = dataSource.getUserDosen(userName);
+
+        try {
+            if (user.checkPass(password)) {
+                dosenPa = user.getDosenPa();
+                authenticated = true;
+                return true;
+            } else {
+                System.out.println("Wrong Password...");
+                return false;
+            }
+        } catch (Exception e) {
+            throw new NoSuchElementException("Username " + userName + " not found");
+        }
+
+    }
+
 }
