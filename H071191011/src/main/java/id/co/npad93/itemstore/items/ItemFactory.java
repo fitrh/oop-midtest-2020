@@ -20,7 +20,6 @@ public final class ItemFactory
 		{
 			itemFactory = new HashMap<UUID, Class<?>>();
 
-			// TODO: Put more items here
 			itemFactory.put(Water.uuid, Water.class);
 			itemFactory.put(HPRestorator50.uuid, HPRestorator50.class);
 			itemFactory.put(LP21.uuid, LP21.class);

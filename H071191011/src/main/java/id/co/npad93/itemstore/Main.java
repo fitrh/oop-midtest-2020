@@ -47,7 +47,7 @@ public class Main
 
 		public double nextDouble()
 		{
-			return Double.longBitsToDouble(((0x3FFL) << 52) | (nextLong() >> 12)) - 1.0;
+			return Double.longBitsToDouble(((0x3FFL) << 52) | (nextLong() >>> 12)) - 1.0;
 		}
 
 		private long state;
@@ -62,18 +62,22 @@ public class Main
 
 	public static void main(String[] args) throws Exception
 	{
-		// Initialize RNG
-		Xorshift rng;
-		if (args.length > 0)
-			rng = new Xorshift(Long.parseLong(args[0]));
+		if (args.length == 0)
+		{
+			// Initialize RNG
+			Xorshift rng = new Xorshift();
+			
+			// Interaction type: Player-Player vs Player-Store
+			double ret = rng.nextDouble();
+			if (ret >= 0.0)
+				interactionPlayerByPlayer(rng);
+			else
+				interactionPlayerByStore(rng);
+		}
 		else
-			rng = new Xorshift();
-		
-		// Interaction type: Player-Player vs Player-Store
-		if (rng.nextDouble() >= 0.5)
-			interactionPlayerByPlayer(rng);
-		else
-			interactionPlayerByStore(rng);
+		{
+			// TODO: non-RNG interaction
+		}
 	}
 
 	private static Character[] syllables = {'a', 'i', 'u', 'e', 'o'};
@@ -146,13 +150,32 @@ public class Main
 		ThermalSuit.uuid
 	};
 
+	private static UUID[] allItems = {
+		Water.uuid,
+		HPRestorator50.uuid,
+		LP21.uuid,
+		ThermalSuit.uuid
+	};
+
+	private static void printUserInfo(User user)
+	{
+		System.out.printf("Player %s (money %d) inventory:\n", user.getName(), user.getMoney());
+		for (Item i: user.getInventory())
+		{
+			System.out.println("- " + i.getName() + " (" + i.getAmount() + ")");
+			System.out.println("  " + i.getDescription());
+		}
+	}
+
 	private static void interactionPlayerByPlayer(Xorshift rng)
 	{
 		// Player-Player trade
 		int money1 = (int) (rng.nextDouble() * 100.0) * 1000;
-		User user1 = new User(generateName(rng), money1);
+		String user1Name = generateName(rng);
+		User user1 = new User(user1Name, money1);
 		int money2 = (int) (rng.nextDouble() * 100.0) * 1000;
-		User user2 = new User(generateName(rng), money2);
+		String user2Name = generateName(rng);
+		User user2 = new User(user2Name, money2);
 
 		// Stock some items
 		boolean[] user1Equipped = new boolean[usableItems.length];
@@ -178,10 +201,80 @@ public class Main
 					consumableItems[(int) (rng.nextDouble() * consumableItems.length)], 1
 				));
 		}
+			
+		// Inventory checklist
+		printUserInfo(user1);
+
+		// Trade system
+		System.out.println(user2Name + " meet " + user1Name);
+
+		// Which item to trade
+		Item[] user1Inv = user1.getInventory();
+		Item tradeItem = user1Inv[(int) (rng.nextDouble() * user1Inv.length)];
+		int tradePrice = (int) (rng.nextDouble() * 50.0) * 1000;
+		System.out.println(user2Name + " wants " + tradeItem.getName() + " for " + tradePrice);
+
+		// 50% agrees
+		if (rng.nextDouble() >= 0.5)
+		{
+			if (money2 >= tradePrice)
+			{
+				// Give user money
+				user2.giveMoney(user1, tradePrice);
+				// Remove item
+				user1.removeItem(tradeItem.getID(), tradeItem.getAmount());
+				// Add item
+				user2.addItem(tradeItem);
+				System.out.println(user1Name + " traded " + tradeItem.getName() + " for ");
+				printUserInfo(user2);
+			}
+			else
+			{
+				// Not enough money
+				System.out.println(user1Name + " agrees but " + user2Name + " doesn't have enough money");
+			}
+		}
+		else
+			System.out.println(user1Name + " declines");
 	}
 
 	private static void interactionPlayerByStore(Xorshift rng)
 	{
-		// TODO
+		// Player-Store interaction
+		String user1Name = generateName(rng);
+		User user1 = new User(user1Name, 50000);
+		int money2 = (int) (rng.nextDouble() * 120.0) * 1000;
+		String user2Name = generateName(rng);
+		User user2 = new User(user2Name, money2);
+
+		// New store
+		Store store = new Store(user1);
+
+		// What kind of items to stock?
+		Set<UUID> itemsToAdd = new HashSet<UUID>();
+		for (int i = 0; i < allItems.length; i++)
+			itemsToAdd.add(allItems[(int) (rng.nextDouble() * allItems.length)]);
+		
+		// Ok prepare items for stock
+		int amountOfUniqueItems = itemsToAdd.size();
+		UUID[] itemUUIDs = new UUID[amountOfUniqueItems];
+		Item[] items = new Item[amountOfUniqueItems];
+		int[] itemPrices = new int[amountOfUniqueItems];
+		itemsToAdd.toArray(itemUUIDs);
+		System.out.println("Items in store");
+		for (int i = 0; i < amountOfUniqueItems; i++)
+		{
+			int itemAmount = 1 + (int) (rng.nextLong() & 31);
+			int price = 2000 + (int) (rng.nextDouble() * 20) * 100;
+			Item item = ItemFactory.newItemFromUUID(itemUUIDs[i], itemAmount);
+			items[i] = item;
+			itemPrices[i] = price;
+
+			System.out.println("- " + item.getName() + " (" + itemAmount + ") price " + price);
+			System.out.println("  " + item.getDescription());
+		}
+
+		// Finally, stock items
+		store.stockItems(user1, items, itemPrices);
 	}
 }
