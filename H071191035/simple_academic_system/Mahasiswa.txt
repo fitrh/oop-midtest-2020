@@ -1,0 +1,6 @@
+1;Muh. Adrian Dwi Putra;mikuauahdark19h@student.unhas.ac.id
+2;Iswanto;iswanto19h@student.unhas.ac.id
+3;Richard Enrico Sulieanto;enricorichard19h@student.unhas.ac.id
+4;Muh. Iksan;iksan19h@student.unhas.ac.id
+5;Arsyi Syarief Aziz;arsyiaziz19h@student.unhas.ac.id
+6;Akmal Zuhdy Prasetya;trueazp19h@student.unhas.ac.id
