@@ -126,7 +126,10 @@ public final class StoreItem
 	public boolean equals(Object obj)
 	{
 		if (obj instanceof StoreItem)
-			return ((StoreItem) obj).item.equals(this);
+		{
+			StoreItem a = (StoreItem) obj;
+			return a.item.equals(this.item) && this.store == a.store;
+		}
 		
 		return false;
 	}
