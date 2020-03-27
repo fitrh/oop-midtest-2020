@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 /**
  * User
  */
@@ -9,6 +11,7 @@ public class User {
     private Mahasiswa mahasiswa;
     private DosenPa dosenPa;
     private int sksTerdaftar;
+    private List<MataKuliah> matkul = new ArrayList<>();
     
     // constructor
     public User() {
