@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 /**
  * DataSource
@@ -41,6 +44,24 @@ public class DataSource {
         return isInt;
     }
 
-    
+    // baca tulis file untuk data user mahasiswa
+    private void putUserMahasiswa() throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader("User.txt"));
+        String data[];
+
+        while(reader.ready()) {
+            
+            data = reader.readLine().split(";");
+
+            if (isInt(data[0])) {
+                userMapMahasiswa.put(data[1], new User(Integer.valueOf(data[0]), data[1], data[2], mahasiswaMap.get(Integer.valueOf(data[0]))));
+            }
+        }
+
+        data = null;
+        reader.close();
+
+    }
 
 }
