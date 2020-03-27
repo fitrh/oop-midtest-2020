@@ -11,6 +11,19 @@ public class Login {
     private DataSource dataSource;
     private boolean authenticated = false;
 
+    // constructor
+    private Login() {
+        dataSource = DataSource.getInstance();
+    }
+
+    // instansiasi
+    public static Login getInstance() {
+        if (login == null) {
+            login = new Login();
+        }
+        return login;
+    }
+
     // getter
     public User getUser() {
         return user;
