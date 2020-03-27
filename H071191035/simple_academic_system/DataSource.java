@@ -64,4 +64,24 @@ public class DataSource {
 
     }
 
+    // baca tulis file untuk data user dosen pembimbing
+    private void putUserDosen() throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader("DosenPaUser.txt"));
+        String data[];
+
+        while(reader.ready()) {
+            
+            data = reader.readLine().split(";");
+
+            if (isInt(data[0])) {
+                userMapDosen.put(data[1], new User(Integer.valueOf(data[0]), data[1], data[2], dosenPaMap.get(Integer.valueOf(data[0]))));
+            }
+        }
+
+        data = null;
+        reader.close();
+
+    }
+
 }
