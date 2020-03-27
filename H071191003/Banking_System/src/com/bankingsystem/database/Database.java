@@ -30,6 +30,10 @@ public class Database {
         return database;
     }
 
+    private void updateUserData() {
+
+    }
+
     private void putBanks() throws IOException {
         String[] bankNames = {"BNI","BRI","BTN","MANDIRI"};
         for (String name : bankNames) {

@@ -1,8 +1,9 @@
 package com.bankingsystem.database;
+
 import com.bankingsystem.Bank;
 import com.bankingsystem.Customer;
+
 import java.io.Console;
-import java.util.Arrays;
 
 public class Portal {
     private static Portal portal;
@@ -22,9 +23,10 @@ public class Portal {
     }
 
     private void login(Bank bank) {
-        System.out.println("===LOGIN===");
         String accountNumber;
         while (true){
+            clearScreen();
+            System.out.println("===LOGIN===");
             try {
                 accountNumber = input.readLine("Account number : ");
                 if (accountNumber.equalsIgnoreCase("exit")) {
@@ -32,11 +34,12 @@ public class Portal {
                     return;
                 }
                 customer = bank.getCustomer(Integer.parseInt(accountNumber));
-                customer.getAccountNumber(); //Checks if account is valid
+                customer.validAccount(); //Checks if account is valid
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid account number!");
                 System.out.println("Type exit to cancel login");
+                pause(1000);
             }
         }
         int triesLeft = 3;
@@ -44,7 +47,7 @@ public class Portal {
             customer.login(input.readPassword("Password : "));
             if (customer.isAuthenticated()) {
                 System.out.println("===========");
-                userActions();
+                userActions(bank.getBankName());
                 return;
             } else {
                 System.out.println("Invalid password!");
@@ -57,43 +60,36 @@ public class Portal {
         }
     }
 
-    private void userActions() {
+    private void userActions(String bankName) {
         while (true) {
+            if (customer == null) {
+                return;
+            }
+            clearScreen();
+            System.out.printf("====Bank %s====\n", bankName);
             System.out.printf("Hello, %s\n", customer.getUsername());
             System.out.println("1. Deposit");
             System.out.println("2. Withdraw");
             System.out.println("3. Transfer");
             System.out.println("4. Balance");
             System.out.println("5. Transaction History");
-            System.out.println("6. Logout");
+            System.out.println("6. Change password");
+            System.out.println("7. Logout");
             int choice;
             while (true) {
                 choice = Integer.parseInt(input.readLine("Choice : "));
-                if (choice >= 1 && choice <= 6) {
+                if (choice >= 1 && choice <= 7) {
                     break;
                 } else {
                     System.out.println("Invalid choice!");
                 }
             }
-            int amount;
             switch (choice) {
                 case 1 :
-                    System.out.println("===Deposit===");
-                    amount = Integer.parseInt(input.readLine("Input amount Rp."));
-                    customer.deposit(amount);
-                    System.out.printf("Successfully deposited Rp.%d to account number %d\n", amount, customer.getAccountNumber());
-                    System.out.println("==============");
+                    deposit();
                     break;
                 case 2 :
-                    System.out.println("===Withdraw===");
-                    amount = Integer.parseInt(input.readLine("Input amount Rp."));
-                    if (customer.withdraw(amount)) {
-                        System.out.printf("Successfully withdrew Rp.%d from account number %d\n", amount, customer.getAccountNumber());
-                    } else {
-                        System.out.printf("Insufficient funds in account number %d\n", customer.getAccountNumber());
-
-                    }
-                    System.out.println("==============");
+                    withdraw();
                     break;
                 case 3 :
                     transfer();
@@ -102,19 +98,66 @@ public class Portal {
                     balance();
                     break;
                 case 5 :
-                    customer.printTransactionLog();
+                    printTransactionLog();
                     break;
-                case 6 :
-                    customer.logout();
+                case 6:
+                    changePassword();
+                    break;
+                case 7 :
+                    logout();
                     return;
             }
         }
     }
+
+    private void logout() {
+        customer.logout();
+        customer = null;
+    }
+    private void changePassword() {
+        clearScreen();
+        customer.changePassword();
+        if (!customer.isAuthenticated()) {
+            customer = null;
+        }
+        pause(1000);
+    }
+
+    private void printTransactionLog() {
+        clearScreen();
+        customer.printTransactionLog();
+        pause(-1);
+    }
+
+    private void withdraw() {
+        clearScreen();
+        System.out.println("===Withdraw===");
+        int amount = Integer.parseInt(input.readLine("Input amount Rp."));
+        if (customer.withdraw(amount)) {
+            System.out.printf("Successfully withdrew Rp.%d from account number %d\n", amount, customer.getAccountNumber());
+        } else {
+            System.out.printf("Insufficient funds in account number %d\n", customer.getAccountNumber());
+
+        }
+        System.out.println("==============");
+        pause(-1);
+    }
+    private void deposit() {
+        clearScreen();
+        System.out.println("===Deposit===");
+        int amount = Integer.parseInt(input.readLine("Input amount Rp."));
+        customer.deposit(amount);
+        System.out.printf("Successfully deposited Rp.%d to account number %d\n", amount, customer.getAccountNumber());
+        System.out.println("==============");
+        pause(-1);
+    }
+
     private void transfer() {
-        System.out.println("===Transfer===");
-        printBanks();
         Bank bank;
         while (true) {
+            clearScreen();
+            System.out.println("===Transfer===");
+            printBanks();
             try {
                 String bankCode = input.readLine("Input bank code : ");
                 if (bankCode.equalsIgnoreCase("exit")) {
@@ -126,6 +169,7 @@ public class Portal {
             } catch (Exception e) {
                 System.out.println("Invalid bank code");
                 System.out.println("Type exit to cancel");
+                pause(1000);
             }
         }
         Customer recipient;
@@ -167,17 +211,38 @@ public class Portal {
         } else {
             System.out.println("Insufficient funds!");
         }
-
+        pause(-1);
     }
 
     private void balance() {
+        clearScreen();
         System.out.println("==============");
-        System.out.printf("Balance : %d\n", customer.getBalance());
+        System.out.printf("Account number : %d\n", customer.getAccountNumber());
+        System.out.printf("Balance        : %d\n", customer.getBalance());
         System.out.println("==============");
+        pause(-1);
     }
 
-    public void accessBank(int index) {
-        Bank bank = database.getBank(index);
+    public void welcomeScreen() {
+        Bank bank;
+        while (true) {
+            clearScreen();
+            System.out.println("===BANKS===");
+            printBanks();
+            try {
+                bank = database.getBank(Integer.parseInt(input.readLine("Choose a bank : "))-1);
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid Bank!");
+                System.out.println("===========");
+                pause(1000);
+            }
+        }
+        accessBank(bank);
+
+    }
+    private void accessBank(Bank bank) {
+        clearScreen();
         System.out.printf("===Welcome to Bank %s===\n", bank.getBankName());
         System.out.println("1. Login");
         System.out.println("2. Register");
@@ -198,11 +263,28 @@ public class Portal {
     public void register() {
 
     }
-    public void printBanks() {
+    private void printBanks() {
         for (int i = 0; i < database.getBanks().size(); i++) {
             System.out.printf("%d. %s\n", i+1, database.getBank(i).getBankName());
         }
     }
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
+    private void pause(long time) {
+        if (time == -1) {
+            System.out.println("Type anything to continue...");
+            input.readLine();
+            return;
+        }
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException ignored){
+
+        }
+
+    }
 
 }

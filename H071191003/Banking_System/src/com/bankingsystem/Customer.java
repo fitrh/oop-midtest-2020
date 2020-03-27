@@ -31,6 +31,7 @@ public class Customer {
         if (Arrays.equals(this.password, password)) {
             authenticated = true;
         }
+        Arrays.fill(password, '0');
     }
 
     public void deposit(int amount) {
@@ -73,14 +74,31 @@ public class Customer {
     public boolean isAuthenticated() {
         return authenticated;
     }
+    public void validAccount() {
+        //Checks if an account isn't null
+    }
 
     public void changePassword() {
         if (authenticated) {
             Console input = System.console();
-            char[] oldPassword = input.readPassword("Input old password : ");
-            if (Arrays.equals(this.password, oldPassword)) {
-                password = input.readPassword("Input new password : ");
+            int tries = 3;
+            while (tries >= 0) {
+                clearScreen();
+                char[] oldPassword = input.readPassword("Input old password : ");
+                if (Arrays.equals(this.password, oldPassword)) {
+                    Arrays.fill(oldPassword, '0');
+                    password = input.readPassword("Input new password : ");
+                    System.out.println("Password successfully changed");
+                    pause();
+                    return;
+                } else {
+                    System.out.println("Invalid password!");
+                    tries--;
+                    pause();
+                }
             }
+            System.out.println("You have been logged out for security reasons, please re login");
+            authenticated = false;
         }
     }
 
@@ -101,7 +119,8 @@ public class Customer {
     public void printTransactionLog() {
         if (authenticated) {
             System.out.println("===Transaction History===");
-
+            System.out.printf("Customer name  : %s\n", getUsername());
+            System.out.printf("Account number : %d\n", getAccountNumber());
             for (Transaction transaction:
                  transactionLog) {
                 System.out.println("-------------------------");
@@ -113,5 +132,17 @@ public class Customer {
             }
             System.out.println("=========================");
         }
+    }
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+    private void pause() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ignored){
+
+        }
+
     }
 }
