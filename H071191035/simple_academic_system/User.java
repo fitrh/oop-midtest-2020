@@ -67,11 +67,17 @@ public class User {
         try {
             if (!this.matkul.contains(matkul)) {
                 if (matkul.getKuota() > 0) {
+                    sksTerdaftar += matkul.getSks();
+                    if (sksTerdaftar < 11) {
                         this.matkul.add(matkul);
                         matkul.setMahasiswaTerdaftar(this);
                         System.out.printf("Mata kuliah %s berhasil ditambahkan\n", matkul.getNamaMatkul());
                         System.out.printf("Kuota tersisa untuk mata kuliah %s sebanyak %d\n", matkul.getNamaMatkul(), matkul.getKuota());
                         System.out.println("-------------------------"); 
+                    } else {
+                        System.out.println("Melewati batas total SKS yang diberikan...");
+                        System.out.println("-------------------------");
+                    }
                 } else {
                     System.out.println("Kuota tak mencukupi...");
                     System.out.println("-------------------------");
