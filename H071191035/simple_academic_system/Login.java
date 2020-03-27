@@ -77,4 +77,35 @@ public class Login {
 
     }
 
+    // menampilkan detail user mahasiswa
+    public void statusMahasiswa() {
+        if (authenticated) {
+            System.out.println("-------------------------");
+            System.out.printf("Berikut adalah profil dari %s\n", user.getUserName());
+            System.out.printf("Nama\t\t: %s\n", mahasiswa.getNama());
+            System.out.printf("Email\t\t: %s\n", mahasiswa.getEmail());
+            System.out.printf("Dosen Pembimbing: %s\n", mahasiswa.getNamaDosenPa());
+            System.out.printf("Username\t: %s\n", user.getUserName());
+            System.out.printf("Password\t: %s\n\n", user.getPassword());
+            getUser().showMatkul();
+            System.out.printf("JUMLAH TOTAL SKS : %d\n", user.getSksTerdaftar());
+            System.out.println("-------------------------");
+        } else {
+            System.out.println("Not authenticated...");
+        }
+    }
+
+// menampilkan detail user dosen
+public void statusDosen() {
+    if (authenticated) {
+        System.out.printf("Berikut adalah profil dari dosen %s\n", user.getUserName());
+        System.out.printf("Nama\t\t: %s\n", dosenPa.getNamaDosen());
+        System.out.printf("Nomor Telepon\t: %s\n", dosenPa.getNoTelp());
+        System.out.printf("Email\t\t: %s\n", dosenPa.getEmail());
+        System.out.println("-------------------------");
+    } else {
+        System.out.println("Not authenticated...");
+    }
+}
+
 }
