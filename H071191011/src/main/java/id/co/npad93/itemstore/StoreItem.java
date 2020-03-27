@@ -113,7 +113,7 @@ public final class StoreItem
 	/**
 	 * Add quantity of the encapsulated {@link Item}
 	 * 
-	 * @param item Same encapsulated item which has quantity > 0
+	 * @param item Same encapsulated item which has quantity &gt; 0
 	 * @exception IllegalArgumentException if encapsulated item is not equal to
 	 *              passed item.
 	 **/

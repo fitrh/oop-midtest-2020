@@ -18,7 +18,7 @@ Intinya, itemstore adalah sebagai berikut
 - Proses Jual Beli *Item* dapat dilakukan antar *Player-Player*, *Player-Store*, atau *Store-Store*
 
 Spesifikasi
-=====
+-----
 
 * Setidaknya Java 8 diperlukan untuk menjalankan project ini.
 
@@ -33,3 +33,14 @@ Bagian-bagian yang menerapkan konsep OOP hampir semuanya, dengan beberapa inform
 * Class yang mewarisi _Item_ mengimplementasikan interface _Consumable_ atau _Usable_
 
 * _Item_ dan turunannya menggunakan konsep polimorfisme.
+
+Dokumentasi
+-----
+
+Untuk membuat dokumentasi fungsi-fungsi yang ada, jalankan
+
+```
+mvn javadoc:javadoc
+```
+
+Maka dokumentasi dapat ditemukan di `target/site/apidocs`
