@@ -62,4 +62,26 @@ public class User {
         return password.equals(this.password); 
     }
 
+    // add mata kuliah
+    public void addMataKuliah(MataKuliah matkul) {
+        try {
+            if (!this.matkul.contains(matkul)) {
+                if (matkul.getKuota() > 0) {
+                        this.matkul.add(matkul);
+                        matkul.setMahasiswaTerdaftar(this);
+                        System.out.printf("Mata kuliah %s berhasil ditambahkan\n", matkul.getNamaMatkul());
+                        System.out.printf("Kuota tersisa untuk mata kuliah %s sebanyak %d\n", matkul.getNamaMatkul(), matkul.getKuota());
+                        System.out.println("-------------------------"); 
+                } else {
+                    System.out.println("Kuota tak mencukupi...");
+                    System.out.println("-------------------------");
+                    }
+            } else {
+                System.out.println("Telah terdaftar dalam mata kuliah ini...");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }
