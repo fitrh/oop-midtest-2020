@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Login  {
     public boolean accept ;
-    private  Nasabah nasabah;
+    private Nasabah nasabah;
+    private NasabahDetail nd;
     Scanner inp = new Scanner(System.in);
 
     public void menuMandara() throws IOException {
@@ -38,13 +39,30 @@ public class Login  {
     void auth(String filename,String userName, String pin) throws IOException {
         DataSource dataSource = new DataSource();
         nasabah = dataSource.getNasabahData(filename,userName);
+
         if (pin.equals(nasabah.getPin())){
             accept = true;
             System.out.print("Login Berhasil");
+            nd = dataSource.getNasabahDetail(filename,nasabah.getId());
 
         } else {
             System.out.print("Login Gagal");
+            nd = null;
             return;
+        }
+    }
+
+    public void info(){
+        if(nd == null) {
+            System.out.println("NoSuchElementException");
+        }
+        else {
+            System.out.println("Name           : " + nd.getName());
+            System.out.println("Money          : " + nd.getMoney());
+            System.out.println("Bank Name      : " + nd.getBankName());
+            System.out.println("Rekening Number: " + nd.getRekening());
+            System.out.println("User           : " + nd.getUserName());
+            System.out.println("Pin            : " + nd.getPin());
         }
     }
 

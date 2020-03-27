@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu extends Login{
-    Bank bank = new MandaraBank();
+    Bank bankM = new MandaraBank();
+    Bank bankC = new BACABank();
+    Bank bankR = new BROBank();
+    private Nasabah nasabah;
+    private NasabahDetail nd;
+    DataSource dataSource = new DataSource();
     Scanner inp = new Scanner(System.in);
     private int input;
 
@@ -16,8 +21,8 @@ public class Menu extends Login{
         switch (input){
             case 1 :
                 /* user : ali
-                *  pin  : 212121
-                * */
+                 *  pin  : 212121
+                 * */
                 menuMandara();
                 if(!super.accept){
                     return;
@@ -29,24 +34,26 @@ public class Menu extends Login{
                 switch (input) {
                     case 1 :
                         System.out.print("amount money to be saved : ");
-                        bank.menabung(inp.nextInt());
+                        bankM.menabung(inp.nextInt());
                         System.out.println("Thank you for Saving");
                         break;
                     case 2 :
                         System.out.print("How much money to take : ");
-                        bank.mengambilUang(inp.nextInt());
+                        bankM.mengambilUang(inp.nextInt());
                         System.out.println("Thank you for Transaksi");
                         break;
                     case 3 :
                         System.out.print("Rekening Number\t: ");
                         System.out.print("Nominal\t: ");
-                        bank.transfer(inp.nextInt());
+                        bankM.transfer(inp.nextInt());
                         break;
                     case 4 :
                         System.out.println("---- Activity ----");
                         break;
                     case 5 :
                         System.out.println("---- Info Nasabah ----");
+                        info();
+
                         break;
                     default:
                         System.out.println("Invalid Input");
@@ -68,24 +75,25 @@ public class Menu extends Login{
                 switch (input) {
                     case 1 :
                         System.out.print("amount money to be saved : ");
-                        bank.menabung(inp.nextInt());
+                        bankC.menabung(inp.nextInt());
                         System.out.println("Thank you for Saving");
                         break;
                     case 2 :
                         System.out.print("How much money to take : ");
-                        bank.mengambilUang(inp.nextInt());
+                        bankC.mengambilUang(inp.nextInt());
                         System.out.println("Thank you for Transaksi");
                         break;
                     case 3 :
                         System.out.print("Rekening Number\t: ");
                         System.out.print("Nominal\t: ");
-                        bank.transfer(inp.nextInt());
+                        bankC.transfer(inp.nextInt());
                         break;
                     case 4 :
                         System.out.println("---- Activity ----");
                         break;
                     case 5 :
                         System.out.println("---- Info Nasabah ----");
+                        info();
                         break;
                     default:
                         System.out.println("Invalid Input");
@@ -107,24 +115,25 @@ public class Menu extends Login{
                 switch (input) {
                     case 1 :
                         System.out.print("amount money to be saved : ");
-                        bank.menabung(inp.nextInt());
+                        bankR.menabung(inp.nextInt());
                         System.out.println("Thank you for Saving");
                         break;
                     case 2 :
                         System.out.print("How much money to take : ");
-                        bank.mengambilUang(inp.nextInt());
+                        bankR.mengambilUang(inp.nextInt());
                         System.out.println("Thank you for Transaksi");
                         break;
                     case 3 :
                         System.out.print("Rekening Number\t: ");
                         System.out.print("Nominal\t: ");
-                        bank.transfer(inp.nextInt());
+                        bankR.transfer(inp.nextInt());
                         break;
                     case 4 :
                         System.out.println("---- Activity ----");
                         break;
                     case 5 :
                         System.out.println("---- Info Nasabah ----");
+                        info();
                         break;
                     default:
                         System.out.println("Invalid Input");

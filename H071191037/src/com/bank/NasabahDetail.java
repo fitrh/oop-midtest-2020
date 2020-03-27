@@ -42,12 +42,4 @@ public class NasabahDetail {
         return rekening;
     }
 
-    public void info(){
-        System.out.println("Name           : "+ getName());
-        System.out.println("Money          : "+ getMoney());
-        System.out.println("Bank Name      : "+ getBankName());
-        System.out.println("Rekening Number: "+ getRekening());
-        System.out.println("User           : "+ getUserName());
-        System.out.println("Pin            : "+ getPin());
-    }
 }
