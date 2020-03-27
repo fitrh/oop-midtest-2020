@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * DosenPa
  */
-public class DosenPa {
+public class DosenPa implements Dosen {
 
     private int id;
     private String namaDosen;
@@ -38,6 +38,17 @@ public class DosenPa {
 
     public String getEmail() {
         return email;
+    }
+
+    // Overriding method untuk kelas Dosen
+    @Override
+    public void setMahasiswaBimbingan(Mahasiswa mahasiswa) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void showMahasiswaBimmbingan() {
+        // TODO Auto-generated method stub
     }
 
 }
