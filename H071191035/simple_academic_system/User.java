@@ -103,4 +103,21 @@ public class User {
         }
     }
 
+    // show matkul yang diprogramkan
+    public void showMatkul() {
+
+        if (sksTerdaftar == 0) {
+            System.out.println("Tidak ada mata kuliah yang diprogramkan...");
+        } else {
+            System.out.printf("Berikut adalah daftar mata kuliah yang diprogramkan oleh %s\n", userName);
+            for (MataKuliah mataKuliah : matkul) {
+                System.out.printf("Nama mata kuliah\t: %s\n", mataKuliah.getNamaMatkul());
+                System.out.printf("Kode mata kuliah\t: %s\n", mataKuliah.getKodeMatkul());
+                System.out.printf("Dosen pengajar\t\t: %s\n", mataKuliah.getDosenPengajar());
+                System.out.printf("Jumlah satuan kredit\t: %d\n", mataKuliah.getSks());
+                System.out.println("-------------------------");
+            }
+        }  
+    }
+
 }
