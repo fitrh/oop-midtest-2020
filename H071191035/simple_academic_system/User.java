@@ -15,7 +15,7 @@ public class User {
         sksTerdaftar = 0;
     }
     
-   public User(int id, String userName, String password, Mahasiswa mahasiswa) {
+    public User(int id, String userName, String password, Mahasiswa mahasiswa) {
        this.id = id;
        this.userName = userName;
        this.password = password;
@@ -34,24 +34,29 @@ public class User {
         return id;
      }
  
-     public String getUserName() {
+    public String getUserName() {
         return userName;
      }
  
-     public String getPassword() {
+    public String getPassword() {
         return password;
      }
  
-     public Mahasiswa getMahasiswa() {
+    public Mahasiswa getMahasiswa() {
         return mahasiswa;
      }
  
-     public DosenPa getDosenPa() {
+    public DosenPa getDosenPa() {
         return dosenPa;
      }
  
-     public int getSksTerdaftar() {
+    public int getSksTerdaftar() {
         return sksTerdaftar;
      }
+
+     // check password
+    public boolean checkPass(String password) {
+        return password.equals(this.password); 
+    }
 
 }
