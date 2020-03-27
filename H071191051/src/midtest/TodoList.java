@@ -21,6 +21,17 @@ class TodoList {
         System.out.println("+---------------- Adding List ----------------+");
     }
 
+    public void deleteList() throws IOException {
+        File file = new File("kegiatan.txt");
+        File file_2 = new File("temp.txt");
+        file.delete();
+        file_2.renameTo(file);
+    }
+
+    public void editList() throws IOException {
+
+    }
+
     public String getDescription() {
         return null;
     }

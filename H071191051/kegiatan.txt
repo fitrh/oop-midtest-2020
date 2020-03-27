@@ -1,3 +1,2 @@
-bobo siang;13:00 - 14:00;penting;sedang dikerjakan;bobo siang agar sehat
-mancing mania;15:00 - 16:00;kurang penting;belum dikerjakan;cari rezeki dulu bro
-mabar;selama mungkin;sangat penting;sedang dikerjakan;mabar push rank with iswanto
+bermaintictactoe;bermain tic tac toe;10.00 - 11.00;penting;belum dikerjakan;untuk menghilangkan rasa capek
+minumcoklatpanas;minum coklat panas;13.00 - 15.00;penting;sedang dikerjakan;agar tubuh vit

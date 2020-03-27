@@ -16,24 +16,24 @@ class InitialDisplay {
 
         // setelah registrasi maka akan muncul tampilan menu
         while (true) {
-
             homeMenu();
             System.out.print("> ");
             int choice = sc.nextInt();
 
             if (choice == 1) {
                 clearScreen();
-                // menampilkan semua jadwal kegiatan
                 System.out.println("+------------ To-Do-List Hari ini ------------+\n");
                 setTime();
                 ShowList show = new ShowList();
                 show.showList();
 
             } else if (choice == 2) {
-                System.out.println("+-------------- Hapus kegiatan ---------------+");
-                // hapus kegiatan
                 clearScreen();
-
+                System.out.println("+-------------- Hapus kegiatan ---------------+");
+                DeleteList delete = new DeleteList();
+                delete.deleteList();
+                TodoList rename = new TodoList();
+                rename.deleteList();
             } else if (choice == 3) {
                 System.out.println("+-------------- Edit kegiatan ----------------+");
                 // edit kegiatan
@@ -43,7 +43,6 @@ class InitialDisplay {
                 System.out.println("+------------- Tambah kegiatan ---------------+");
                 AddList add = new AddList();
                 add.addList();
-
             } else if (choice == 5) {
                 System.out.println("+------------ Deskripsi kegiatan -------------+");
                 // deskripsi kegiatan
