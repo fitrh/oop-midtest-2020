@@ -50,8 +50,6 @@ class Registration {
                 } else if (bio.getAge() == null) {
                     System.out.println("\nFormat tanggal lahir tidak sesuai (gunakan format dd-MM-yyyy)\n");
                 } else {
-                    System.out.println("\nPendaftaran Berhasil");
-                    System.out.println("-----------------------------------------------");
                     this.biodata = bio.getDescription();
                     this.callName = bio.getCallName();
                     break;

@@ -1,10 +1,14 @@
 package midtest;
 
+import java.io.*;
+
 class TodoList {
-    private String callName;
-    private String activityName;
-    private String activityStatus;
-    private String activityPriority;
+    protected String callName;
+    protected String activityName;
+    protected String activitySchedule;
+    protected String activityPriority;
+    protected String activityStatus;
+    protected String activityDescription;
 
     public TodoList() {
 
@@ -12,6 +16,14 @@ class TodoList {
 
     public TodoList(String callName) {
         this.callName = callName;
+    }
+
+    public void showList() throws IOException {
+        System.out.println("+------------ To-Do-List Hari ini ------------+");
+    }
+
+    public void addList() throws IOException {
+
     }
 
     public String getDescription() {
