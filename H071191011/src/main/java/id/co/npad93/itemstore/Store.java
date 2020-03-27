@@ -81,6 +81,18 @@ public class Store
 		items.remove(item);
 	}
 
+	/**
+	 * Retrieve list of items for sale
+	 * 
+	 * @return List of {@link StoreItem encapsulated items} for sale
+	 */
+	public StoreItem[] getItems()
+	{
+		StoreItem[] i = new StoreItem[items.size()];
+		items.toArray(i);
+		return i;
+	}
+
 	// List of items for sale
 	protected ArrayList<StoreItem> items;
 	// Store owner, which is a user
