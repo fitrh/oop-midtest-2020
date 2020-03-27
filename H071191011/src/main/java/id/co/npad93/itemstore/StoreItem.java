@@ -3,7 +3,7 @@ package id.co.npad93.itemstore;
 /**
  * Item object encapsulated to prevent item stealing
  */
-public class StoreItem
+public final class StoreItem
 {
 	/**
 	 * Construct new StoreItem
@@ -11,12 +11,20 @@ public class StoreItem
 	 * @param item The {@link Item} object to encapsulate
 	 * @param price The item price
 	 * @param store {@link Store} who owns the item
+	 * @param owner Store {@link User} owner
+	 * @exception IllegalArgumentException if <code>owner</code> passed is not
+	 *              the store owner
 	 **/
-	public StoreItem(Item item, int price, Store store)
+	public StoreItem(Item item, int price, Store store, User owner)
 	{
 		this.item = item;
 		this.price = price;
 		this.store = store;
+
+		if (store.isOwner(owner))
+			this.owner = owner;
+		else
+			throw new IllegalArgumentException("player is not store owner");
 	}
 
 	/**
@@ -66,8 +74,9 @@ public class StoreItem
 	 * @param amount Amount to bought
 	 * @return {@link Item} with specified <code>amount</code> of quantity
 	 * @exception IllegalArgumentException if the player doesn't have enough
-	 *              money or if the amount requested is more than
-	 *              {@link #getAmount()}
+	 *              money
+	 * @exception IllegalArgumentException if the amount requested is more
+	 *              than {@link #getAmount()}
 	 **/
 	public Item buy(User player, int amount)
 	{
@@ -79,6 +88,7 @@ public class StoreItem
 			throw new IllegalArgumentException("not enough money");
 		
 		player.addMoney(-totalPrice);
+		owner.addMoney(totalPrice);
 		Item result = item.separate(amount);
 
 		// If item quantity is 0, remove it from shop item list
@@ -134,4 +144,6 @@ public class StoreItem
 	private int price;
 	/** Store parent object */
 	private Store store;
+	/** Store owner */
+	private User owner;
 }
