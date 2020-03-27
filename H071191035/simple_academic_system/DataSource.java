@@ -109,4 +109,24 @@ public class DataSource {
 
     }
 
+    // baca tulis file untuk data dosen pembimbing
+    private void putDosen() throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader("DosenPa.txt"));
+        String data[];
+
+        while(reader.ready()) {
+            
+            data = reader.readLine().split(";");
+
+            if (isInt(data[0])) {
+                dosenPaMap.put(Integer.valueOf(data[0]), new DosenPa(Integer.valueOf(data[0]), data[1], data[2], data[3]));
+            }
+        }
+
+        data = null;
+        reader.close();
+
+    }
+
 }
