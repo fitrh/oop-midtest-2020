@@ -115,6 +115,7 @@ public class Main {
                             login.logout();
                             break;
                         }
+                    }
 
                 // login sebagai dosen
                 } else {
@@ -125,6 +126,29 @@ public class Main {
                     System.out.print("Password => ");
                     password = scan.next();
 
+                    while(login.authDosen(userName, password)) {
+                        System.out.println("--WELCOME DOSEN--");
+                        System.out.println("1. Lihat profil");
+                        System.out.println("2. Lihat mahasiswa bimbingan");
+                        System.out.println("3. Logout");
+                        System.out.print("Masukkan pilihan  => ");
+                        a = scan.nextInt();
+
+                        // manimpilkan profil dosen
+                        if (a == 1) {
+                            System.out.println(login.getAuth());
+                            login.statusDosen();
+
+                        // menampilkan mahasiswa bimbingan dosen
+                        } else if (a == 2) {
+                           login.getDosenPa().showMahasiswaBimmbingan();
+
+                        // logout akun dosen
+                        } else {
+                            login.logout();
+                            break;
+                        }
+                    }
                 }
 
             // exit
