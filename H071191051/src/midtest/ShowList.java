@@ -8,17 +8,17 @@ class ShowList extends TodoList {
     @Override
     public void showList() throws IOException {
 
-        FileReader file = null;
-        BufferedReader buffer = null;
+        FileReader fileInput = null;
+        BufferedReader bufferInput = null;
 
         try {
-            file = new FileReader("kegiatan.txt");
-            buffer = new BufferedReader(file);
+            fileInput = new FileReader("kegiatan.txt");
+            bufferInput = new BufferedReader(fileInput);
         } catch (Exception e) {
-            System.err.println("file tidak di temukan");
+            System.err.println("file tidak ditemukan");
         }
 
-        String data = buffer.readLine();
+        String data = bufferInput.readLine();
 
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
@@ -37,12 +37,12 @@ class ShowList extends TodoList {
             System.out.printf("| %-17s", stringTokens.nextToken());
             System.out.printf("| %-19s|", stringTokens.nextToken());
             System.out.print("\n");
-            data = buffer.readLine();
+            data = bufferInput.readLine();
         }
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
 
-        file.close();
-        buffer.close();
+        bufferInput.close();
+        fileInput.close();
     }
 }

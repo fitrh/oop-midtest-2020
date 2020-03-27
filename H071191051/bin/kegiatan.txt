@@ -1,7 +1,3 @@
-1;shalat subuh;5:00 - 5:20;sangat penting;selesai;berdoa kepada Allah agar Indonesia bebas dari corona
-2;mandi pagi;6:00 - 6:10;penting;selesai;jangan lupa gosok gigi dan pake shampo
-3;sarapan pagi;7:00 - 7:15;penting;selesai;makan banyak-bayak persiapan push rank
-4;bersih-bersih rumah;7:30 - 9:00;penting;tidak selesai;khusus kamar sendiri yang lain tidak usah
-5;main game;9:30 - 11:55;sangat penting;selesai;harus pro
-6;shalat dhuhur;12:10 - 12:20;sangat penting;selesai;berdoa kepada Allah agar cepat dikasih jodoh
-7;kuliah online;13:00 - 15:30;kurang penting;sedang dikerjakan;absen, matikan audio dan video, lanjut tidur
+bobo siang;13:00 - 14:00;penting;sedang dikerjakan;bobo siang agar sehat
+mancing mania;15:00 - 16:00;kurang penting;belum dikerjakan;cari rezeki dulu bro
+mabar;selama mungkin;sangat penting;sedang dikerjakan;mabar push rank with iswanto

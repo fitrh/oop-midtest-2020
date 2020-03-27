@@ -28,7 +28,7 @@ class Registration {
                 System.out.print("Nama           : ");
                 String name = sc.next() + sc.nextLine();
                 System.out.print("Nama panggilan : ");
-                String callName = sc.next();
+                String callName = sc.nextLine();
                 System.out.print("Tanggal lahir  : ");
                 String date = sc.next() + sc.nextLine();
                 System.out.print("NIM            : ");

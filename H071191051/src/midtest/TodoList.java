@@ -4,11 +4,6 @@ import java.io.*;
 
 class TodoList {
     protected String callName;
-    protected String activityName;
-    protected String activitySchedule;
-    protected String activityPriority;
-    protected String activityStatus;
-    protected String activityDescription;
 
     public TodoList() {
 
@@ -23,7 +18,7 @@ class TodoList {
     }
 
     public void addList() throws IOException {
-
+        System.out.println("+---------------- Adding List ----------------+");
     }
 
     public String getDescription() {
