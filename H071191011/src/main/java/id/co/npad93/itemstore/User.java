@@ -47,6 +47,26 @@ public class User
 		return result;
 	}
 
+	public void addItem(Item item)
+	{
+		for (Item i: inventory)
+		{
+			if (i.equals(item))
+			{
+				i.add(item);
+				return;
+			}
+		}
+
+		inventory.add(item);
+	}
+
+	public void addItem(Item[] items)
+	{
+		for (Item i: items)
+			addItem(i);
+	}
+
 	private String name;
 	private int money;
 	private ArrayList<Item> inventory;
