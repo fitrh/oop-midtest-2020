@@ -1,4 +1,4 @@
-package com.bankingsystem;
+package com.bankingsystem.database;
 
 import com.bankingsystem.transactionlog.*;
 
@@ -16,7 +16,7 @@ public class Customer {
     private int balance;
     private int KTPNumber;
 
-    public Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam, ArrayList<Transaction> transactionLog, int balance) {
+    protected Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam, ArrayList<Transaction> transactionLog, int balance) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
@@ -24,24 +24,27 @@ public class Customer {
         this.balance = balance;
         this.transactionLog = transactionLog;
     }
-    public int getBalance() {
-        return balance;
+    protected int getBalance() {
+        if (authenticated) {
+            return balance;
+        }
+        return 0;
     }
-    public void login(char[] password) {
+    protected void login(char[] password) {
         if (Arrays.equals(this.password, password)) {
             authenticated = true;
         }
         Arrays.fill(password, '0');
     }
 
-    public void deposit(int amount) {
+    protected void deposit(int amount) {
         if (authenticated) {
             balance += amount;
             transactionLog.add(new Deposit(new Date(), amount));
         }
     }
 
-    public boolean withdraw(int amount) {
+    protected boolean withdraw(int amount) {
         if (authenticated && balance >= amount) {
             balance -= amount;
             transactionLog.add(new Withdrawal(new Date(), amount));
@@ -50,11 +53,11 @@ public class Customer {
         return false;
     }
 
-    public void logout() {
+    protected void logout() {
         authenticated = false;
     }
 
-    public boolean outboundTransfer(int amount, Customer recipient) {
+    protected boolean outboundTransfer(int amount, Customer recipient) {
         if (authenticated && balance >= amount){
             balance -= amount;
             recipient.inboundTransfer(amount, accountNumber);
@@ -71,14 +74,14 @@ public class Customer {
     }
 
 
-    public boolean isAuthenticated() {
+    protected boolean isAuthenticated() {
         return authenticated;
     }
-    public void validAccount() {
+    protected void validAccount() {
         //Checks if an account isn't null
     }
 
-    public void changePassword() {
+    protected void changePassword() {
         if (authenticated) {
             Console input = System.console();
             int tries = 3;
@@ -102,21 +105,22 @@ public class Customer {
         }
     }
 
-    public int getAccountNumber() {
+    protected int getAccountNumber() {
         return accountNumber;
     }
 
-    public void printUserDetails() {
+    protected void printUserDetails() {
         if (authenticated){
             System.out.printf("Name : %s\n", username);
             System.out.printf("Citizen Identification Number : %d", KTPNumber);
             System.out.printf("Account number : %d", accountNumber);
         }
     }
-    public String getUsername() {
+    protected String getUsername() {
         return username;
     }
-    public void printTransactionLog() {
+
+    protected void printTransactionLog() {
         if (authenticated) {
             System.out.println("===Transaction History===");
             System.out.printf("Customer name  : %s\n", getUsername());
@@ -145,4 +149,5 @@ public class Customer {
         }
 
     }
+
 }

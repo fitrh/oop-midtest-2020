@@ -1,7 +1,5 @@
 package com.bankingsystem.database;
 
-import com.bankingsystem.Bank;
-import com.bankingsystem.Customer;
 import com.bankingsystem.transactionlog.*;
 
 import java.io.BufferedReader;
@@ -39,22 +37,24 @@ public class Database {
 
     private void putBanks() throws IOException {
         String[] bankNames = {"BNI","BRI","BTN","MANDIRI"};
-        for (String name : bankNames) {
+        for (String bank : bankNames) {
             BufferedReader br;
             int bankCode = 0;
             HashSet<Integer> registeredKTP = new HashSet<>();
             String bankName = null;
-            br = new BufferedReader(new FileReader(String.format("Banks/%s/info.txt", name)));
+            br = new BufferedReader(new FileReader(String.format("Banks/%s/info.txt", bank)));
             String[] data = null;
 
-            while (br.ready()) {
+            try {
                 data = br.readLine().split(";");
                 bankName = data[0];
                 bankCode = Integer.parseInt(data[1]);
+            } catch (Exception e) {
+                errorLog.add(String.format("%s is corrupted", bank));
             }
 
             HashMap<Integer , Customer> customers = new HashMap<>();
-            File folder = new File(String.format("Banks/%s/Customers", name));
+            File folder = new File(String.format("Banks/%s/Customers", bank));
             File[] listOfFiles = folder.listFiles();
 
             assert listOfFiles != null;
@@ -92,6 +92,7 @@ public class Database {
                 }
             }
             banks.add(new Bank(bankName, bankCode, customers, registeredKTP));
+
         }
 
     }
@@ -102,7 +103,7 @@ public class Database {
     protected ArrayList<Bank> getBanks() {
         return banks;
     }
-    public void printErrorLog() {
+    protected void printErrorLog() {
         if (errorLog.size() > 0) {
             System.out.print("\u001b[31m");
             System.out.println("Errors : ");

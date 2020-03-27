@@ -1,15 +1,13 @@
 package com.bankingsystem.database;
 
-import com.bankingsystem.Bank;
-import com.bankingsystem.Customer;
-
 import java.io.Console;
 
 public class Portal {
     private static Portal portal;
     private Database database;
-    private static Customer customer;
+    private Customer customer;
     private static Console input = System.console();
+    private Bank bank;
 
 
     private Portal() {
@@ -22,7 +20,7 @@ public class Portal {
         return portal;
     }
 
-    private void login(Bank bank) {
+    private void login() {
         String accountNumber;
         while (true){
             clearScreen();
@@ -47,7 +45,7 @@ public class Portal {
             customer.login(input.readPassword("Password : "));
             if (customer.isAuthenticated()) {
                 System.out.println("===========");
-                userActions(bank.getBankName());
+                userActions();
                 return;
             } else {
                 System.out.println("Invalid password!");
@@ -60,13 +58,13 @@ public class Portal {
         }
     }
 
-    private void userActions(String bankName) {
+    private void userActions() {
         while (true) {
             if (customer == null) {
                 return;
             }
             clearScreen();
-            System.out.printf("====Bank %s====\n", bankName);
+            System.out.printf("====Bank %s====\n", bank.getBankName());
             System.out.printf("Hello, %s\n", customer.getUsername());
             System.out.println("1. Deposit");
             System.out.println("2. Withdraw");
@@ -113,12 +111,15 @@ public class Portal {
     private void logout() {
         customer.logout();
         customer = null;
+        bank = null;
     }
     private void changePassword() {
         clearScreen();
         customer.changePassword();
         if (!customer.isAuthenticated()) {
-            customer = null;
+            logout();
+            pause(2000);
+            return;
         }
         pause(1000);
     }
@@ -153,7 +154,6 @@ public class Portal {
     }
 
     private void transfer() {
-        Bank bank;
         while (true) {
             clearScreen();
             System.out.println("===Transfer===");
@@ -224,7 +224,6 @@ public class Portal {
     }
 
     public void welcomeScreen() {
-        Bank bank;
         while (true) {
             clearScreen();
             database.printErrorLog();
@@ -239,10 +238,10 @@ public class Portal {
                 pause(1000);
             }
         }
-        accessBank(bank);
-
+        accessBank();
     }
-    private void accessBank(Bank bank) {
+
+    private void accessBank() {
         clearScreen();
         System.out.printf("===Welcome to Bank %s===\n", bank.getBankName());
         System.out.println("1. Login");
@@ -250,7 +249,7 @@ public class Portal {
         System.out.println("3. Exit");
         switch (Integer.parseInt(input.readLine("Choice : "))) {
             case 1:
-                login(bank);
+                login();
                 break;
             case 2:
                 register();
@@ -262,7 +261,9 @@ public class Portal {
         }
     }
     public void register() {
-
+        clearScreen();
+        bank.registerCustomer();
+        pause(-1);
     }
     private void printBanks() {
         for (int i = 0; i < database.getBanks().size(); i++) {
@@ -285,7 +286,8 @@ public class Portal {
         } catch (InterruptedException ignored){
 
         }
-
     }
+
+
 
 }
