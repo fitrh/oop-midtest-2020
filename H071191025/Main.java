@@ -44,7 +44,7 @@ public class Main {
                                 System.out.println("masih ingin nambah minuman? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                    tambah.setDrink(ch);
+                                    //tambah.setDrink(ch);
                                     turn = true;
                                 }
                             }    
@@ -58,7 +58,7 @@ public class Main {
                                 System.out.println("masih ingin nambah saus? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                tambah.setSaus(ch);
+                                //tambah.setSaus(ch);
                                 turn = true;
                                 }
                             }
@@ -72,7 +72,7 @@ public class Main {
                                 System.out.println("masih ingin nambah potato? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                    tambah.setPotato(ch);
+                                    //tambah.setPotato(ch);
                                     turn = true;
                                 }
                             }
@@ -81,11 +81,11 @@ public class Main {
                             while(!turn){
                                 System.out.println("jumlah tomato ?");
                                 int ch = sc.nextInt();
-                                tambah.setSaus(ch);
+                                tambah.setTomato(ch);
                                 System.out.println("masih ingin nambah tomato? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                    tambah.setTomato(ch);
+                                    //tambah.setTomato(ch);
                                     turn = true;
                                 }
                             }
@@ -98,7 +98,8 @@ public class Main {
                         System.out.println("total burger    : " + jumlah);
                         //System.out.println("tambahan        : " );
                         System.out.println("harga burger    : " + sapi.harga);
-                        System.out.println("total harga     : " + (sapi.harga + tambah.harga));
+                        int count = (sapi.harga + tambah.harga);
+                        System.out.println("total harga     : " + (count));
                         break;
                     }
             
@@ -124,7 +125,7 @@ public class Main {
                                 System.out.println("masih ingin nambah minuman? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                    tambah.setDrink(ch);
+                                    //tambah.setDrink(ch);
                                     turn = true;
                                 }
                             }    
@@ -138,7 +139,7 @@ public class Main {
                                 System.out.println("masih ingin nambah saus? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                tambah.setSaus(ch);
+                                //tambah.setSaus(ch);
                                 turn = true;
                                 }
                             }
@@ -152,7 +153,7 @@ public class Main {
                                 System.out.println("masih ingin nambah potato? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                    tambah.setPotato(ch);
+                                    //tambah.setPotato(ch);
                                     turn = true;
                                 }
                             }
@@ -161,11 +162,11 @@ public class Main {
                             while(!turn){
                                 System.out.println("jumlah tomato ?");
                                 int ch = sc.nextInt();
-                                tambah.setSaus(ch);
+                                tambah.setTomato(ch);
                                 System.out.println("masih ingin nambah tomato? y/n");
                                 String nambah = sc.next().toLowerCase();
                                 if(nambah.equals("n")){
-                                    tambah.setTomato(ch);
+                                    //tambah.setTomato(ch);
                                     turn = true;
                                 }
                             }
