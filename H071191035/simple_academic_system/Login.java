@@ -95,17 +95,22 @@ public class Login {
         }
     }
 
-// menampilkan detail user dosen
-public void statusDosen() {
-    if (authenticated) {
-        System.out.printf("Berikut adalah profil dari dosen %s\n", user.getUserName());
-        System.out.printf("Nama\t\t: %s\n", dosenPa.getNamaDosen());
-        System.out.printf("Nomor Telepon\t: %s\n", dosenPa.getNoTelp());
-        System.out.printf("Email\t\t: %s\n", dosenPa.getEmail());
-        System.out.println("-------------------------");
-    } else {
-        System.out.println("Not authenticated...");
+    // menampilkan detail user dosen
+    public void statusDosen() {
+        if (authenticated) {
+            System.out.printf("Berikut adalah profil dari dosen %s\n", user.getUserName());
+            System.out.printf("Nama\t\t: %s\n", dosenPa.getNamaDosen());
+            System.out.printf("Nomor Telepon\t: %s\n", dosenPa.getNoTelp());
+            System.out.printf("Email\t\t: %s\n", dosenPa.getEmail());
+            System.out.println("-------------------------");
+        } else {
+            System.out.println("Not authenticated...");
+        }
     }
-}
+
+    // keluar dari akun
+    public void logout() {
+        user = null;
+    }
 
 }
