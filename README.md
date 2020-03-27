@@ -1,36 +1,3 @@
-# Object Oriented Programming Mid Test Project
-
-## Alur Pengumpulan *Project*
-
-1. **Fork** Repositori ini.
-2. Pada hasil *fork* anda, Buat **Branch** dengan nama **NIM** anda.
-3. Pada *branch* **NIM** anda, buat direktori dengan nama **NIM** anda.
-4. Project anda disimpan didalam direktori **NIM** anda.
-   > - Berkas project berupa  `.java` dimana *satu class satu file*.
-   > - Struktur Project dapat menggunakan Struktur Maven, Gradle, Eclipse dan sejenisnya
-5. **Push** berkas project anda ke repositori hasil *fork* pada *branch* **NIM** anda.
-6. Buat **Pull Request** untuk **Merge** *branch* **NIM** dengan *branch* **master** pada repositori ini.
-
-## Aturan Project Mid
-
-1. Setiap orang memilih salah satu dari tema *project* yang telah disediakan.
-2. *Project* yang dibuat harus memiliki semua konsep dari materi yang telah dipelajari (*Class & Object - Polymorphism*).
-3. Deskripsi dari tema *project* menjelaskan mengenai gambaran dan *minimum requirement*, yang berarti project yang anda buat minimal memenuhi *requirement* tersebut.
-4. Fitur *project* anda boleh dimodifikasi dan ditambahkan, selama syarat no. 3 terpenuhi.
-5. Jika *project* anda membutuhkan penyimpanan data, gunakan package *java.nio* untuk baca-tulis file.
-6. Didalam direktori **NIM** anda, buat file **README.md** yang menjelaskan mengenai *project* anda termasuk :
-   - Spesifikasi *Project*
-   - Alur Kerja
-   - Contoh *input-output*, jika ada
-   - Bagian dari project anda yang menerapkan konsep *object oriented*
-   - Jika ada konsep *object oriented* yang tidak anda gunakan, jelaskan mengapa
-   - Hal-hal yang ingin di*improve* kedepannya mengenai project yang anda buat
-   - dll
-7. Lakukan *commit* disetiap perubahan yang anda lakukan selama membuat *project*, hal ini akan menjadi *log* aktifitas dan bukti bahwa project tersebut adalah orisinil dari anda, sertakan *commit message* yang jelas dan deskriptif, *commit message* dapat menggunakan bahasa indonesia ataupun inggris, mengenai tata cara *commit* yang baik, sialahkan baca artikel berikut : [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
-8. *Project* yang dibuat harus memiliki *Main Class* yang terdapat *main method* untuk simulasi *project* anda.
-
-9. Jika anda memiliki tema sendiri diluar dari tema yang disediakan, silahkan didiskusikan terlebih dahulu di grup.
-
 ## Tema *Project* yang saya pilih
   
 ### Academic System
@@ -47,3 +14,31 @@
 - 1 Matakuliah hanya dapat diambil 1 kali
 - Terdapat aktifitas untuk melihat nilai IPS
 - Setiap Mahasiswa hanya dapat melihat data miliknya
+
+## Spesifikasi *Project*
+
+### Dalam project ini terdapat 8 file dengan ekstensi .java dan 4 file dengan ekstensi .txt dengan    penjelsan sebagai berikut
+
+- Mahasiswa.java, di dalamnya terdapat kelas Mahasiswa yang memiliki data yang dapat dimiliki yang oleh mahasiswa seperti nama, alamat email, serta nama dosen pembimbingnya
+
+- Dosen.java, di dalamnya terdapat *interface* Dosen yang punya method abstrak dengan fungsi untuk mendaftarkan mahasiswa bimbingannya serta menampilkan mahasiswa bimbingannya
+
+- DosenPa.java, di dalamnya terdapat kelas DosenPa yang mewarisi *interface* Dosen serta memiliki data yang dapat dimiliki oleh dosen seperti nama, nomor telepon, alamat email, serta daftar mahasiswa bimbingannya
+
+- MataKuliah.java, di dalamnya terdapat kelas MataKuliah yang memiliki data yang dapat dimiliki oleh sebuah mata kuliah seperti kode mata kuliah, nama mata kuliah, nama dosenPengajar, jumlah sks, jumlah kuota yang tersedia, serta daftar mahasiswa yang terdaftar dalam mata kuliah tersebut
+
+- User.java, di dalamnya terdapat kelas User yang memiliki data yang dapat dimiliki oleh seorang user baik itu user mahasiswa maupun user dosen, dan masing - masing user dapat mengakses detail dari mahasiswa ataupun dosen tersebut
+
+- DataSource.java, di dalamnya terdapat kelas DataSource yang berfungsi sebagai tempat baca-tulis data berdasarkan database yang tersedia, database ini berisikan data - data dari mahasiswa, dosen, dan user. Data dari user (mahasiswa / dosen) berupa username dengan password telah tersimpan dalam database yang tersedia
+
+- Login.java, di dalamnya terdapat kelas Login yang berfungsi untuk melakukan segala hal yang dapat dilakukan oleh user ketika telah berhasil masuk ke dalam akunnya, terdapat behavior untuk melakukan verifikasi username dengan password untuk setiap user, menampilkan profil atau detail dari user, serta keluar dari akun
+
+- Main.java, di dalamnya terdapat kelas Main yang berfungsi untuk menjalankan simulasi program ini
+
+- Mahasiswa.txt, berperan sebagai database dari detail seorang mahasiswa dengan format penulisan data adalah id;nama_mahasiswa;alamat_email_mahasiswa
+
+- DosenPa.txt, berperan sebagai database dari detail seorang dosen dengan format penulisan data adalah id;nama_dosen;alamat_email_dosen
+
+- User.txt, berperan sebagai database dari detail seorang user mahasiswa dengan format penulisan data adalah id;username_mahasiswa;password_mahasiswa
+
+- DosenPaUser.txt, berperan sebagai database dari detail seorang user dosen dengan format penulisan data adalah id;username_dosen;password_dosen
