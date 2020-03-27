@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 /**
  * MataKuliah
  */
@@ -8,6 +10,7 @@ public class MataKuliah {
     private String dosenPengajar;
     private int sks;
     private int kuota;
+    private List<User> mahasiswaTerdaftar = new ArrayList<>();
 
     // constructor
     MataKuliah(String kodeMatkul, String namaMatkul, String dosenPengajar, int sks, int kuota) {
