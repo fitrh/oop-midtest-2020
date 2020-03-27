@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 /**
  * DosenPa
  */
@@ -7,8 +9,13 @@ public class DosenPa {
     private String namaDosen;
     private String noTelp;
     private String email;
+    private List<Mahasiswa> mahasiswaBimbingan = new ArrayList<>();
 
     // constructor
+    DosenPa() {
+        mahasiswaBimbingan = null;
+    }
+
     DosenPa(int id, String namaDosen, String noTelp, String email) {
         this.id = id;
         this.namaDosen = namaDosen;
