@@ -13,6 +13,26 @@ public class DataSource {
     private HashMap<Integer, Mahasiswa> mahasiswaMap = new HashMap<>();
     private HashMap<Integer, DosenPa> dosenPaMap = new HashMap<>();
 
+    // constructor
+    private DataSource() {
+        try {
+            putDosen();
+            putMahasiswa();
+            putUserDosen();
+            putUserMahasiswa();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    // instansiasi
+    public static DataSource getInstance() {
+        if (dataSource == null) {
+            dataSource = new DataSource();
+        }
+        return dataSource;
+    }
+
     // getter
     public User getUser(String key) {
         return userMapMahasiswa.get(key);
