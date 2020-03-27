@@ -16,6 +16,7 @@ public class Store
 	public Store(User owner)
 	{
 		this.owner = owner;
+		items = new ArrayList<StoreItem>();
 	}
 
 	/**

@@ -69,10 +69,11 @@ public class Main
 			
 			// Interaction type: Player-Player vs Player-Store
 			double ret = rng.nextDouble();
-			if (ret >= 0.0)
+			if (ret >= 0.5)
 				interactionPlayerByPlayer(rng);
 			else
-				interactionPlayerByStore(rng);
+				interactionPlayerByStore(rng);	
+			System.out.println("End");
 		}
 		else
 		{
@@ -265,16 +266,21 @@ public class Main
 		for (int i = 0; i < amountOfUniqueItems; i++)
 		{
 			int itemAmount = 1 + (int) (rng.nextLong() & 31);
-			int price = 2000 + (int) (rng.nextDouble() * 20) * 100;
-			Item item = ItemFactory.newItemFromUUID(itemUUIDs[i], itemAmount);
-			items[i] = item;
-			itemPrices[i] = price;
-
-			System.out.println("- " + item.getName() + " (" + itemAmount + ") price " + price);
-			System.out.println("  " + item.getDescription());
+			items[i] = ItemFactory.newItemFromUUID(itemUUIDs[i], itemAmount);
+			itemPrices[i] = 2000 + (int) (rng.nextDouble() * 20) * 1000;
 		}
 
 		// Finally, stock items
 		store.stockItems(user1, items, itemPrices);
+
+		// Start dialog
+		System.out.println("While " + user2Name + " walks around, they see a Store owned by " + user1Name);
+		System.out.println(user2Name + " then asks the list of items, and here it is");
+		StoreItem[] storeItem = store.getItems();
+		for (StoreItem i: storeItem)
+		{
+			System.out.println("- " + i.getName() + " (" + i.getAmount() + ") price " + i.getPrice());
+			System.out.println("  " + i.getDescription());
+		}
 	}
 }
