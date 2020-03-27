@@ -14,10 +14,6 @@ public class NasabahDetail {
         this.pin = pin;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public Integer getMoney() {
         return money;
     }

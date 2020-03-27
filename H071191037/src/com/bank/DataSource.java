@@ -9,7 +9,9 @@ import java.util.Map;
 public class DataSource {
 
     private Map<String, Nasabah> nasabahMap = new HashMap<>();
+    private Map<String, RekeningDetail> rekeningMap = new HashMap<>();
     private Map <Integer, NasabahDetail> nasabahDetailMap = new HashMap<>();
+
 
     String read(String fileName) throws IOException {
         FileReader reader = null;
@@ -51,13 +53,22 @@ public class DataSource {
         return tempString;
     }
 
-    private  void putNasabahDetail(String fileName) throws IOException {
+    protected void putRekening(String fileName) throws IOException {
+        String dataSplit[] = read(fileName).split("\n");
+        for (int i = 0; i < dataSplit.length ; i++) {
+            String nasabahData[] = dataSplit[i].split(";");
+            String rekening = nasabahData[3];
+            rekeningMap.put(rekening, new RekeningDetail(nasabahData[2],nasabahData[3],nasabahData[1]));
+        }
+    }
+
+    protected void putNasabahDetail(String fileName) throws IOException {
         String dataSplit[] = read(fileName).split("\n");
         for (int i = 0; i < dataSplit.length ; i++) {
             String nasabahData[] = dataSplit[i].split(";");
             Integer id = Integer.parseInt(nasabahData[0]);
             Integer money = Integer.parseInt(nasabahData[6]);
-            nasabahDetailMap.put(id, new NasabahDetail(id,money,nasabahData[1],nasabahData[2],nasabahData[3],nasabahData[4],nasabahData[5]));
+            nasabahDetailMap.put(id, new NasabahDetail(id, money, nasabahData[1],nasabahData[2],nasabahData[3],nasabahData[4],nasabahData[5]));
         }
     }
 
@@ -72,8 +83,12 @@ public class DataSource {
         }
     }
 
+    public RekeningDetail getRekening(String filename, String key) throws IOException {
+        putRekening(filename);
+        return rekeningMap.get(key);
+    }
 
-    public Nasabah getNasabahData(String fileName,String key) throws IOException {
+    public Nasabah getNasabahData(String fileName, String key) throws IOException {
         putDataNasabah(fileName);
         return nasabahMap.get(key);
     }

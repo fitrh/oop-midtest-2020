@@ -52,13 +52,17 @@ public class Login  {
         }
     }
 
-    public void info(){
+    public void tobank(Bank bank){
+        bank.setMoney(nd.getMoney());
+    }
+
+    public void info(Bank bank){
         if(nd == null) {
             System.out.println("NoSuchElementException");
         }
         else {
             System.out.println("Name           : " + nd.getName());
-            System.out.println("Money          : " + nd.getMoney());
+            System.out.println("Money          : " + bank.getMoney());
             System.out.println("Bank Name      : " + nd.getBankName());
             System.out.println("Rekening Number: " + nd.getRekening());
             System.out.println("User           : " + nd.getUserName());

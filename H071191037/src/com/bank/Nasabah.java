@@ -2,7 +2,7 @@ package com.bank;
 
 public class Nasabah {
     private String user,pin;
-    private int id;
+    private Integer id;
 
     public Nasabah (Integer id, String user, String pin){
         this.id = id;
@@ -10,7 +10,7 @@ public class Nasabah {
         this.pin = pin;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -18,7 +18,4 @@ public class Nasabah {
         return pin;
     }
 
-    public String getUser() {
-        return user;
-    }
 }
