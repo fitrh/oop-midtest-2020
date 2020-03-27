@@ -97,12 +97,18 @@ public class User {
                 System.out.println("Tidak ada mata kuliah yang diprogramkan...");
                 System.out.println("-------------------------");
             } else {
+                if (this.matkul.contains(matkul)) {
                     this.matkul.remove(matkul);
                     matkul.mahasiswaBatalMendaftar(this);
                     sksTerdaftar -= matkul.getSks();
                     System.out.printf("Mata kuliah %s telah dihapus dari program...\n", matkul.getNamaMatkul());
                     System.out.printf("Kuota tersisa untuk mata kuliah %s sebanyak %d\n", matkul.getNamaMatkul(), matkul.getKuota());
                     System.out.println("-------------------------");
+                } else {
+                    System.out.println("Tidak dapat menghapus mata kuliah ini...");
+                    System.out.println("Anda belum terdaftar dalam mata kuliah ini...");
+                    System.out.println("-------------------------");
+                }
              }
         } catch (Exception e) {
             System.out.println(e);
