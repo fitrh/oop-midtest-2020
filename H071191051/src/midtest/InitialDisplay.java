@@ -7,14 +7,16 @@ import java.util.*;
 
 class InitialDisplay {
     private Scanner sc = new Scanner(System.in);
-    private Registration registration = new Registration();
-    private TodoList toDoList = new TodoList();
-    private ShowList show = new ShowList();
-    private DeleteList delete = new DeleteList();
-    private AddList add = new AddList();
+    private Registration registration;
+    private TodoList toDoList;
+    private ShowList show;
+    private AddList add;
+    private DeleteList delete;
+    private EditList edit;
 
     public void mainMenu() throws IOException {
         // registrasi terlebih dahulu
+        registration = new Registration();
         registration.registration();
         clearScreen();
 
@@ -29,27 +31,38 @@ class InitialDisplay {
                 clearScreen();
                 System.out.println("+------------- To-Do-List Today ------------+\n");
                 setTime();
+                show = new ShowList();
                 show.showList();
 
             } else if (choice == 2) {
                 clearScreen();
                 System.out.println("+--------------- Add Activity ----------------+");
+                show = new ShowList();
                 show.showList();
+                add = new AddList();
                 add.addList();
                 System.out.println("+---------------------------------------------+");
 
             } else if (choice == 3) {
                 clearScreen();
                 System.out.println("+------------- Delete Activity ---------------+");
+                show = new ShowList();
                 show.showList();
+                delete = new DeleteList();
                 delete.deleteList();
+                toDoList = new TodoList();
                 toDoList.deleteAndRename();
                 System.out.println("+---------------------------------------------+");
 
             } else if (choice == 4) {
-                System.out.println("+-------------- Edit Activity ----------------+");
-                // edit kegiatan
                 clearScreen();
+                System.out.println("+-------------- Edit Activity ----------------+");
+                show = new ShowList();
+                show.showList();
+                edit = new EditList();
+                edit.editList();
+                toDoList = new TodoList();
+                toDoList.deleteAndRename();
 
             } else if (choice == 5) {
                 System.out.println("+----------- Activity Description ------------+");

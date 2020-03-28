@@ -44,14 +44,13 @@ class AddList extends TodoList {
         System.out.print("Deskripsi     : ");
         String desc = sc.next() + sc.nextLine();
 
+        System.out.println("\nBerhasil menambahkan kegiatan");
         bufferOutput.write(name.replaceAll("\\s+", "") + ";" + name + ";" + schedule + ";" + getPriority + ";"
                 + getStatus + ";" + desc);
-        System.out.println("\nBerhasil menambahkan kegiatan");
         bufferOutput.newLine();
-        bufferOutput.flush();
 
-        bufferOutput.close();
-        fileOutput.close();
+        bufferOutput.flush();
+        closeIO(fileOutput, bufferOutput);
     }
 
     private String getPriority(int priority) {

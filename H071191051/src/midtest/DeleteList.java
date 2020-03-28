@@ -52,13 +52,16 @@ class DeleteList extends TodoList {
 
                 isDelete = getYerOrNo("Apakah anda yakin ingin menghapus data? (y/n)");
 
-            }
-
-            if (isDelete == true) {
-                System.out.println("\nBerhasil menghapus kegiatan");
+                if (isDelete == true) {
+                    System.out.println("\nBerhasil menghapus kegiatan");
+                } else {
+                    // memindahkan data dari original ke sementara
+                    System.out.println("\nKegiatan tidak dihapus");
+                    bufferOutput.write(data);
+                    bufferOutput.newLine();
+                }
             } else {
-                // memindahkan data dari original ke sementara
-                System.out.println("\nKegiatan tidak dihapus");
+                System.out.println("\nKegiatan tidak ada");
                 bufferOutput.write(data);
                 bufferOutput.newLine();
             }
@@ -66,19 +69,6 @@ class DeleteList extends TodoList {
         }
         // menulis data ke file
         bufferOutput.flush();
-
-        bufferInput.close();
-        bufferOutput.close();
-    }
-
-    private boolean getYerOrNo(String message) {
-        System.out.println("\n" + message + "\n");
-        System.out.print("> ");
-        String choice = sc.next();
-        if (choice.equalsIgnoreCase("y")) {
-            return true;
-        } else {
-            return false;
-        }
+        closeIO(fileInput, fileOutput, bufferInput, bufferOutput);
     }
 }

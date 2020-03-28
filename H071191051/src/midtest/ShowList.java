@@ -48,8 +48,6 @@ class ShowList extends TodoList {
 
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
-
-        bufferInput.close();
-        fileInput.close();
+        closeIO(fileInput, bufferInput);
     }
 }
