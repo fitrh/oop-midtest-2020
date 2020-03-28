@@ -6,60 +6,6 @@ import id.co.npad93.itemstore.items.*;
 
 public class Main 
 {
-	private static class Xorshift
-	{
-		private static long wangHash64(long key)
-		{
-			key = (~key) + (key << 21); // key = (key << 21) - key - 1;
-			key = key ^ (key >>> 24);
-			key = (key + (key << 3)) + (key << 8); // key * 265
-			key = key ^ (key >>> 14);
-			key = (key + (key << 2)) + (key << 4); // key * 21
-			key = key ^ (key >>> 28);
-			key = key + (key << 31);
-			return key;
-		}
-
-		public Xorshift(long seed)
-		{
-			setSeed(seed);
-		}
-
-		public Xorshift()
-		{
-			this(System.nanoTime() * 88172645463325252L);
-		}
-
-		public void setSeed(long seed)
-		{
-			do
-			{
-				seed = wangHash64(seed);
-			} while (seed == 0);
-			state = seed;
-		}
-
-		public long nextLong()
-		{
-			step();
-			return state * 2685821657736338717L;
-		}
-
-		public double nextDouble()
-		{
-			return Double.longBitsToDouble(((0x3FFL) << 52) | (nextLong() >>> 12)) - 1.0;
-		}
-
-		private long state;
-
-		private void step()
-		{
-			state ^= (state >>> 12);
-			state ^= (state << 25);
-			state ^= (state >>> 27);
-		}
-	}
-
 	public static void main(String[] args) throws Exception
 	{
 		if (args.length == 0)
@@ -282,5 +228,9 @@ public class Main
 			System.out.println("- " + i.getName() + " (" + i.getAmount() + ") price " + i.getPrice());
 			System.out.println("  " + i.getDescription());
 		}
+
+		// Choose item to buy
+		StoreItem itemToBuy = storeItem[(int) (rng.nextDouble() * storeItem.length)];
+		System.out.println(user2Name + " wants to bought 1 of " + itemToBuy.getName());
 	}
 }
