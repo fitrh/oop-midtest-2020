@@ -1,21 +1,13 @@
 package app;
 
 class Burger extends Abstrak {
-    public static String txt;
-	BurgerStore bs = new BurgerStore();
-    @Override
-    void setMenu(String menu){
+    public Burger (int  id, String menu, int price){ //constructor
+        super.id = id;
         super.menu = menu;
-    }
-    @Override
-    void setPrice(int price){
         super.price = price;
     }
-    @Override
-    void setId(int id){
-        super.id = id;
-    }
 
+    //method @Override from abstract class
     @Override
     String getMenu() {
         return super.menu;
