@@ -13,6 +13,10 @@ public class OutboundTransfer extends Transaction {
         System.out.println("Transaction type  : Outbound Transfer");
         System.out.printf("Amount            : %s\n", amount);
         System.out.printf("To                : %s\n", recipientOrigin);
+    }
 
+    @Override
+    public String getDetails() {
+        return String.format("2;%s;%d;%d",dateOfTransaction,amount, recipientOrigin);
     }
 }

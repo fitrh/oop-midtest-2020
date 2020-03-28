@@ -1,6 +1,9 @@
 package com.bankingsystem.database;
 
+import com.bankingsystem.transactionlog.Transaction;
+
 import java.io.Console;
+import java.util.ArrayList;
 
 public class Portal {
     private static Portal portal;
@@ -42,6 +45,8 @@ public class Portal {
         }
         int triesLeft = 3;
         while (triesLeft >=0) {
+            clearScreen();
+            System.out.println("===LOGIN===");
             customer.login(input.readPassword("Password : "));
             if (customer.isAuthenticated()) {
                 System.out.println("===========");
@@ -54,6 +59,7 @@ public class Portal {
                 }
                 System.out.printf("Tries left : %d\n", triesLeft);
                 triesLeft--;
+                pause(1000);
             }
         }
     }
@@ -125,9 +131,47 @@ public class Portal {
     }
 
     private void printTransactionLog() {
-        clearScreen();
-        customer.printTransactionLog();
-        pause(-1);
+        ArrayList<Transaction> transactionLog = customer.getTranactionLog();
+        int page = 0;
+        int totalPages = (int)Math.ceil((double)transactionLog.size()/2) == 0 ? 1 : (int)Math.ceil((double)transactionLog.size()/2);
+        int choice = 0;
+        while (true) {
+            clearScreen();
+            System.out.println("===Transaction History===");
+            System.out.printf("Customer name  : %s\n", customer.getUsername());
+            System.out.printf("Account number : %d\n", customer.getAccountNumber());
+            for (int i = page*2; i < (page * 2) +2; i++) {
+                if (i < transactionLog.size()-1) {
+                    System.out.println("-------------------------");
+                    transactionLog.get(i).printDetails();
+                    System.out.println("-------------------------");
+                }
+            }
+            if (transactionLog.size() == 0) {
+                System.out.println("No transactions available");
+            }
+            System.out.println("=========================");
+            System.out.printf("Page %d/%d\n", page+1, totalPages);
+            System.out.println("1. Previous Page");
+            System.out.println("2. Next Page");
+            System.out.println("3. Exit");
+            try {
+                choice = Integer.parseInt(input.readLine("Choice : "));
+            } catch (Exception e) {
+                System.out.println("Invalid choice");
+                pause(1000);
+            }
+            if (choice == 1 && page > 0) {
+                page--;
+            } else if (choice == 2 && page < totalPages-1) {
+                page++;
+            } else if (choice == 3) {
+                return;
+            } else {
+                System.out.println("Invalid choice");
+                pause(1000);
+            }
+        }
     }
 
     private void withdraw() {
@@ -136,9 +180,9 @@ public class Portal {
         int amount = Integer.parseInt(input.readLine("Input amount Rp."));
         if (customer.withdraw(amount)) {
             System.out.printf("Successfully withdrew Rp.%d from account number %d\n", amount, customer.getAccountNumber());
+            appendTransactionLog(customer);
         } else {
             System.out.printf("Insufficient funds in account number %d\n", customer.getAccountNumber());
-
         }
         System.out.println("==============");
         pause(-1);
@@ -150,15 +194,16 @@ public class Portal {
         customer.deposit(amount);
         System.out.printf("Successfully deposited Rp.%d to account number %d\n", amount, customer.getAccountNumber());
         System.out.println("==============");
+        appendTransactionLog(customer);
         pause(-1);
     }
 
     private void transfer() {
         while (true) {
-            clearScreen();
-            System.out.println("===Transfer===");
-            printBanks();
             try {
+                clearScreen();
+                System.out.println("===Transfer===");
+                printBanks();
                 String bankCode = input.readLine("Input bank code : ");
                 if (bankCode.equalsIgnoreCase("exit")) {
                     System.out.println("===========");
@@ -174,6 +219,8 @@ public class Portal {
         }
         Customer recipient;
         while (true) {
+            clearScreen();
+            System.out.println("===Transfer===");
             try {
                 String accountNumber = input.readLine("Transfer to (account number):");
                 if (accountNumber.equalsIgnoreCase("exit")) {
@@ -181,21 +228,23 @@ public class Portal {
                     return;
                 }
                 recipient= bank.getCustomer(Integer.parseInt(accountNumber));
-                if (recipient == null) {
-                    System.out.println("Invalid account number");
-                    continue;
-                } else if (recipient.getAccountNumber() == customer.getAccountNumber()) {
+                if (recipient == null || recipient.getAccountNumber() == customer.getAccountNumber()) {
                     System.out.println("Invalid account number");
                     System.out.println("Type exit to cancel");
+                    pause(1000);
                     continue;
                 }
                 break;
             } catch (Exception e) {
-                System.out.println("Invalid bank code");
+                System.out.println("Invalid account number");
+                System.out.println("Type exit to cancel");
+                pause(1000);
             }
         }
         int amount;
         while (true) {
+            clearScreen();
+            System.out.println("===Transfer===");
             try {
                 amount = Integer.parseInt(input.readLine("Input amount : Rp."));
                 if (amount == 0) {
@@ -204,16 +253,23 @@ public class Portal {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid amount!");
+                pause(1000);
             }
         }
         if (customer.outboundTransfer(amount, recipient)) {
             System.out.printf("Successfully transferred Rp.%d to account %d\n", amount, recipient.getAccountNumber());
+            appendTransactionLog(customer);
+            appendTransactionLog(recipient);
         } else {
             System.out.println("Insufficient funds!");
         }
         pause(-1);
     }
 
+    protected void appendTransactionLog(Customer user) {
+        String destination = String.format("Banks/%s/Customers/%s.txt", user.getBank(), user.getAccountNumber());
+        database.appendData(user.getLastTransactionDetails(), destination);
+    }
     private void balance() {
         clearScreen();
         System.out.println("==============");

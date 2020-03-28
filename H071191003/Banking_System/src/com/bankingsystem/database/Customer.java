@@ -15,15 +15,22 @@ public class Customer {
     private boolean authenticated = false;
     private int balance;
     private int KTPNumber;
+    private String bank;
 
-    protected Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam, ArrayList<Transaction> transactionLog, int balance) {
+    protected Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam, ArrayList<Transaction> transactionLog, int balance, String bank) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
         this.KTPNumber = citizenIdentificationNam;
         this.balance = balance;
         this.transactionLog = transactionLog;
+        this.bank = bank;
     }
+
+    public String getBank() {
+        return bank;
+    }
+
     protected int getBalance() {
         if (authenticated) {
             return balance;
@@ -40,14 +47,14 @@ public class Customer {
     protected void deposit(int amount) {
         if (authenticated) {
             balance += amount;
-            transactionLog.add(new Deposit(new Date(), amount));
+            updateTransactionLog(new Deposit(new Date(), amount));
         }
     }
 
     protected boolean withdraw(int amount) {
         if (authenticated && balance >= amount) {
             balance -= amount;
-            transactionLog.add(new Withdrawal(new Date(), amount));
+            updateTransactionLog(new Withdrawal(new Date(), amount));
             return true;
         }
         return false;
@@ -61,16 +68,22 @@ public class Customer {
         if (authenticated && balance >= amount){
             balance -= amount;
             recipient.inboundTransfer(amount, accountNumber);
-            transactionLog.add(new OutboundTransfer(new Date(), amount, recipient.getAccountNumber()));
+            updateTransactionLog(new OutboundTransfer(new Date(), amount, recipient.getAccountNumber()));
             return true;
         } else {
             return false;
         }
     }
+    private void updateTransactionLog(Transaction transaction) {
+        transactionLog.add(transaction);
+    }
 
+    protected String getLastTransactionDetails() {
+        return transactionLog.get(transactionLog.size()-1).getDetails();
+    }
     private void inboundTransfer(int amount, int accountNumber) {
         balance += amount;
-        transactionLog.add(new InboundTransfer(new Date(), amount, accountNumber));
+        updateTransactionLog(new InboundTransfer(new Date(), amount, accountNumber));
     }
 
 
@@ -120,34 +133,23 @@ public class Customer {
         return username;
     }
 
-    protected void printTransactionLog() {
+    protected ArrayList<Transaction> getTranactionLog() {
         if (authenticated) {
-            System.out.println("===Transaction History===");
-            System.out.printf("Customer name  : %s\n", getUsername());
-            System.out.printf("Account number : %d\n", getAccountNumber());
-            for (Transaction transaction:
-                 transactionLog) {
-                System.out.println("-------------------------");
-                transaction.printDetails();
-                System.out.println("-------------------------");
-            }
-            if (transactionLog.size() == 0) {
-                System.out.println("No transactions available");
-            }
-            System.out.println("=========================");
+            return transactionLog;
         }
+        return null;
     }
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
     private void pause() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ignored){
 
         }
-
     }
 
 }

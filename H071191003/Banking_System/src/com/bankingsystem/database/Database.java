@@ -2,10 +2,7 @@ package com.bankingsystem.database;
 
 import com.bankingsystem.transactionlog.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,28 +57,33 @@ public class Database {
             assert listOfFiles != null;
             for (File file : listOfFiles) {
                 try {
-                    if (file.isFile()) {
+                    if (file.isFile() && !file.getName().equals(".DS_Store")) {
                         br = new BufferedReader(new FileReader(file));
                         if (br.ready()) {
                             data = br.readLine().split(";");
                         }
+                        int money = 0;
                         ArrayList<Transaction> transactionLog = new ArrayList<>();
                         SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss z");
                         while (br.ready()) {
                             String[] temp = br.readLine().split(";");
                             if (Integer.parseInt(temp[0]) == 0) {
                                 transactionLog.add(new Deposit(formatter.parse(temp[1]), Integer.parseInt(temp[2])));
+                                money += Integer.parseInt(temp[2]);
                             } else if (Integer.parseInt(temp[0]) == 1) {
                                 transactionLog.add(new Withdrawal(formatter.parse(temp[1]), Integer.parseInt(temp[2])));
+                                money -= Integer.parseInt(temp[2]);
                             } else if (Integer.parseInt(temp[0]) == 2) {
                                 transactionLog.add(new OutboundTransfer(formatter.parse(temp[1]), Integer.parseInt(temp[2]), Integer.parseInt(temp[3])));
+                                money -= Integer.parseInt(temp[2]);
                             } else if (Integer.parseInt(temp[0]) == 3) {
                                 transactionLog.add(new InboundTransfer(formatter.parse(temp[1]), Integer.parseInt(temp[2]), Integer.parseInt(temp[3])));
+                                money += Integer.parseInt(temp[2]);
                             }
                             temp = null;
                         }
                         assert data != null;
-                        Customer customer = new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3]), transactionLog, Integer.parseInt(data[4]));
+                        Customer customer = new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3]), transactionLog, money, bankName);
                         customers.put(Integer.parseInt(data[2]),customer);
                         registeredKTP.add(Integer.parseInt(data[3]));
                         data = null;
@@ -93,6 +95,16 @@ public class Database {
             }
             banks.add(new Bank(bankName, bankCode, customers, registeredKTP));
 
+        }
+
+    }
+
+    protected void appendData(String data, String destination) {
+        try (FileWriter fw = new FileWriter(destination, true); BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.append("\n"+data);
+        } catch (IOException e) {
+            System.out.println("Data not saved!");
+            e.printStackTrace();
         }
 
     }

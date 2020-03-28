@@ -14,4 +14,8 @@ public class InboundTransfer extends Transaction {
         System.out.printf("Amount            : %s\n", amount);
         System.out.printf("From              : %s\n", recipientOrigin);
     }
+    @Override
+    public String getDetails() {
+        return String.format("3;%s;%d;%d",dateOfTransaction,amount, recipientOrigin);
+    }
 }

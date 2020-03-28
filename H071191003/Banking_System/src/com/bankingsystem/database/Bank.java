@@ -21,7 +21,7 @@ public class Bank {
         this.registeredKTP = registeredKTP;
     }
     private void addCustomer(String username, char[] password, int accountNumber, int KTPNumber) {
-        customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber, new ArrayList<Transaction>(),0));
+        customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber, new ArrayList<Transaction>(),0,bankName));
     }
 
     protected void registerCustomer() {
@@ -43,6 +43,7 @@ public class Bank {
                 pause();
             }
         } catch (Exception e) {
+            System.out.println("Registration failed!");
             return;
         }
 
@@ -76,11 +77,14 @@ public class Bank {
         }
         int accountNumber = Integer.parseInt( String.format("%d%06d", bankCode, customers.size()+1) );
         addCustomer(username, password, accountNumber, KTPNumber);
+        registeredKTP.add(KTPNumber);
         System.out.println("Success!");
+        pause();
+        clearScreen();
         System.out.println("===Account Overview===");
         System.out.printf("Customer name : %s\n", username);
         System.out.printf("Account Number: %s\n", accountNumber);
-        System.out.printf("Bank name     : %s\n", bankName);
+        System.out.printf("Bank          : %s\n", bankName);
         System.out.println("======================");
     }
 
@@ -90,10 +94,6 @@ public class Bank {
 
     protected String getBankName() {
         return bankName;
-    }
-
-    protected int getBankCode() {
-        return bankCode;
     }
 
     protected Customer getCustomer(int accountNumber) {
@@ -111,7 +111,6 @@ public class Bank {
         } catch (InterruptedException ignored){
 
         }
-
     }
 
 }

@@ -13,4 +13,9 @@ public class Withdrawal extends Transaction {
         System.out.println("Transaction type  : Withdrawal");
         System.out.printf("Amount            : %s\n", amount);
     }
+
+    @Override
+    public String getDetails() {
+        return String.format("1;%s;%d",dateOfTransaction,amount);
+    }
 }

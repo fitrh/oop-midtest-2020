@@ -13,4 +13,9 @@ public class Deposit extends Transaction {
         System.out.println("Transaction type  : Deposit");
         System.out.printf("Amount            : %s\n", amount);
     }
+
+    @Override
+    public String getDetails() {
+        return String.format("0;%s;%d",dateOfTransaction,amount);
+    }
 }

@@ -21,4 +21,5 @@ abstract public class Transaction {
     }
 
     abstract public void printDetails();
+    abstract public String getDetails();
 }
