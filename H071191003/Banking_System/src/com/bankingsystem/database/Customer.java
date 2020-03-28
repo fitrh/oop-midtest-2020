@@ -100,10 +100,21 @@ public class Customer {
             int tries = 3;
             while (tries >= 0) {
                 clearScreen();
+                System.out.println("===Change Password===");
                 char[] oldPassword = input.readPassword("Input old password : ");
                 if (Arrays.equals(this.password, oldPassword)) {
                     Arrays.fill(oldPassword, '0');
-                    password = input.readPassword("Input new password : ");
+                    while (true) {
+                        clearScreen();
+                        System.out.println("===Change Password===");
+                        password = input.readPassword("Input new password : ");
+                        if (password.length >=6) {
+                            break;
+                        } else {
+                            System.out.println("Invalid password");
+                            pause();
+                        }
+                    }
                     System.out.println("Password successfully changed");
                     String destination = String.format("Banks/%s/Customers/%s.txt",bank, accountNumber);
                     database.updateUserPassword(String.valueOf(password), destination);

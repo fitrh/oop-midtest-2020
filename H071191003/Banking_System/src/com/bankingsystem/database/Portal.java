@@ -79,9 +79,13 @@ public class Portal {
             System.out.println("5. Transaction History");
             System.out.println("6. Change password");
             System.out.println("7. Logout");
-            int choice;
+            int choice = 0;
             while (true) {
-                choice = Integer.parseInt(input.readLine("Choice : "));
+                try {
+                    choice = Integer.parseInt(input.readLine("Choice : "));
+                } catch (Exception e) {
+                    System.out.println("Invalid choice!");
+                }
                 if (choice >= 1 && choice <= 7) {
                     break;
                 } else {
@@ -141,7 +145,7 @@ public class Portal {
             System.out.printf("Customer name  : %s\n", customer.getUsername());
             System.out.printf("Account number : %d\n", customer.getAccountNumber());
             for (int i = page*2; i < (page * 2) +2; i++) {
-                if (i < transactionLog.size()-1) {
+                if (i <= transactionLog.size()-1) {
                     System.out.println("-------------------------");
                     transactionLog.get(i).printDetails();
                     System.out.println("-------------------------");
