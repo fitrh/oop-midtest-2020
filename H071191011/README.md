@@ -61,5 +61,10 @@ Lalu jalankan
 java -jar target/itemstore-0.1.jar
 ```
 
-Disarankan untuk menjalankannya setidaknya sebanyak 10 kali untuk melihat semua kemungkinan
-yang memungkinkan.
+Untuk versi 100% acak, atau
+
+```
+java -cp target/itemstore-0.1.jar id.co.npad93.itemstore.interact.InteractMain
+```
+
+Untuk versi interaktif dari interaksi Player-Store
