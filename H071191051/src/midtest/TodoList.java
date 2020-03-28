@@ -2,6 +2,7 @@ package midtest;
 
 import java.io.*;
 import java.util.*;
+import java.nio.file.*;
 
 class TodoList {
     private String callName;
@@ -65,6 +66,11 @@ class TodoList {
         fileOutput.close();
         bufferInput.close();
         bufferOutput.close();
+    }
+
+    public long checkTotalLineatFile() throws IOException {
+        Path path = Paths.get("kegiatan.txt");
+        return Files.lines(path).count();
     }
 
     public String getDescription() {
