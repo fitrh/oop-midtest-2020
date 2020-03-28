@@ -12,7 +12,7 @@ public class Main {
     static int choose;
 
     public static void main(String[] args) throws IOException {
-        Login login = new Login();
+        Login login = Login.getInstance();
         login.LoginAction();
     }
 }
