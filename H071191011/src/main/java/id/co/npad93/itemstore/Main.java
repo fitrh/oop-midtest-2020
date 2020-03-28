@@ -104,7 +104,7 @@ public class Main
 		ThermalSuit.uuid
 	};
 
-	private static void printUserInfo(User user)
+	public static void printUserInfo(User user)
 	{
 		System.out.printf("Player %s (money %d) inventory:\n", user.getName(), user.getMoney());
 		for (Item i: user.getInventory())

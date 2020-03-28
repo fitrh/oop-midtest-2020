@@ -10,14 +10,20 @@ final class UserInfo implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	// for serializeable purpose
-	public UserInfo()
-	{}
-
-	public UserInfo(String username, String name, int money)
+	public UserInfo(String username, User u)
 	{
 		this.username = username;
-		user = new User(name, money);
+		user = u;
+	}
+
+	public User getUser()
+	{
+		return user;
+	}
+
+	public String getUsername()
+	{
+		return username;
 	}
 
 	private String username;
