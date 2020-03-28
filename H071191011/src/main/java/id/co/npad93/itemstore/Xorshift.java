@@ -8,7 +8,7 @@ package id.co.npad93.itemstore;
  * Completely based on LÖVE's <code>love.math.random()</code> as shown here
  * https://github.com/love2d/love/blob/master/src/modules/math/RandomGenerator.cpp
  */
-class Xorshift
+public class Xorshift
 {
 	/**
 	 * Create new Xorshift instance with specified seed

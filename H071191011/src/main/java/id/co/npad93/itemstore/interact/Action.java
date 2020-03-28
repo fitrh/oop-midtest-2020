@@ -2,7 +2,8 @@ package id.co.npad93.itemstore.interact;
 
 import id.co.npad93.itemstore.*;
 
-interface Action
+abstract class Action
 {
-	void action(User u);
+	public abstract String name();
+	public abstract void action(User u);
 }

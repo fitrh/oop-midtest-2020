@@ -32,6 +32,16 @@ public class Store
 	}
 
 	/**
+	 * Retrieve the store owner name
+	 * 
+	 * @return store owner name
+	 */
+	public String getOwnerName()
+	{
+		return owner.getName();
+	}
+
+	/**
 	 * Add {@link Item} to store. Rest assured items passed are unusable
 	 * after passed to this function
 	 * @param player Store {@link #isOwner(User) owner}
