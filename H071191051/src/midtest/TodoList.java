@@ -17,19 +17,23 @@ class TodoList {
     }
 
     public void showList() throws IOException {
-        System.out.println("+-------------- To-Do-List Today -------------+");
+        System.out.println("+-------------- To-Do-List Today -------------+\n");
     }
 
     public void addList() throws IOException {
-        System.out.println("+---------------- Adding List ----------------+");
+        System.out.println("+---------------- Adding List ----------------+\n");
     }
 
     public void deleteList() throws IOException {
-        System.out.println("+---------------- Delete List ----------------+");
+        System.out.println("+---------------- Delete List ----------------+\n");
     }
 
     public void editList() throws IOException {
-        System.out.println("+----------------- Edit List -----------------+");
+        System.out.println("+----------------- Edit List -----------------+\n");
+    }
+
+    public void descList() throws IOException {
+        System.out.println("+------------ Description List ---------------+\n");
     }
 
     public void deleteAndRename() {
@@ -47,6 +51,21 @@ class TodoList {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public boolean checkLineisExist(int choice, BufferedReader bufferInput, BufferedWriter bufferOutput, String data)
+            throws IOException {
+        if (choice > checkTotalLineatFile() || choice < 1) {
+            while (data != null) {
+                bufferOutput.write(data);
+                bufferOutput.newLine();
+                data = bufferInput.readLine();
+            }
+            bufferOutput.flush();
+            return false;
+        } else {
+            return true;
         }
     }
 
