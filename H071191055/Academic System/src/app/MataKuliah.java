@@ -17,19 +17,21 @@ public class MataKuliah {
         this.namaDosen = namaDosen;
     }
 
-    public int getId() {
+    public int getIdCourse() {
         return id;
     }
 
-    public String getName() {
+    public String getNameCourse() {
         return name;
     }
 
-    public int getSks() {
+    public int getSksCourse() {
         return sks;
     }
 
-    public String getNamaDosen() {
+    public String getNamaDosenCourse() {
         return namaDosen;
     }
+
+
 }
