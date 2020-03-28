@@ -231,6 +231,26 @@ public class Main
 
 		// Choose item to buy
 		StoreItem itemToBuy = storeItem[(int) (rng.nextDouble() * storeItem.length)];
-		System.out.println(user2Name + " wants to bought 1 of " + itemToBuy.getName());
+		int amount = 1 + (int) (rng.nextDouble() * (itemToBuy.getAmount() - 1));
+		System.out.println(user2Name + " wants to bought " + amount + " of " + itemToBuy.getName());
+
+		if (money2 >= itemToBuy.getPrice() * amount)
+		{
+			// buy
+			System.out.println(user2Name + " bought " + amount + " " + itemToBuy.getName());
+			Item result = itemToBuy.buy(user2, amount);
+			user2.addItem(result);
+
+			// print all user and store status
+			printUserInfo(user1);
+			printUserInfo(user2);
+			for (StoreItem i: store.getItems())
+			{
+				System.out.println("- " + i.getName() + " (" + i.getAmount() + ") price " + i.getPrice());
+				System.out.println("  " + i.getDescription());
+			}
+		}
+		else
+			System.out.println(user2Name + " doesn't have enough money");
 	}
 }
