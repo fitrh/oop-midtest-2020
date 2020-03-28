@@ -44,3 +44,22 @@ mvn javadoc:javadoc
 ```
 
 Maka dokumentasi dapat ditemukan di `target/site/apidocs`
+
+Input & Output
+-----
+
+Untuk lebih jelasnya, karena input & outputnya dibuat secara acak, maka lebih baik
+jika langsung dijalankan. Pertama buat file JARnya
+
+```
+mvn package
+```
+
+Lalu jalankan
+
+```
+java -jar target/itemstore-0.1.jar
+```
+
+Disarankan untuk menjalankannya setidaknya sebanyak 10 kali untuk melihat semua kemungkinan
+yang memungkinkan.
