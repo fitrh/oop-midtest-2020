@@ -49,12 +49,14 @@ public class Portal {
             System.out.println("===LOGIN===");
             customer.login(input.readPassword("Password : "));
             if (customer.isAuthenticated()) {
+                //if login is successful, then show bank menu
                 System.out.println("===========");
-                userActions();
+                bankMenu();
                 return;
             } else {
                 System.out.println("Invalid password!");
                 if (triesLeft == 0) {
+                    //If user has run out of tries, then cancel login
                     return;
                 }
                 System.out.printf("Tries left : %d\n", triesLeft);
@@ -64,12 +66,13 @@ public class Portal {
         }
     }
 
-    private void userActions() {
+    private void bankMenu() {
         while (true) {
             if (customer == null) {
                 return;
             }
             clearScreen();
+            //Bank menu
             System.out.printf("====Bank %s====\n", bank.getBankName());
             System.out.printf("Hello, %s\n", customer.getUsername());
             System.out.println("1. Deposit");
@@ -119,6 +122,7 @@ public class Portal {
     }
 
     private void logout() {
+        //Logsout customer and removes customer and it's respective bank data from portal
         customer.logout();
         customer = null;
         bank = null;
@@ -126,7 +130,7 @@ public class Portal {
     private void changePassword() {
         clearScreen();
         customer.changePassword(database);
-        if (!customer.isAuthenticated()) {
+        if (!customer.isAuthenticated()) { //if customer has been logged out for security reasons, then logout
             logout();
             pause(2000);
             return;
@@ -146,6 +150,7 @@ public class Portal {
             System.out.printf("Account number : %d\n", customer.getAccountNumber());
             for (int i = page*2; i < (page * 2) +2; i++) {
                 if (i <= transactionLog.size()-1) {
+                    //Handles array index out of bounds exception
                     System.out.println("-------------------------");
                     transactionLog.get(i).printDetails();
                     System.out.println("-------------------------");
@@ -166,10 +171,13 @@ public class Portal {
                 pause(1000);
             }
             if (choice == 1 && page > 0) {
+                //previous page
                 page--;
             } else if (choice == 2 && page < totalPages-1) {
+                //next page
                 page++;
             } else if (choice == 3) {
+                //exit
                 return;
             } else {
                 System.out.println("Invalid choice");
@@ -184,7 +192,7 @@ public class Portal {
         int amount = Integer.parseInt(input.readLine("Input amount Rp."));
         if (customer.withdraw(amount)) {
             System.out.printf("Successfully withdrew Rp.%d from account number %d\n", amount, customer.getAccountNumber());
-            appendTransactionLog(customer);
+            updateTransactionLog(customer);
         } else {
             System.out.printf("Insufficient funds in account number %d\n", customer.getAccountNumber());
         }
@@ -198,7 +206,7 @@ public class Portal {
         customer.deposit(amount);
         System.out.printf("Successfully deposited Rp.%d to account number %d\n", amount, customer.getAccountNumber());
         System.out.println("==============");
-        appendTransactionLog(customer);
+        updateTransactionLog(customer);
         pause(-1);
     }
 
@@ -262,15 +270,16 @@ public class Portal {
         }
         if (customer.outboundTransfer(amount, recipient)) {
             System.out.printf("Successfully transferred Rp.%d to account %d\n", amount, recipient.getAccountNumber());
-            appendTransactionLog(customer);
-            appendTransactionLog(recipient);
+            updateTransactionLog(customer);
+            updateTransactionLog(recipient);
         } else {
             System.out.println("Insufficient funds!");
         }
         pause(-1);
     }
 
-    protected void appendTransactionLog(Customer user) {
+    protected void updateTransactionLog(Customer user) {
+        //Update transaction log locally
         String destination = String.format("Banks/%s/Customers/%s.txt", user.getBank(), user.getAccountNumber());
         database.updateData(user.getLastTransactionDetails(), destination, true);
     }
@@ -322,27 +331,35 @@ public class Portal {
         }
     }
     public void register() {
+        //registers new user to a bank
         clearScreen();
         bank.registerCustomer(database);
         pause(-1);
     }
     private void printBanks() {
+        //prints a list of banks
         for (int i = 0; i < database.getBanks().size(); i++) {
             System.out.printf("%d. %s\n", i+1, database.getBank(i).getBankName());
         }
     }
     private void clearScreen() {
+        //"clears" screen
+        //Hacky Solution
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     private void pause(long time) {
+        //Pause program
+
         if (time == -1) {
+            //waits for user input
             System.out.println("Type anything to continue...");
             input.readLine();
             return;
         }
         try {
+            //wait for a set number of milliseconds
             Thread.sleep(time);
         } catch (InterruptedException ignored){
 

@@ -39,6 +39,7 @@ public class Customer {
     }
     protected void login(char[] password) {
         if (Arrays.equals(this.password, password)) {
+            //if password is correct then authenticate login
             authenticated = true;
         }
         Arrays.fill(password, '0');
@@ -81,6 +82,7 @@ public class Customer {
     protected String getLastTransactionDetails() {
         return transactionLog.get(transactionLog.size()-1).getDetails();
     }
+
     private void inboundTransfer(int amount, int accountNumber) {
         balance += amount;
         updateTransactionLog(new InboundTransfer(new Date(), amount, accountNumber));
@@ -90,9 +92,11 @@ public class Customer {
     protected boolean isAuthenticated() {
         return authenticated;
     }
+
     @SuppressWarnings("EmptyMethod")
     protected void validAccount() {
         //Checks if an account isn't null
+        //#Hacky Solution
     }
 
     protected void changePassword(Database database) {
@@ -103,13 +107,14 @@ public class Customer {
                 clearScreen();
                 System.out.println("===Change Password===");
                 char[] oldPassword = input.readPassword("Input old password : ");
-                if (Arrays.equals(this.password, oldPassword)) {
+                if (Arrays.equals(this.password, oldPassword)) { //Recheck if the user is authentic, not a brute force hacker
                     Arrays.fill(oldPassword, '0');
                     while (true) {
                         clearScreen();
                         System.out.println("===Change Password===");
                         password = input.readPassword("Input new password : ");
                         if (password.length >=6) {
+                            //If password is valid then continue
                             break;
                         } else {
                             System.out.println("Invalid password");
@@ -118,7 +123,7 @@ public class Customer {
                     }
                     System.out.println("Password successfully changed");
                     String destination = String.format("Banks/%s/Customers/%s.txt",bank, accountNumber);
-                    database.updateUserPassword(String.valueOf(password), destination);
+                    database.updateUserPassword(String.valueOf(password), destination); //Update user's password data locally
                     pause();
                     return;
                 } else {
@@ -127,6 +132,7 @@ public class Customer {
                     pause();
                 }
             }
+            // if tries have run out, then log out
             System.out.println("You have been logged out for security reasons, please re login");
             authenticated = false;
         }
@@ -146,13 +152,18 @@ public class Customer {
         }
         return null;
     }
+
     private void clearScreen() {
+        //"clears" screen
+        //Hacky Solution
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     private void pause() {
+        //Pause program
         try {
+            //wait for a 1 second
             Thread.sleep(1000);
         } catch (InterruptedException ignored){
 

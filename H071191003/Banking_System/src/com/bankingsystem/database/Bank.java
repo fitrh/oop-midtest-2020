@@ -33,6 +33,7 @@ public class Bank {
                 if (Integer.toString(KTPNumber).length() < 6) {
                     System.out.println("Invalid KTP number!");
                 } else if (registeredKTP.contains(KTPNumber)){
+                    //if ktp already exists in the bank system
                     System.out.println("KTP number has already been registered!");
                     return;
                 } else {
@@ -51,6 +52,7 @@ public class Bank {
             System.out.printf("====Bank %s====\n", getBankName());
             username = input.readLine("Input full name : ");
             if (username.equals("/exit")) {
+                //exit
                 return;
             } else if (!username.equals("")){
                 break;
@@ -65,6 +67,7 @@ public class Bank {
             System.out.printf("====Bank %s====\n", getBankName());
             password = input.readPassword("Input Password : ");
             if (Arrays.toString(password).equals("/exit")) {
+                //exit
                 return;
             } else if (isValidPassword(password)) {
                 break;
@@ -76,12 +79,14 @@ public class Bank {
         int accountNumber = Integer.parseInt( String.format("%d%06d", bankCode, customers.size()+1) );
         addCustomer(username, password, accountNumber, KTPNumber);
         String destination = String.format("Banks/%s/Customers/%s.txt", bankName, accountNumber);
+        //Prepares user data to be saved locally
         String temp = String.format("%s;%s;%d;%d", username, String.valueOf(password), accountNumber, KTPNumber);
         database.updateData(temp, destination,false);
         registeredKTP.add(KTPNumber);
         System.out.println("Success!");
         pause();
         clearScreen();
+        //Displays the account overview
         System.out.println("===Account Overview===");
         System.out.printf("Customer name : %s\n", username);
         System.out.printf("Account Number: %s\n", accountNumber);
@@ -102,12 +107,16 @@ public class Bank {
     }
 
     private void clearScreen() {
+        //"clears" screen
+        //Hacky Solution
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     private void pause() {
+        //Pause program
         try {
+            //wait for a 1 of second
             Thread.sleep(1000);
         } catch (InterruptedException ignored){
 

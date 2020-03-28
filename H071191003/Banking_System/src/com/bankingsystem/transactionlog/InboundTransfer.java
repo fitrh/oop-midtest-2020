@@ -3,6 +3,8 @@ package com.bankingsystem.transactionlog;
 import java.util.Date;
 
 public class InboundTransfer extends Transaction {
+
+    //Inbound transfer : transfer of money from another user
     public InboundTransfer(Date dateOfTransaction, int amount, int recipientOrigin) {
         super(dateOfTransaction, amount, recipientOrigin);
     }
