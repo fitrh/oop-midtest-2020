@@ -99,9 +99,44 @@ public class Database {
 
     }
 
-    protected void appendData(String data, String destination) {
-        try (FileWriter fw = new FileWriter(destination, true); BufferedWriter bw = new BufferedWriter(fw)) {
-            bw.append("\n"+data);
+    protected void updateUserPassword(String password, String destination) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        String[] data = null;
+        String updatedData;
+        try {
+            br = new BufferedReader(new FileReader(destination));
+            if (br.ready()) {
+                data = br.readLine().split(";");
+            }
+            assert data != null;
+            data[1] = password;
+            updatedData = String.join(";", data);
+            bw = new BufferedWriter(new FileWriter(destination));
+            bw.append(updatedData);
+            while (br.ready()) {
+                bw.append("\n").append(br.readLine());
+            }
+        } catch (IOException e) {
+            System.out.println("Error in updating file!");
+        } finally {
+            try {
+                assert bw != null;
+                bw.close();
+                br.close();
+            } catch (IOException ignore) {
+
+            }
+        }
+    }
+
+    protected void updateData(String data, String destination, Boolean append) {
+        try (FileWriter fw = new FileWriter(destination, append); BufferedWriter bw = new BufferedWriter(fw)) {
+            if (append) {
+                bw.append("\n").append(data);
+            } else {
+                bw.write(data);
+            }
         } catch (IOException e) {
             System.out.println("Data not saved!");
             e.printStackTrace();

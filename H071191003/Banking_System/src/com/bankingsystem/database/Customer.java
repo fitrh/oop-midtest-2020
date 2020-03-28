@@ -94,7 +94,7 @@ public class Customer {
         //Checks if an account isn't null
     }
 
-    protected void changePassword() {
+    protected void changePassword(Database database) {
         if (authenticated) {
             Console input = System.console();
             int tries = 3;
@@ -105,6 +105,8 @@ public class Customer {
                     Arrays.fill(oldPassword, '0');
                     password = input.readPassword("Input new password : ");
                     System.out.println("Password successfully changed");
+                    String destination = String.format("Banks/%s/Customers/%s.txt",bank, accountNumber);
+                    database.updateUserPassword(String.valueOf(password), destination);
                     pause();
                     return;
                 } else {

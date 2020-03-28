@@ -121,7 +121,7 @@ public class Portal {
     }
     private void changePassword() {
         clearScreen();
-        customer.changePassword();
+        customer.changePassword(database);
         if (!customer.isAuthenticated()) {
             logout();
             pause(2000);
@@ -268,8 +268,9 @@ public class Portal {
 
     protected void appendTransactionLog(Customer user) {
         String destination = String.format("Banks/%s/Customers/%s.txt", user.getBank(), user.getAccountNumber());
-        database.appendData(user.getLastTransactionDetails(), destination);
+        database.updateData(user.getLastTransactionDetails(), destination, true);
     }
+
     private void balance() {
         clearScreen();
         System.out.println("==============");
@@ -318,7 +319,7 @@ public class Portal {
     }
     public void register() {
         clearScreen();
-        bank.registerCustomer();
+        bank.registerCustomer(database);
         pause(-1);
     }
     private void printBanks() {

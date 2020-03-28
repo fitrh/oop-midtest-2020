@@ -24,7 +24,7 @@ public class Bank {
         customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber, new ArrayList<Transaction>(),0,bankName));
     }
 
-    protected void registerCustomer() {
+    protected void registerCustomer(Database database) {
         Console input = System.console();
         int KTPNumber;
         try {
@@ -77,6 +77,11 @@ public class Bank {
         }
         int accountNumber = Integer.parseInt( String.format("%d%06d", bankCode, customers.size()+1) );
         addCustomer(username, password, accountNumber, KTPNumber);
+        String destination = String.format("Banks/%s/Customers/%s.txt", bankName, accountNumber);
+        String temp = String.format("%s;%s;%d;%d", username, String.valueOf(password), accountNumber, KTPNumber);
+        database.updateData(temp, destination,false);
+        destination = null;
+        temp = null;
         registeredKTP.add(KTPNumber);
         System.out.println("Success!");
         pause();
