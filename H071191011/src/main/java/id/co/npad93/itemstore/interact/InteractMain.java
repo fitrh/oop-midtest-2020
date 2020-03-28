@@ -76,6 +76,14 @@ public class InteractMain
 		Xorshift rng = new Xorshift();
 		ArrayList<Action> actions = new ArrayList<Action>();
 
+		// Give player money at random chance
+		if (rng.nextDouble() >= 0.9)
+		{
+			int amount = (int) (1 + rng.nextDouble() * 10) * 1000;
+			System.out.println("You received money " + amount);
+			user.addMoney(amount);
+		}
+
 		// Actions to show user info
 		actions.add(new Action() {
 			@Override
