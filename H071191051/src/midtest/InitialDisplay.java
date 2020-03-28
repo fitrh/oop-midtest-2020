@@ -8,6 +8,10 @@ import java.util.*;
 class InitialDisplay {
     private Scanner sc = new Scanner(System.in);
     private Registration registration = new Registration();
+    private TodoList toDoList = new TodoList();
+    private ShowList show = new ShowList();
+    private DeleteList delete = new DeleteList();
+    private AddList add = new AddList();
 
     public void mainMenu() throws IOException {
         // registrasi terlebih dahulu
@@ -19,32 +23,36 @@ class InitialDisplay {
             homeMenu();
             System.out.print("> ");
             int choice = sc.nextInt();
+            System.out.println("+---------------------------------------------+");
 
             if (choice == 1) {
                 clearScreen();
-                System.out.println("+------------ To-Do-List Hari ini ------------+\n");
+                System.out.println("+------------- To-Do-List Today ------------+\n");
                 setTime();
-                ShowList show = new ShowList();
                 show.showList();
 
             } else if (choice == 2) {
                 clearScreen();
-                System.out.println("+-------------- Hapus kegiatan ---------------+");
-                DeleteList delete = new DeleteList();
-                delete.deleteList();
-                TodoList rename = new TodoList();
-                rename.deleteList();
+                System.out.println("+--------------- Add Activity ----------------+");
+                show.showList();
+                add.addList();
+                System.out.println("+---------------------------------------------+");
+
             } else if (choice == 3) {
-                System.out.println("+-------------- Edit kegiatan ----------------+");
+                clearScreen();
+                System.out.println("+------------- Delete Activity ---------------+");
+                show.showList();
+                delete.deleteList();
+                toDoList.deleteAndRename();
+                System.out.println("+---------------------------------------------+");
+
+            } else if (choice == 4) {
+                System.out.println("+-------------- Edit Activity ----------------+");
                 // edit kegiatan
                 clearScreen();
 
-            } else if (choice == 4) {
-                System.out.println("+------------- Tambah kegiatan ---------------+");
-                AddList add = new AddList();
-                add.addList();
             } else if (choice == 5) {
-                System.out.println("+------------ Deskripsi kegiatan -------------+");
+                System.out.println("+----------- Activity Description ------------+");
                 // deskripsi kegiatan
                 clearScreen();
 
@@ -68,9 +76,9 @@ class InitialDisplay {
         System.out.println("\n" + "Hello " + registration.getCallName() + " ^_^" + "\n");
         setTime();
         System.out.println("1. Lihat To-do-list Harian");
-        System.out.println("2. Hapus kegiatan");
-        System.out.println("3. Edit kegiatan");
-        System.out.println("4. Tambahkan kegiatan");
+        System.out.println("2. Tambahkan kegiatan");
+        System.out.println("3. Hapus kegiatan");
+        System.out.println("4. Edit kegiatan");
         System.out.println("5. Lihat Deskripsi kegiatan");
         System.out.println("6. Lihat Biodata anda");
         System.out.println("0. Exit");

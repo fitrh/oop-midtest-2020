@@ -18,18 +18,22 @@ class DeleteList extends TodoList {
         FileWriter fileOutput = new FileWriter(tempFile);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
-        // tampilkan database yang asli
-        ShowList show = new ShowList();
-        show.showList();
+        String data = bufferInput.readLine();
+
+        // cek file apakah kosong atau tidak
+        if (data == null) {
+            System.out.println("\nDaftar kegiatan masih kosong");
+            bufferInput.close();
+            bufferOutput.close();
+            return;
+        }
 
         // ambil inputan user untuk delete data
-
         System.out.print("Masukkan nomor kegiatan yang ingin dihapus : ");
         int delete = sc.nextInt();
 
-        // buat looping untuk membaca baris dan menghapus data yang diinput user
+        // buat looping untuk membaca baris pada file dan menghapus data yang diinput
         int currentEntry = 0;
-        String data = bufferInput.readLine();
 
         while (data != null) {
             currentEntry++;
@@ -50,10 +54,11 @@ class DeleteList extends TodoList {
 
             }
 
-            if (isDelete) {
+            if (isDelete == true) {
                 System.out.println("\nBerhasil menghapus kegiatan");
             } else {
                 // memindahkan data dari original ke sementara
+                System.out.println("\nKegiatan tidak dihapus");
                 bufferOutput.write(data);
                 bufferOutput.newLine();
             }

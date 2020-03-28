@@ -26,6 +26,12 @@ class ShowList extends TodoList {
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
 
+        // jika daftar pada file kosong, maka :
+        if (data == null) {
+            System.out.println("|\t\t\t\t     Daftar kegiatan masih kosong!     \t\t\t\t\t |");
+        }
+
+        // apabila ada, maka :
         int number = 0;
         while (data != null) {
             number++;
@@ -39,6 +45,7 @@ class ShowList extends TodoList {
             System.out.print("\n");
             data = bufferInput.readLine();
         }
+
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
 
