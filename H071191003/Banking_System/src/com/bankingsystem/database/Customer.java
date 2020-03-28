@@ -8,20 +8,20 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class Customer {
-    private String username;
+    private final String username;
     private char[] password;
-    private int accountNumber;
-    private ArrayList<Transaction> transactionLog;
+    private final int accountNumber;
+    private final ArrayList<Transaction> transactionLog;
     private boolean authenticated = false;
     private int balance;
-    private int KTPNumber;
-    private String bank;
+    private final int KTPNumber;
+    private final String bank;
 
-    protected Customer(String username, char[] password, int accountNumber, int citizenIdentificationNam, ArrayList<Transaction> transactionLog, int balance, String bank) {
+    protected Customer(String username, char[] password, int accountNumber, int KTPNumber, ArrayList<Transaction> transactionLog, int balance, String bank) {
         this.username = username;
         this.password = password;
         this.accountNumber = accountNumber;
-        this.KTPNumber = citizenIdentificationNam;
+        this.KTPNumber = KTPNumber;
         this.balance = balance;
         this.transactionLog = transactionLog;
         this.bank = bank;
@@ -90,6 +90,7 @@ public class Customer {
     protected boolean isAuthenticated() {
         return authenticated;
     }
+    @SuppressWarnings("EmptyMethod")
     protected void validAccount() {
         //Checks if an account isn't null
     }
@@ -135,13 +136,6 @@ public class Customer {
         return accountNumber;
     }
 
-    protected void printUserDetails() {
-        if (authenticated){
-            System.out.printf("Name : %s\n", username);
-            System.out.printf("Citizen Identification Number : %d", KTPNumber);
-            System.out.printf("Account number : %d", accountNumber);
-        }
-    }
     protected String getUsername() {
         return username;
     }

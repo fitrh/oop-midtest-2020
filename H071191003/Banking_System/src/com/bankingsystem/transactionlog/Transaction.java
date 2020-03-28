@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 abstract public class Transaction {
-    protected String dateOfTransaction;
-    protected int amount;
+    protected final String dateOfTransaction;
+    protected final int amount;
     protected int recipientOrigin;
 
     public Transaction(Date dateOfTransaction, int amount) {

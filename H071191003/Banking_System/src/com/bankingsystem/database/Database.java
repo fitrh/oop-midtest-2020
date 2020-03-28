@@ -10,8 +10,8 @@ import java.util.HashSet;
 
 public class Database {
     private static Database database = null;
-    private ArrayList<Bank> banks = new ArrayList<>();
-    private ArrayList<String> errorLog = new ArrayList<>();
+    private final ArrayList<Bank> banks = new ArrayList<>();
+    private final ArrayList<String> errorLog = new ArrayList<>();
     private Database() throws IOException {
         putBanks();
     }
@@ -26,10 +26,6 @@ public class Database {
         }
 
         return database;
-    }
-
-    private void updateUserData() {
-
     }
 
     private void putBanks() throws IOException {
@@ -80,7 +76,6 @@ public class Database {
                                 transactionLog.add(new InboundTransfer(formatter.parse(temp[1]), Integer.parseInt(temp[2]), Integer.parseInt(temp[3])));
                                 money += Integer.parseInt(temp[2]);
                             }
-                            temp = null;
                         }
                         assert data != null;
                         Customer customer = new Customer(data[0], data[1].toCharArray(), Integer.parseInt(data[2]), Integer.parseInt(data[3]), transactionLog, money, bankName);

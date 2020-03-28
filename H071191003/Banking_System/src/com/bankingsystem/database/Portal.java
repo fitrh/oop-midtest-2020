@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class Portal {
     private static Portal portal;
-    private Database database;
+    private final Database database;
     private Customer customer;
-    private static Console input = System.console();
+    private static final Console input = System.console();
     private Bank bank;
 
 

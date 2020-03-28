@@ -1,7 +1,5 @@
 package com.bankingsystem.database;
 
-import com.bankingsystem.transactionlog.Transaction;
-
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,10 +7,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Bank {
-    private String bankName;
-    private int bankCode;
-    private HashMap<Integer, Customer> customers ;
-    private HashSet<Integer> registeredKTP;
+    private final String bankName;
+    private final int bankCode;
+    private final HashMap<Integer, Customer> customers ;
+    private final HashSet<Integer> registeredKTP;
 
     protected Bank(String bankName, int bankCode, HashMap<Integer, Customer> customers, HashSet<Integer> registeredKTP) {
         this.bankName = bankName;
@@ -21,7 +19,7 @@ public class Bank {
         this.registeredKTP = registeredKTP;
     }
     private void addCustomer(String username, char[] password, int accountNumber, int KTPNumber) {
-        customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber, new ArrayList<Transaction>(),0,bankName));
+        customers.put(accountNumber ,new Customer(username, password, accountNumber, KTPNumber, new ArrayList<>(),0,bankName));
     }
 
     protected void registerCustomer(Database database) {
@@ -80,8 +78,6 @@ public class Bank {
         String destination = String.format("Banks/%s/Customers/%s.txt", bankName, accountNumber);
         String temp = String.format("%s;%s;%d;%d", username, String.valueOf(password), accountNumber, KTPNumber);
         database.updateData(temp, destination,false);
-        destination = null;
-        temp = null;
         registeredKTP.add(KTPNumber);
         System.out.println("Success!");
         pause();
