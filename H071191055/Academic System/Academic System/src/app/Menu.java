@@ -108,6 +108,7 @@ public class Menu {
                     case 2:
                         dosenPA.showMahasiswaBimbingan();
                         Checkout();
+                        break;
                     case 3:
                         System.out.println("Anda Yakin ? (Y/N)");
                         System.out.print("> ");
