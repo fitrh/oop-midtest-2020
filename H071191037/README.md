@@ -38,3 +38,8 @@ Format file yang digunakan dalam file.txt yaitu *Id* ; *Nama Bank* ; *Nama Nasab
 2. Membuat Tampilan Menu yang lebih menarik.
 3. MengEfisienkan kode.
 4. lebih merapikan kode.
+
+## NB :
+![jh](https://user-images.githubusercontent.com/42440108/77847554-22e4e900-71e8-11ea-8cf3-4c17388be674.JPG)
+
+*jika terjadi kesalahan, bisa anda liat di file.txt dengan format yang sudah dijelaskan di Alur Program.*
