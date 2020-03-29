@@ -62,6 +62,7 @@ public class Menu {
                         pilih = sc.nextLine();
                         if (pilih.equalsIgnoreCase("Y")) {
                             Login.getInstance(); 
+                            loop = false;
                         }
                         break;
                     default:
@@ -69,19 +70,6 @@ public class Menu {
                         break;
                 }
 
-                System.out.println("\nAnda ingin keluar dari Menu ? (Y/N)");
-                System.out.print("> ");
-                pilih = sc.nextLine();
-                if (pilih.equalsIgnoreCase("Y")) {
-                    System.out.println("\nLogout ? (Y/N)");
-                    System.out.print("> ");
-                    pilih = sc.nextLine();
-
-                    if (pilih.equalsIgnoreCase("Y")) {
-                        loop = false;
-                        break;
-                    }
-                }
             }
         } catch (Exception e) {
             System.out.println("Mohon memasukkan inputan yang valid");
@@ -115,6 +103,7 @@ public class Menu {
                         pilih = sc.nextLine();
                         if (pilih.equalsIgnoreCase("Y")) {
                             Login.getInstance();
+                            loop = false;
                         }
                         break;
                     default:
