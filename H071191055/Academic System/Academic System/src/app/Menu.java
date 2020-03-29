@@ -78,7 +78,7 @@ public class Menu {
 
 	public void MenuDosen(String userName) {
         try {
-            while (true) {
+            while (loop) {
                 System.out.println("\n-- Menu --");
                 System.out.println("1. Profil");
                 System.out.println("2. Mahasiswa yang Dibimbing");
