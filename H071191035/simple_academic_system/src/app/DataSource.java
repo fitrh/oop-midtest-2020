@@ -3,7 +3,9 @@ package app;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 /**
  * DataSource
  */
@@ -14,6 +16,7 @@ public class DataSource {
     private HashMap<String, User> userMapDosen = new HashMap<>();
     private HashMap<Integer, Mahasiswa> mahasiswaMap = new HashMap<>();
     private HashMap<Integer, DosenPa> dosenPaMap = new HashMap<>();
+    private List<Mahasiswa> bimbinganDosen = new ArrayList<>();
 
     // constructor
     private DataSource() {
