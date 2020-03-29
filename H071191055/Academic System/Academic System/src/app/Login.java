@@ -22,7 +22,7 @@ public class Login {
 
     public boolean authMahasiswa(String userName, String password) throws IOException {
         mahasiswa = MahasiswaData.getMahasiswa(userName);
-        FileReader file = new FileReader("Academic System\\ListAkunMahasiswa.txt");
+        FileReader file = new FileReader("ListAkunMahasiswa.txt");
         BufferedReader br = new BufferedReader(file);
         String tempData[];
         while (br.ready()) {
@@ -41,7 +41,7 @@ public class Login {
 
     private boolean authDosen(String userName, String password) throws IOException {
         dosenPA = dosenPAData.getDosen(userName);
-        FileReader file = new FileReader("Academic System\\ListAkunDosen.txt");
+        FileReader file = new FileReader("ListAkunDosen.txt");
         BufferedReader br = new BufferedReader(file);
         String tempData[];
         while (br.ready()) {

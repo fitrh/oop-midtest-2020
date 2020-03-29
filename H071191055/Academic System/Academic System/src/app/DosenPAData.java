@@ -21,7 +21,7 @@ public class DosenPAData {
     }
 
     public void listDosen() throws IOException{
-        FileReader file = new FileReader("Academic System\\ListAkunDosen.txt");
+        FileReader file = new FileReader("ListAkunDosen.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
@@ -36,7 +36,7 @@ public class DosenPAData {
     }
     
     public void listDetailDosen() throws IOException{
-        FileReader file = new FileReader("Academic System\\DetailDosen.txt");
+        FileReader file = new FileReader("DetailDosen.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
@@ -51,7 +51,7 @@ public class DosenPAData {
     }
 
     public void listMahasiswaBimbingan() throws IOException{
-        FileReader file = new FileReader("Academic System\\MahasiswaBimbingan.txt");
+        FileReader file = new FileReader("MahasiswaBimbingan.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         String temp[];
