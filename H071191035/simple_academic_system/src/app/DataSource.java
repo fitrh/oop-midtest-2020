@@ -154,4 +154,27 @@ public class DataSource {
 
     }
 
+    // baca tulis file untuk data bimbingan dosen
+    private void addBimbinganDosen() throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\BimbinganDosen.txt"));
+        String data[];
+
+        while(reader.ready()) {
+            
+            data = reader.readLine().split(";");
+
+            if (isInt(data[0])) {
+
+                for (int i = 1; i < data.length; i++) {
+                    bimbinganDosen.add(getUser(data[i]).getMahasiswa());
+                }
+            }
+        }
+
+        data = null;
+        reader.close();
+
+    }
+
 }
