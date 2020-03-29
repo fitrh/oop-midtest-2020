@@ -1,0 +1,14 @@
+1,Coke,7000
+2,Lemon Tea,10000
+3,Mineral Water,8000
+4,Iced Mango Peach,14500
+5,Iced Vanilla Latte,17000
+6,Sprite,7000
+7,Fanta,7000
+8,Jasmine Tea,9000
+9,Cheesy Fries,29000
+10,Waffle Fries,22000
+11,Fries Large,20500
+12,Chicken Wings,27000
+13,Large Cheesy Rasher Fries,15500
+14,Chicken Strips,14000

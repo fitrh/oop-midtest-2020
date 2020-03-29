@@ -1,5 +1,5 @@
 ** Spesifikasi project
-1. Menampilkan list menu yang ada di Burger Store.
+1. Menampilkan list menu yang ada di "Burger.txt" dan "Addition.txt".
 2. Pemesan burger dan addition.
 3. Transaksi.
 4. Print Payment Summary.
@@ -7,18 +7,15 @@
 
 ** Alur Kerja
 1. Penerapan konsep oop disetiap class.
-2. Untuk pemberian nilai pada attribute menuBurger dan menuAddition menggunakan file I/O, dan membaca isi file 
-   dengan bantuan class Scanner.
-3. MenuBurger dan menuAddition disimpan dalam ArrayList.
-4. Untuk menampilkan menu digunakan polymorphism, yang dimana pada class BurgerStore terdapat method yang di override 
-   dari class Cart, kemudian dipanggil di dalam main.
+2. Untuk item menuBurger dan menuAddition di list didalam "Burger.txt" dan "Addition.txt".
+3. Untuk menampilkan menu digunakan bantuan class Scanner untuk read file dan kemudian di list di dalam Array list.
 5. Untuk pemesanan burger dan addition di jalankan dalam method buyBurger() pada class BurgerStore.
 6. Untuk Transaksi pembelian burger dan addition dijalankan didalam method checkout() pada class BurgerStore.
 7. Untuk lebih jelasnya telah terdapat komentar di setiap class.
 8. Finish.
 
 ** Contoh Input dan Output
-   Sudah terdapat menu menu yang akan menuntun anda dalam program ini.
+   Jika program di Run, telah terdapat menu yang akan menuntun anda dalam program ini.
 
 ** Konsep object oriented yang diterapkan :
 1. Class dan object, dimana terdapat attribute yang behaviour yang saling berinteraksi di dalam class.

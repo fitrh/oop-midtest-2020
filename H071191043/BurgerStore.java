@@ -10,13 +10,19 @@ import java.util.StringTokenizer;
 
 public class BurgerStore extends Cart{
     Cart c = new Cart();
-	
-	private float totalAmount1 = 0;
+    
+    //the total amount for the burger order
+    private float totalAmount1 = 0;
+    //the total amount for the addition order
     private float totalAmount2 = 0;
+    //the total amount for the burger and addition order
     private float totalAmount3 = 0;
+    //order quantity
     private int OrderQuantity ;
 
+    //payment amount for orders
     private float paymentAmount;
+    //change money 
     private float changeMoney;
 
     Scanner sc = new Scanner(System.in);
@@ -89,7 +95,7 @@ public class BurgerStore extends Cart{
             file.close();
         }
         catch (FileNotFoundException fnfe){
-            System.out.println("error");
+            System.out.println("Unable to find Addition.txt");
         }
         catch (IOException ioe){
             ioe.printStackTrace();
@@ -99,7 +105,8 @@ public class BurgerStore extends Cart{
     public ArrayList<Addition> getAdditions(){
         return addition;
     }
-    @Override //@Override from class Cart
+    //@Override from class Cart
+    @Override 
     public void showMenuBurger() {
         System.out.println("=========================");
         System.out.println("Burger menu");
@@ -111,7 +118,8 @@ public class BurgerStore extends Cart{
             System.out.println(bm.getId() + ". " + bm.getMenu() + " : " + bm.getPrice());
         }
     }
-    @Override //@Override from class Cart
+    //@Override from class Cart
+    @Override 
     public void showMenuAddition() { 
         System.out.println("=========================");
         System.out.println("Addition menu");
@@ -166,8 +174,8 @@ public class BurgerStore extends Cart{
                         System.out.println();
                         System.out.println("ATTENTION");
                         System.out.println("=========================");
-                        System.out.println("Total Harga Pesanan 1 \t : " + "Rp." + totalAmount1);
-                        System.out.println("Total Harga Pesanan 2 \t : " + "Rp." + totalAmount2);
+                        System.out.println("Total price of order 1 \t : " + "Rp." + totalAmount1);
+                        System.out.println("Total price of order 2 \t : " + "Rp." + totalAmount2);
                         totalAmount3 = totalAmount1 + totalAmount2;
                         return;
                     }
@@ -187,7 +195,7 @@ public class BurgerStore extends Cart{
     }
     //method for transaction
     public void transaction(){
-        System.out.println("Total yang harus dibayar : " + "Rp." + totalAmount3);
+        System.out.println("Total to be paid : " + "Rp." + totalAmount3);
         System.out.println("Input your Money!");
         paymentAmount = sc.nextInt();
         changeMoney = paymentAmount - totalAmount3;
@@ -212,5 +220,6 @@ public class BurgerStore extends Cart{
         Calendar cal = Calendar.getInstance();
         //use getTime() method of Calendar class to get date and time
         System.out.println("PAYMENT DATE\t:" + cal.getTime());
+        System.out.println("\n\tTHANK YOU\t");
 	}
 }

@@ -1,8 +1,8 @@
 package app;
 
 class Addition extends Abstrak {
-    BurgerStore bs = new BurgerStore();
-    public Addition (int  id, String menu, int price){ //constructor
+    //constructor
+    public Addition (int  id, String menu, int price){ 
         super.id = id;
         super.menu = menu;
         super.price = price;
