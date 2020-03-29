@@ -14,10 +14,6 @@ public class DosenPa implements Dosen {
     private List<Mahasiswa> mahasiswaBimbingan = new ArrayList<>();
 
     // constructor
-    DosenPa() {
-        mahasiswaBimbingan = null;
-    }
-
     DosenPa(int id, String namaDosen, String noTelp, String email) {
         this.id = id;
         this.namaDosen = namaDosen;
