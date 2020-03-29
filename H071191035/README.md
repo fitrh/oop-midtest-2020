@@ -165,3 +165,8 @@ Diterapkan pada *interface Dosen* yang memiliki method *abstract* di dalamnya ya
 ### Polymorphism
 
 Tidak diterapkan karena masih kebingungan ingin diaplikasikan pada bagian apa di program
+
+## Hal yang ingin diperbaiki kedepannya tentang program ini
+
+- Lebih baik dalam hal "mempersingkat kode" untuk menjadikan program lebih efisien
+- Lebih banyak lagi menerapkan konep *Object Oriented Programming* dalam program ini
