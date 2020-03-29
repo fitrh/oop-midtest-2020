@@ -11,11 +11,11 @@ Tugas Mid OOP 2020 : Program sederhana untuk mencatat jadwal kegiatan
 2. Setelah dijalankan, muncul perintah untuk melakukan registrasi dengan menginput *username* dan *password* yang akan disimpan dalam file *Akun.txt*.
 3. Setelah itu, login kembali menggunakan *username* dan *password* yang sudah diinput. 
 4. Jika berhasil login, muncul tampilan menu untuk To Do List yang di ambil dari file *`Menu.java`* kemudian akan diminta inputan berupa integer untuk memilih opsi menu yang diinginkan.
-5. Pilihan pada menu yaitu **melihat kegiatan**, **menambah kegiatan**, **edit kegiatan**, **melihat detail setiap kegiatan**, dan **menghapus kegiatan**.
+5. Pilihan pada menu yaitu **melihat kegiatan**, **menambah kegiatan**, **edit kegiatan**, **melihat detail setiap kegiatan**, dan **menghapus kegiatan** serta keluar dari *program*.
 
 ## Contoh *input & output* ##
     contoh input registrasi --> Username = Anugrah
-                                Password = alfa09
+                                Password = alfa59
                                      
     contoh input menambah kegiatan --> Nama kegiatan  : Makan
                                        Deskripsi      : Makan untuk siang sambil ngoding
@@ -26,10 +26,10 @@ Tugas Mid OOP 2020 : Program sederhana untuk mencatat jadwal kegiatan
 ## Bagian yang menerapkan konsep *OOP*
 1. **Class & Object**
 2. **Inheritance**
-    Konsep *Inheritance* digunakan pada class *`ListTDL.java`* yang menjadi *superclass* dan *`TDL.java`* yang menjadi *subclass*nya.
+    digunakan pada class *`ListTDL.java`* yang menjadi *superclass* dan *`TDL.java`* yang menjadi *subclass*nya.
 3. **Encapsulation**
-    Konsep *Encapsulation* digunakan pada class di *project* ini.
+    digunakan pada class di *project* ini.
 4. **Abstraction**
-    Konsep *Abstraction* digunakan pada class *`ListTDL.java`*.
+    digunakan pada class *`ListTDL.java`*.
 5. **Polymorphism**
-    Konsep *Polymorphism* dapat dilihat pada class *`Menu.java`* baris ke **19**.
+    dapat dilihat pada class *`Menu.java`* baris ke **19**.
