@@ -77,7 +77,10 @@ public class InteractMain
 	{
 		int money = (int) (rng.nextDouble() * 100.0) * 1000;
 		String userName = Main.generateName(rng);
-		return new User(userName, money);
+		User user = new User(userName, money);
+
+		Main.stockRandomItems(user, rng);
+		return user;
 	}
 
 	private static void startStoreInteraction(User user, User owner, Store store, Scanner sc)
@@ -135,6 +138,7 @@ public class InteractMain
 
 	private static void startPlayerInteraction(User user, User target, Scanner sc)
 	{
+		Xorshift rng = new Xorshift(target.hashCode() | (target.getName().hashCode() << 32));
 		System.out.println(target.getName() + ": Oh, you're approaching me? Ok");
 
 		System.out.println("What you do?");
@@ -150,16 +154,112 @@ public class InteractMain
 			switch (mainSel)
 			{
 				case 0:
+					// Quit
 					return;
 				case 1:
 				{
+					// Sell items
 					Main.printUserInfo(user);
-					
-					break;
+					Item[] playerItems = user.getInventory();
+					int selectedItemIndex;
+
+					// Select item index
+					while (true)
+					{
+						selectedItemIndex = sc.nextInt();
+						if (selectedItemIndex == 0)
+						{
+							System.out.println("Cancelled");
+							return;
+						}
+						else if (selectedItemIndex >= 1 && selectedItemIndex <= playerItems.length)
+						{
+							selectedItemIndex--;
+							break;
+						}
+						
+						System.out.println("Invalid input");
+					}
+
+					Item tradedItem = playerItems[selectedItemIndex];
+					System.out.println("You want to trade 1 " + tradedItem.getName());
+
+					if (rng.nextDouble() >= 0.5)
+					{
+						// Target player make a deal of the price
+						int targetPrice = Math.min((3 + (int) (rng.nextDouble() * 13)) * 1000, target.getMoney());
+						System.out.println(target.getName() + " want it for " + targetPrice);
+						System.out.print("Agree (0/1)? ");
+
+						int choice = -1;
+						while (choice != 0 && choice != 1)
+							choice = sc.nextInt();
+						
+						if (choice == 1)
+						{
+							// Player agrees
+							System.out.println("You traded one " + tradedItem.getName() + " for " + targetPrice);
+							target.addItem(tradedItem.separate(1));
+							target.giveMoney(user, targetPrice);
+						}
+						else
+							System.out.println("You declined.");
+					}
+					else
+					{
+						int targetPrice = Integer.MIN_VALUE;
+						System.out.println(target.getName() + " asks for price");
+						System.out.print("How much is the price of the item?");
+						while (targetPrice <= 0)
+						{
+							if (targetPrice != Integer.MIN_VALUE)
+								System.out.println("Invalid price");
+							targetPrice = sc.nextInt();
+						}
+						
+						double chance = (double) targetPrice / (double) target.getMoney();
+						if (rng.nextDouble() >= chance)
+						{
+							// Target player agrees
+							System.out.println("You traded one " + tradedItem.getName() + " for " + targetPrice);
+							target.addItem(tradedItem.separate(1));
+							target.giveMoney(user, targetPrice);
+						}
+						else
+							System.out.println(target.getName() + " declined");
+					}
+					return;
 				}
 				case 2:
 				{
-					break;
+					// Buy items
+					Item[] targetItems = target.getInventory();
+					Item selectedItem = targetItems[(int) (rng.nextDouble() * targetItems.length)];
+					int price = (3 + (int) (rng.nextDouble() * 13)) * 1000;
+
+					System.out.println(target.getName() + " want to trade one " + selectedItem.getName() + " for " + price);
+					System.out.print("Agree (0/1)? ");
+					
+					int choice = -1;
+					while (choice != 0 && choice != 1)
+						choice = sc.nextInt();
+					
+					if (choice == 1)
+					{
+						// You agree
+						if (user.getMoney() >= price)
+						{
+							System.out.println(target.getName() + " tradeed one " + selectedItem.getName() + " for " + price);
+							user.addItem(selectedItem.separate(1));
+							user.giveMoney(target, price);
+						}
+						else
+							System.out.println("You don't have enough money");
+					}
+					else
+						System.out.println("You declined.");
+
+					return;
 				}
 				default:
 				{
@@ -237,6 +337,7 @@ public class InteractMain
 					public void action(User u, Scanner sc)
 					{
 						startPlayerInteraction(u, target, sc);
+						actions.remove(this);
 					}
 				});
 			}
