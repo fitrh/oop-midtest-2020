@@ -1,16 +1,23 @@
 Bank System
 
-Spesifikasi Project
+	Spesifikasi Project
 		• Program ini merupakan Sistem Bank Sederhana
+		
 		• Terdapat Bank yang tersimpan di dalam file (BankPark).txt, Terdapat Nasabah, 	setiap nasabah dapat memiliki lebih dari 		   1 akun, namun hanya terdapat 1 akun 	dalam 1 bank
+		
 		• Setiap Nasabah memiliki Rekening, jika nasabah memiliki akun dibeberapa bank, maka masing-masing akun memiliki detail 		  rekening yang berbeda-beda
+		
 		• Nasabah dapat melakukan aktifitas menabung, transfer dan menarik uang
+		
 		• Aktifitas menabung dan menarik uang hanya dapat dilakukan jika nasabah menggunakan akun yang sesuai dengan bank yang   		   dikunjungi
+		
 		• Untuk aktifitas transfer, terdapat nasabah lain yang ditransferkan
+		
 		• Setiap nasabah dapat melihat log aktifitas mereka, log aktifitas dikategorikan berdasarkan aktifitas menabung, 			  menarik, mentransfer dan ditarnsferkan
+		
 		• Setiap aktifitas diatas hanya dapat dilihat oleh nasabah yang bersangkutan setelah melakukan proses autentikasi
 		
-Alur Kerja
+	Alur Kerja
 		Ketika di run maka akan muncul perintah login menggunakan UserName dan password yang terdaftar di (BankPark).txt ,
 		setelah itu akan muncul diberikan menu yang bisa dipilih, seperti transfer, informasi detail, penarikan uang dan 			sebagainya, input harus (1,2,3,4,5,atau 0), tidak boleh salah, jika ada yang salah akan diminta untuk melakukan input 			baru.
 		
