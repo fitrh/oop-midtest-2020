@@ -1,4 +1,3 @@
-# oop-midtest-2020
 # Object Oriented Programming Mid Test Project
 
 ## Alur Pengumpulan *Project* ke Repositori Ini
