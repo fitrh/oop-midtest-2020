@@ -14,7 +14,6 @@ public class Main {
 
         while (true) {
             System.out.println("=== WELCOME TO TO-DO-LIST APP ===");
-            //System.out.println("=== X. Register Akun          ===");
             System.out.println("=== 1. Log In                 ===");
             System.out.println("=== 0. Close APP              ===");
             System.out.println("=================================");
