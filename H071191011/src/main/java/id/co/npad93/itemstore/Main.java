@@ -39,7 +39,7 @@ public class Main
 	}
 
 	/** Generate random name */
-	private static String generateName(Xorshift rng)
+	public static String generateName(Xorshift rng)
 	{
 		int syllableLength = 1 + (int) (rng.nextDouble() * 6);
 		int length = 0;
@@ -97,7 +97,7 @@ public class Main
 		ThermalSuit.uuid
 	};
 
-	private static UUID[] allItems = {
+	public static UUID[] allItems = {
 		Water.uuid,
 		HPRestorator50.uuid,
 		LP21.uuid,
@@ -208,7 +208,6 @@ public class Main
 		Item[] items = new Item[amountOfUniqueItems];
 		int[] itemPrices = new int[amountOfUniqueItems];
 		itemsToAdd.toArray(itemUUIDs);
-		System.out.println("Items in store");
 		for (int i = 0; i < amountOfUniqueItems; i++)
 		{
 			int itemAmount = 1 + (int) (rng.nextLong() & 31);
