@@ -8,7 +8,12 @@ public abstract class Burger  {
         this.jumlah = jumlah;
         this.harga = harga;
     }
-    
+    public abstract void setJenis(String jenis);
+    public abstract String getJenis();
+    public abstract void setJumlah(int jumlah);
+    public abstract int getJumlah();
+    public abstract void setHarga(double harga);
+    public abstract double getHarga();
 	public void showStatus() {
         System.out.println("Your Burger\t: " + jenis);
         System.out.printf("Harga/pc\t: Rp. %.3f" , harga);

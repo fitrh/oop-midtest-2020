@@ -1,4 +1,4 @@
-public class Addition  {
+public abstract class Addition  {
     static String jenis;
     static int jumlah;
     static double harga;
@@ -8,10 +8,12 @@ public class Addition  {
         this.jumlah = jumlah;
         this.harga = harga;
     }
-    
-	public Addition() {
-	}
-
+    public abstract void setJenis(String jenis);
+    public abstract String getJenis();
+    public abstract void setJumlah(int jumlah);
+    public abstract int getJumlah();
+    public abstract void setHarga(double harga);
+    public abstract double getHarga();
 	public void showStatus() {
         System.out.println("Your Addition\t: " + jenis);
         System.out.printf("Harga/pc\t: Rp. %.3f" , harga);
