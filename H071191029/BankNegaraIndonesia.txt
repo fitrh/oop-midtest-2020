@@ -1,0 +1,5 @@
+nisaa;191001;18;150000;annisaputriaulia@gmail.com;192001100012;Jl.Antang
+septi;112233;18;30000;septi@unhas.com;202029011100;Jl.Anditonro
+bila;123321;18;50000;bila@unhas.com;200101108833;Jl.sungai saddang
+salsa;123456;18;80000;salsasyam@unhas.com;202043328334;Jl.Perdos
+izza;654321;18;10000;izzaff@unhas.com;192020032904;Jl.Anditonro
