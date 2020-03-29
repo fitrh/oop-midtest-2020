@@ -13,7 +13,7 @@
 3. *ITEM*
    - Item memiliki nama, kuantitas, price, dan detail
    - Data Item default berasal dari Item.txt yang diinput di class DataSource
-   - Jenis Item yang dijual adalah
+   - Jenis Item antara Lain
   <br>:straight_ruler: Penggaris
   <br>:pencil2:Pulpen
   <br>:pound: Penghapus
