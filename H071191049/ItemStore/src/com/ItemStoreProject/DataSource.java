@@ -1,80 +1,141 @@
 package com.ItemStoreProject;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class DataSource {
-    private Map<String, Akun> akunMap = new HashMap<>();
-    private User[] user;
-    private Map<Integer, Store> storeMap = new HashMap<>();
-    private Map<Integer, UserProperty> userPropertyMap = new HashMap<>();
-    private Map<Integer, UserRequest> userRequest = new HashMap<>();
-    private static DataSource instance;
 
-    private DataSource(){
+    StoreOwner[] owners = getOwners();
+    private String baca (String namaFile) {
+        Path path  = Paths.get("src/com/ItemStoreProject/"+namaFile);
+        String fileContent = null;
         try {
-            putAkun();
-            putUser();
-        } catch (Exception e) {
+            fileContent = new String(Files.readAllBytes(path), StandardCharsets.ISO_8859_1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  fileContent;
+    }
+    //getPlayer
+    public Player[] getPlayer() {
+        String inputPlayer = baca("Player.txt");
+        String inputItem = baca("Item.txt");
+        String[] playerContent = inputPlayer.split("\\r?\\n");
+        String[] itemContent = inputItem.split("\\r?\\n");
+        Player[] player = new Player[playerContent.length];
+        for (int i = 0; i < playerContent.length; i++) {
+            ArrayList <Item> item = new ArrayList<>();
+            Item itemPenawaran = null;
+            String[] modifContent = playerContent[i].split(";");
+            if(modifContent[2].equals("")||modifContent[2].equals("null")){}
+            else {
+                String[] daftarItem = modifContent[2].split("-");
+                for (int j = 0; j < daftarItem.length; j++) {
+                    String[] items = daftarItem[j].split(":");
+                    String[] spekItem = itemContent[Integer.parseInt(items[0])].split(";");
+                    item.add(new Item(Integer.parseInt(spekItem[0]), spekItem[1], Integer.parseInt(spekItem[2]), Integer.parseInt(items[1]), spekItem[3]));
+                }
+            }
+            String[] itemP = new String[2];
+            itemP[1]=String.valueOf(-1);
+            if(modifContent.length!=4){}
+            else{
+                itemP = modifContent[3].split(":");
+                String[] spekItem2 = itemContent[Integer.parseInt(itemP[0])].split(";");
+                itemPenawaran = new Item(Integer.parseInt(spekItem2[0]),spekItem2[1], Integer.parseInt(spekItem2[2]),1, spekItem2[3]);
+            }
+            player[i] = new Player(modifContent[0], Integer.parseInt(modifContent[1]), item, itemPenawaran, Integer.parseInt(itemP[1]));
+        }
+        return player;
+    }
+    //getStore
+    public StoreOwner[] getOwners() {
+        String inputStore = baca("Owner.txt");
+        String inputItem = baca("Item.txt");
+        String[] storeContent = inputStore.split("\\r?\\n");
+        String[] itemContent = inputItem.split("\\r?\\n");
+        owners = new StoreOwner[storeContent.length];
+        for (int i = 0; i < storeContent.length; i++) {
+            ArrayList <Item> item = new ArrayList<>();
+            String[] modifContent = storeContent[i].split(";");
+            String[] daftarItem = modifContent[2].split("-");
+            for (int j = 0; j < daftarItem.length; j++) {
+                String[] items = daftarItem[j].split(":");
+                String[] spekItem = itemContent[Integer.parseInt(items[0])].split(";");
+                item.add(new Item(Integer.parseInt(spekItem[0]),spekItem[1], Integer.parseInt(spekItem[2]), Integer.parseInt(items[1]), spekItem[3]));
+            }
+            owners[i] = new StoreOwner(modifContent[0], Integer.parseInt(modifContent[1]), item);
+        }
+        return owners;
+    }
+    public Store[] getStore(){
+        String inputStore = baca("Store.txt");
+        String[] storeContent = inputStore.split("\\r?\\n");
+        Store[] store = new Store[storeContent.length];
+        for (int i = 0; i < storeContent.length; i++) {
+            String[] modifContent = storeContent[i].split(";");
+            store[i] = new Store(owners[Integer.parseInt(modifContent[0])], modifContent[1], Integer.parseInt(modifContent[2]), modifContent[3]);
+        }
+        return store;
+    }
+    public void saveData(Store[] updateStores, StoreOwner[] updateOwner, Player[] updatePlayer){
+        Path playerPath = Paths.get("src/com/ItemStoreProject/Player.txt");
+        Path storePath = Paths.get("src/com/ItemStoreProject/Store.txt");
+        Path ownerPath = Paths.get("src/com/ItemStoreProject/Owner.txt");
+        String[] store = new String[updateStores.length];
+        String[] player = new String [updatePlayer.length];
+        String[] owner = new String [updateOwner.length];
+        for(int i=0;i<updateStores.length;i++){
+            if(updateStores[i]==null){
+                store[i]="";
+            }else {
+                store[i] = i + ";" + updateStores[i].getName() + ";" + updateStores[i].getPenjualan() + ";" + updateStores[i].getMotto();
+            }
+        }
+        for(int i=0;i<updatePlayer.length;i++){
+            if(updatePlayer[i]==null){
+                player[i]="";
+            }else{
+                player[i] = updatePlayer[i].getName()+";"+updatePlayer[i].getMoney()+";";
+                for(int j=0;j<updatePlayer[i].getItems().size();j++){
+                    player[i]+=updatePlayer[i].getItems().get(j).getId()+":"+updatePlayer[i].getItems().get(j).getKuantitas()+"-";
+                }
+                if(updatePlayer[i].getPenawaran().getItemDitawarkan()==null){
+                    player[i]+=";";
+                }else{
+                    player[i] += ";"+updatePlayer[i].getPenawaran().getItemDitawarkan().getId()+":"+updatePlayer[i].getPenawaran().getHargaPenawaran();
+                }
+            }
+        }
+        for(int i=0;i<updateOwner.length;i++){
+            if(updateOwner[i]==null){
+                owner[i]="";
+            }
+            else{
+                owner[i] = updateOwner[i].getName()+";"+updateOwner[i].getMoney()+";";
+                for(int j=0;j<updateOwner[i].getItems().size();j++){
+                    owner[i]+=updateOwner[i].getItems().get(j).getId()+":"+updateOwner[i].getItems().get(j).getKuantitas()+"-";
+                }
+            }
+        }
+        try {
+            write(store, storePath);
+            write(player, playerPath);
+            write(owner, ownerPath);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static DataSource getInstance() {
-        if (instance == null) {
-            instance = new DataSource();
+    private void write(String[] input, Path pathIn) throws IOException {
+        String in = "";
+        for(int i=0;i<input.length;i++){
+            in+=input[i]+"\n";
         }
-        return instance;
-    }
-
-    private String baca (String namaFile) throws Exception{
-        Path path  = Paths.get("src/com/ItemStoreProject/"+namaFile);
-        String fileContent = new String(Files.readAllBytes(path), StandardCharsets.ISO_8859_1);
-        return  fileContent;
-    }
-
-    private void putAkun() throws Exception {
-        String inputAkun = baca("Akun.txt");
-        String[] content = inputAkun.split("\\r?\\n");
-
-        for (int i=0;i<content.length;i++) {
-            String[] modifContent = content[i].split(";");
-            int id = Integer.parseInt(modifContent[0]);
-            akunMap.put(modifContent[1], (new Akun(id, modifContent[1], modifContent[2])));
-        }
-    }
-    private void putUser() throws Exception {
-        String inputUser = baca("User.txt");
-        String[] content = inputUser.split("\\r?\\n");
-
-        for (int i=0;i<content.length;i++) {
-            Map <String, Integer> myItem = new HashMap<>();
-            String[] modifContent = content[i].split(";");
-            user = new User[content.length];
-            String[] daftarItem = content[4].split(",");
-            for(int j=0;j<daftarItem.length;j++){
-                String[] item = daftarItem[i].split(":");
-                myItem.put(item[0],Integer.parseInt(item[1]));
-            }
-            if(modifContent[0].equals("S")){
-                user[i] = new StoreOwner(Integer.parseInt(modifContent[1]),modifContent[2],Integer.parseInt(modifContent[3]), myItem);
-            }else if(modifContent[0].equals("P")){
-                user[i] = new Player(Integer.parseInt(modifContent[1]),modifContent[2],Integer.parseInt(modifContent[3]), myItem);
-            }
-        }
-    }
-    public User getUser (int id){
-        for(int i=0;i<user.length;i++){
-            if(user[i].getId()==id){
-                return user[i];
-            }
-        }
-        return null;
-    }
-    public Akun getAkun (String name){
-        return akunMap.get(name);
+        Files.write(pathIn,in.getBytes(StandardCharsets.ISO_8859_1));
+        assert(Files.exists(pathIn));
     }
 }

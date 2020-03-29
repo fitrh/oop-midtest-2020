@@ -1,2 +1,0 @@
-S;1;Toko Senjata Serba;50000000;S1897:10,Micro UZI:12,M416:8,AK47:8,Kar98k:5
-P;2;Jack Ma;35000000;M416:1

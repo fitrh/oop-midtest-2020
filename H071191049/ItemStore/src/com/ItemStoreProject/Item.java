@@ -1,9 +1,39 @@
 package com.ItemStoreProject;
+class Item{
+    private String name;
+    private int price;
+    private int kuantitas;
+    private String info;
+    private int id;
 
-public class Item {
-    String name;
-    String jenis;
-    String info;
-    int kuantitas;
-    double ukuranPeluru;
+    //Konstruktor Item
+    Item(int id, String name, int price, int kuantitas ,String info){
+        this.name = name;
+        this.price = price;
+        this.kuantitas = kuantitas;
+        this.info = info;
+        this.id = id;
+    }
+
+    //getter
+    public String getName(){
+        return name;
+    }
+    public String getInfo(){
+        return info;
+    }
+    public int getPrice(){
+        return price;
+    }
+    public int getKuantitas(){
+        return kuantitas;
+    }
+    public int getId(){
+        return id;
+    }
+
+    //setter
+    public void setKuantitas(int kuantitas){
+        this.kuantitas = kuantitas;
+    }
 }
