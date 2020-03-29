@@ -33,6 +33,8 @@ public class Menu {
                 System.out.println("1. Profil");
                 System.out.println("2. Kartu Rencana Studi");
                 System.out.println("3. Daftar Mata Kuliah");
+                System.out.println("4. Lihat IPS");
+                System.out.println("5. Logout");
                 System.out.print("> ");
                 choose = sc.nextInt();
                 sc.nextLine();
@@ -41,12 +43,26 @@ public class Menu {
                     case 1:
                         mahasiswa = MahasiswaData.getMahasiswa(userName);
                         mahasiswa.show();
+                        Checkout();
                         break;
                     case 2:
-                            menuKRS();
+                        menuKRS();
+                        Checkout();
                         break;
                     case 3:
                         matKulData.showMatKul();
+                        Checkout();
+                        break;
+                    case 4:
+                        Checkout();
+                        break;
+                    case 5:
+                        System.out.println("Anda Yakin ? (Y/N)");
+                        System.out.print("> ");
+                        pilih = sc.nextLine();
+                        if (pilih.equalsIgnoreCase("Y")) {
+                            Login.getInstance(); 
+                        }
                         break;
                     default:
                         System.out.println("Mohon memasukkan inputan yang benar");
@@ -78,6 +94,7 @@ public class Menu {
                 System.out.println("\n-- Menu --");
                 System.out.println("1. Profil");
                 System.out.println("2. Mahasiswa yang Dibimbing");
+                System.out.println("3. Logout");
                 System.out.print("> ");
                 choose = sc.nextInt();
                 sc.nextLine();
@@ -86,25 +103,21 @@ public class Menu {
                     case 1:
                         dosenPA = dosenPAData.getDosen(userName);
                         dosenPA.show();
+                        Checkout();
                         break;
                     case 2:
                         dosenPA.showMahasiswaBimbingan();
+                        Checkout();
+                    case 3:
+                        System.out.println("Anda Yakin ? (Y/N)");
+                        System.out.print("> ");
+                        pilih = sc.nextLine();
+                        if (pilih.equalsIgnoreCase("Y")) {
+                            Login.getInstance();
+                        }
+                        break;
                     default:
                         break;
-                }
-
-                System.out.println("\nAnda ingin keluar dari Menu Dosen ? (Y/N)");
-                System.out.print("> ");
-                pilih = sc.nextLine();
-
-                if (pilih.equalsIgnoreCase("Y")) {
-                    System.out.println("Logout ? (Y/N)");
-                    System.out.print("> ");
-                    pilih = sc.nextLine();
-
-                    if (pilih.equalsIgnoreCase("Y")) {
-                        break;
-                    }
                 }
             }
         } catch (Exception e) {
@@ -140,5 +153,15 @@ public class Menu {
                 break;
             }
         }
+    }
+
+    public boolean Checkout() {
+        System.out.println("\nAnda ingin keluar dari Menu ? (Y/N)");
+        System.out.print("> ");
+        pilih = sc.nextLine();
+        if (pilih.equalsIgnoreCase("Y")) {
+            return loop = false;
+        }
+        return true;
     }
 }
