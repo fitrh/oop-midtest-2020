@@ -12,12 +12,12 @@
 - Dosen Pembimbing dapat melihat daftar Mahasiswa bimbingannya beserta detail dari Mahasiswa tersebut, termasuk mengenai Matakuliah yang diambil
 - Setiap Mahasiswa dapat melihat detail dari daftar Matakuliah yang diambil
 - 1 Matakuliah hanya dapat diambil 1 kali
-- Terdapat aktifitas untuk melihat nilai IPS
+- Terdapat aktivitas untuk melihat nilai IPS
 - Setiap Mahasiswa hanya dapat melihat data miliknya
 
 ## Spesifikasi *Project*
 
-### Dalam project ini terdapat 8 file dengan ekstensi .java dan 5 file dengan ekstensi .txt dengan penjelsan sebagai berikut
+### Dalam project ini terdapat 8 file dengan ekstensi .java dan 5 file dengan ekstensi .txt dengan penjelasan sebagai berikut
 
 - *Mahasiswa.java*, di dalamnya terdapat kelas Mahasiswa yang memiliki data yang dapat dimiliki yang oleh mahasiswa seperti nama, alamat email, serta nama dosen pembimbingnya
 
