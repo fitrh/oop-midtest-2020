@@ -11,24 +11,23 @@
 ---
 
 1. [English](#english)
-1. [How to run](#how-to-run)
+   1. [How to run](#how-to-run)
    2. [Concepts used](#concepts-used)
-   3. [Login Details](#login-details-(en))
-   4. [FAQ](#faq-(en))
+   3. [Login Details](#login-details-en)
+   4. [FAQ](#faq-en)
    
 2. [Bahasa Indonesia](#bahasa-indonesia)
-
    1. [Cara menjalankan](#cara-menjalankan)
    2. [Konsep yang digunakan](#konsep-yang-digunakan)
-   3. [Login Details](#login-details-(id))
-   4. [FAQ](#faq-(id))
+   3. [Login Details](#login-details-id)
+   4. [FAQ](#faq-id)
 
 
 ---
 
 ## English
 
-###How to run 
+### How to run 
 
 1. **Clone** this repository
 
@@ -46,7 +45,7 @@
 
    ![](/Users/Mac/Desktop/Programming/oop-midtest-2020/H071191003/Banking_System/assets/Screen Shot 2020-03-28 at 9.28.11 pm.png)
 
-###Concepts used
+### Concepts used
 
 1. **Class & Object**
 
@@ -71,7 +70,7 @@
 
    This consept can be seen in the **printTransactionLog()** method of the **Portal** class (line 141-187)
 
-### Login details (en)
+### Login details-en
 
 These are the login details to the pre-made accounts
 
@@ -83,7 +82,7 @@ These are the login details to the pre-made accounts
 |  4   |   BTN   | Arsyi Syarief Aziz |    3000001     | H071191003 |
 |  5   | MANDIRI | Arsyi Syarief Aziz |    4000001     | H071191003 |
 
- ### FAQ (en)
+ ### FAQ-en
 
 1. <u>**Why did you use java.io not java.nio?**</u>
 
@@ -157,7 +156,7 @@ These are the login details to the pre-made accounts
 
 ## Bahasa Indonesia
 
-###Cara menjalankan
+### Cara menjalankan
 
 1. **Clone** repository ini
 
@@ -175,7 +174,7 @@ These are the login details to the pre-made accounts
 
    ![Screen Shot 2020-03-28 at 9.28.11 pm](/Users/Mac/Desktop/Programming/oop-midtest-2020/H071191003/Banking_System/assets/Screen Shot 2020-03-28 at 9.28.11 pm.png)
 
-###Konsep yang digunakan
+### Konsep yang digunakan
 
 1. **Class & Object**
 
@@ -200,7 +199,7 @@ These are the login details to the pre-made accounts
 
    Konsep ini dapat dilihat di method **printTransactionLog()** dari class **Portal** (baris 141-187)
 
-### Login details (id)
+### Login details-id
 
 Berikut adalah *login details* dari akun yang telah dibuat
 
@@ -212,7 +211,7 @@ Berikut adalah *login details* dari akun yang telah dibuat
 |  4   |   BTN   | Arsyi Syarief Aziz |  3000001   | H071191003 |
 |  5   | MANDIRI | Arsyi Syarief Aziz |  4000001   | H071191003 |
 
- ### FAQ (id)
+ ### FAQ-id
 
 1. <u>**Kenapa Anda menggunakan java.io, bukan java.nio**</u>
 
