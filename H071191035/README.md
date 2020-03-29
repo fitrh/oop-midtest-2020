@@ -139,3 +139,29 @@ Jumlah satuan kredit    : 3
 JUMLAH TOTAL SKS : 3
 -------------------------
 ```
+
+## Konsep Object Oriented Programming
+
+### Class & Object
+
+ Diterapkan hampir pada semua kelas
+
+### Attribute, Behavior, & Constructor
+
+Diterapkan hampir pada semua kelas
+
+### Encapsulation
+
+Diterapkan juga hampir pada semua kelas, utamanya adalah pembuatan *getter* pada suatu kelas
+
+### Inheritance
+
+Diterapkan pada *interface* *Dosen* ke kelas *DosenPa* yaitu mewariskan method *abstract* didalamnya
+
+### Abstract & Interface
+
+Diterapkan pada *interface Dosen* yang memiliki method *abstract* di dalamnya yang kemudian di*implements* ke kelas *DosenPa* dan pada kelas *DosenPa* melakukan *Override* pada setiap method dalam *interface Dosen* sebagai bentuk keharusan
+
+### Polymorphism
+
+Tidak diterapkan karena masih kebingungan ingin diaplikasikan pada bagian apa di program
