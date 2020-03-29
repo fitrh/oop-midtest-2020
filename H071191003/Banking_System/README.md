@@ -43,7 +43,7 @@
 
 5. This will appear
 
-   ![](/Users/Mac/Desktop/Programming/oop-midtest-2020/H071191003/Banking_System/assets/Screen Shot 2020-03-28 at 9.28.11 pm.png)
+   <p align="center"><img src="assets/Screen Shot 2020-03-28 at 9.28.11 pm.png" alt="Class Diagram" title="Class Diagram"></p>
 
 ### Concepts used
 
@@ -172,7 +172,7 @@ These are the login details to the pre-made accounts
 
 5. Berikut akan muncul
 
-   ![Screen Shot 2020-03-28 at 9.28.11 pm](/Users/Mac/Desktop/Programming/oop-midtest-2020/H071191003/Banking_System/assets/Screen Shot 2020-03-28 at 9.28.11 pm.png)
+      <p align="center"><img src="assets/Screen Shot 2020-03-28 at 9.28.11 pm.png" alt="Class Diagram" title="Class Diagram"></p>
 
 ### Konsep yang digunakan
 
@@ -227,7 +227,7 @@ Berikut adalah *login details* dari akun yang telah dibuat
 
    ​	**Baris pertama :** nama;kata sandi;nomor akun;nomor ktp
 
-   ​	**Barisan setelah baris pertama** (Transaction Log):** 
+   ​	**Barisan setelah baris pertama (Transaction Log):** 
 
    ​		jenis transaksi;tanggal;jumlah;destinasi/sumber of transaksi
 
