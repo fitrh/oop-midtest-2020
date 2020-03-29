@@ -94,7 +94,7 @@ public class Mahasiswa {
     public void isiKRS() {
         try {
             while (true) {
-                System.out.println("-- Daftar Mata Kuliah --");
+                System.out.println("\n-- Daftar Mata Kuliah --");
                 for (int i = 0; i < matKulData.getMataKuliah().size(); i++) {
                     System.out.printf("%d. %s (%d)\n", (i + 1), matKulData.getMataKuliah().get(i).getNameCourse(), 
                                         matKulData.getMataKuliah().get(i).getSksCourse());
@@ -132,7 +132,7 @@ public class Mahasiswa {
                 System.out.println("Tidak ada mata kuliah yang diprogramkan");
             } else {
                 while (true) {
-                    System.out.println("--Kartu Rencana Studi--");
+                    System.out.println("\n--Kartu Rencana Studi--");
                     for (int i = 0; i < krs.size(); i++) {
                         System.out.printf("%d. %s\n", (i + 1), krs.get(i).getNameCourse());
                     }
@@ -163,7 +163,7 @@ public class Mahasiswa {
         if (getSKS() <= 0) {
             System.out.println("Anda Belum Mengisi KRS");
         } else {
-            System.out.println("--Kartu Rencana Studi--");
+            System.out.println("\n--Kartu Rencana Studi--");
             for (int i = 0; i < krs.size(); i++) {
                 System.out.printf("%d. %s\n",(i + 1), krs.get(i).getNameCourse());
             }
