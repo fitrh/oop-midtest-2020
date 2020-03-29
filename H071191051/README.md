@@ -26,6 +26,7 @@ Fitur yang di tambahkan :
       
 - *project* memiliki sebuah *data base* yaitu *kegiatan.txt* untuk menampung kegiatan dari *User* dengan format perbaris berupa *`nama kegiatan(tanpa spasi);nama kegiatan;jadwal;prioritas;status;deskripsi`*
 - **(Penting)** apabila ingin mengubah jadwal kegiatan lewat file *kegiatan.txt*, maka sertakan 1 baris baru yang kosong setelah jadwal kegiatan terakhir
+![Screenshot](https://github.com/fajri-rasid1st/oop-midtest-2020/blob/H071191051/H071191051/image.png)
   
 #### Alur Kerja *Project*
 - untuk menjalankan simulasi *project*, buka dan jalankan *class* *`Main.java`*
