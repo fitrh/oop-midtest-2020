@@ -10,8 +10,7 @@
       <change beforePath="$PROJECT_DIR$/src/com/bank/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bank/MandaraBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/MandaraBank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bank/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bank/Nasabah.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/Nasabah.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bank/NasabahDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/NasabahDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/RekeningDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/RekeningDetail.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,22 +90,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585185834263" />
-    <state width="1237" height="189" key="GridCell.Tab.0.bottom" timestamp="1585306167219">
+    <state width="1237" height="280" key="GridCell.Tab.0.bottom" timestamp="1585463830598">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="189" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585306167219" />
-    <state width="1237" height="189" key="GridCell.Tab.0.center" timestamp="1585306167219">
+    <state width="1237" height="280" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state width="1237" height="280" key="GridCell.Tab.0.center" timestamp="1585463830598">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="189" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585306167219" />
-    <state width="1237" height="189" key="GridCell.Tab.0.left" timestamp="1585306167219">
+    <state width="1237" height="280" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state width="1237" height="280" key="GridCell.Tab.0.left" timestamp="1585463830598">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="189" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585306167219" />
-    <state width="1237" height="189" key="GridCell.Tab.0.right" timestamp="1585306167219">
+    <state width="1237" height="280" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state width="1237" height="280" key="GridCell.Tab.0.right" timestamp="1585463830598">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="189" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585306167219" />
+    <state width="1237" height="280" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1585189781709">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

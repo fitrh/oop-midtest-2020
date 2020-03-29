@@ -10,7 +10,7 @@ public class Login  {
     Scanner inp = new Scanner(System.in);
 
     public void menuMandara() throws IOException {
-        System.out.println("\n----Login----");
+        System.out.println("\n\t----- Login -----");
         System.out.print("User : ");
         String userName = inp.next();
         System.out.print("pin : ");
@@ -19,7 +19,7 @@ public class Login  {
     }
 
     public void menuBacaBank() throws IOException {
-        System.out.println("\n----Login----");
+        System.out.println("\n\t----- Login -----");
         System.out.print("User : ");
         String userName = inp.next();
         System.out.print("pin : ");
@@ -28,7 +28,7 @@ public class Login  {
     }
 
     public void menuBroBank() throws IOException {
-        System.out.println("\n----Login----");
+        System.out.println("\n\t----- Login -----");
         System.out.print("User : ");
         String userName = inp.next();
         System.out.print("pin : ");
@@ -42,11 +42,11 @@ public class Login  {
 
         if (pin.equals(nasabah.getPin())){
             accept = true;
-            System.out.print("Login Berhasil");
+            System.out.print("Login Succes!");
             nd = dataSource.getNasabahDetail(filename,nasabah.getId());
 
         } else {
-            System.out.print("Login Gagal");
+            System.out.print("Login Failed!");
             nd = null;
             return;
         }
@@ -61,13 +61,24 @@ public class Login  {
             System.out.println("NoSuchElementException");
         }
         else {
+            System.out.println("_______________Info Nasabah_____________");
             System.out.println("Name           : " + nd.getName());
             System.out.println("Money          : " + bank.getMoney());
             System.out.println("Bank Name      : " + nd.getBankName());
             System.out.println("Rekening Number: " + nd.getRekening());
             System.out.println("User           : " + nd.getUserName());
             System.out.println("Pin            : " + nd.getPin());
+            System.out.println("________________________________________");
+
         }
+    }
+
+    public void infoNasabah(){
+        System.out.println("___________________________________");
+        System.out.println("  Name       : " + nd.getName());
+        System.out.println("  Bank Name  : " + nd.getBankName());
+        System.out.println("  Rekening   : " + nd.getRekening());
+        System.out.println("____________ Activity______________");
     }
 
 

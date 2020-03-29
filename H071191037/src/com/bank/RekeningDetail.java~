@@ -9,15 +9,12 @@ public class RekeningDetail {
         this.rekening = rekening;
     }
 
-    public String getRekening() {
-        return rekening;
+    public String getNameRekening() {
+        return name;
     }
 
     public String getBankName() {
         return bankName;
     }
-
-    public String getName() {
-        return name;
-    }
 }
+

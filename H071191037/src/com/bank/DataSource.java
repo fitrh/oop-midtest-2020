@@ -3,6 +3,7 @@ package com.bank;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ public class DataSource {
     private Map<String, Nasabah> nasabahMap = new HashMap<>();
     private Map<String, RekeningDetail> rekeningMap = new HashMap<>();
     private Map <Integer, NasabahDetail> nasabahDetailMap = new HashMap<>();
+    protected ArrayList<String> transactionslog;
 
 
     String read(String fileName) throws IOException {
@@ -83,6 +85,14 @@ public class DataSource {
         }
     }
 
+    public void setTransactionslog(String data){
+        transactionslog.add(data);
+    }
+
+    public ArrayList<String> getTransactionslog() {
+        return transactionslog;
+    }
+
     public RekeningDetail getRekening(String filename, String key) throws IOException {
         putRekening(filename);
         return rekeningMap.get(key);
@@ -97,5 +107,4 @@ public class DataSource {
         putNasabahDetail(fileName);
         return nasabahDetailMap.get(key);
     }
-
 }
