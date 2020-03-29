@@ -55,7 +55,8 @@ public class Main {
                         System.out.println("1. Lihat profil");
                         System.out.println("2. Tambah Mata Kuliah");
                         System.out.println("3. Hapus Mata Kuliah");
-                        System.out.println("4. Logout");
+                        System.out.println("4. Informasi IPS");
+                        System.out.println("5. Logout");;
                         System.out.print("Masukkan pilihan => ");
                         a = scan.nextInt();
 
@@ -115,6 +116,8 @@ public class Main {
                             }
 
                         // logout akun mahasiswa
+                        } else if (a == 4) {
+                            login.getUser().showIps();
                         } else {
                             login.logout();
                             break;
