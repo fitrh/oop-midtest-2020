@@ -14,15 +14,15 @@
    - Item memiliki nama, kuantitas, price, dan detail
    - Data Item default berasal dari Item.txt yang diinput di class DataSource
    - Jenis Item yang dijual adalah
-     1):straight_ruler: Penggaris
-     2):pencil2:Pulpen
-     3):pound: Penghapus
-     4):closed_book: Buku 
-     5):black_nib: Jangkar
-     6):scissors: Gunting
-     7):purse: Krayon
-     8):notebook: Kamus
-     9):vibration_mode: Kalkulator
+  <br>:straight_ruler: Penggaris
+  <br>:pencil2:Pulpen
+  <br>:pound: Penghapus
+  <br>:closed_book: Buku 
+  <br>:black_nib: Jangkar
+  <br>:scissors: Gunting
+  <br>:purse: Krayon
+  <br>:notebook: Kamus
+  <br>:vibration_mode: Kalkulator
 3. *Player*
    - Player Memiliki Nama, Uang, dan Item
    - Player Bisa Memiliki Lebih dari Satu Item
