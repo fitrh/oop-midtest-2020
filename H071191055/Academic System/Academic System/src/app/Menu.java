@@ -54,10 +54,12 @@ public class Menu {
                         Checkout();
                         break;
                     case 4:
+                        mahasiswa = MahasiswaData.getMahasiswa(userName);
+                        mahasiswa.showIPS();
                         Checkout();
                         break;
                     case 5:
-                        System.out.println("Anda Yakin ? (Y/N)");
+                        System.out.println("\nAnda Yakin ? (Y/N)");
                         System.out.print("> ");
                         pilih = sc.nextLine();
                         if (pilih.equalsIgnoreCase("Y")) {
@@ -98,7 +100,7 @@ public class Menu {
                         Checkout();
                         break;
                     case 3:
-                        System.out.println("Anda Yakin ? (Y/N)");
+                        System.out.println("\nAnda Yakin ? (Y/N)");
                         System.out.print("> ");
                         pilih = sc.nextLine();
                         if (pilih.equalsIgnoreCase("Y")) {
@@ -150,7 +152,7 @@ public class Menu {
         System.out.print("> ");
         pilih = sc.nextLine();
         if (pilih.equalsIgnoreCase("Y")) {
-            return loop = false;
+            return loop = true;
         }
         return true;
     }

@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Mahasiswa
@@ -18,6 +19,7 @@ public class Mahasiswa {
     private MatKulData matKulData;
     private int index;
     private String pilih;
+    private double ips;
     
     public Mahasiswa(int id, String userName, String password, DetailMahasiswa DetailMahasiswa) {
         this.id = id;
@@ -25,6 +27,7 @@ public class Mahasiswa {
         this.password = password;
         this.DetailMahasiswa = DetailMahasiswa;
         sks = 0;
+        ips = ThreadLocalRandom.current().nextDouble(2, 4.0001);
     }
 
     public Mahasiswa() throws IOException {
@@ -34,6 +37,10 @@ public class Mahasiswa {
 
     public int getSKS() {
         return sks;
+    }
+
+    public double getIPS() {
+        return ips;
     }
 
     public int getId() {
@@ -54,6 +61,11 @@ public class Mahasiswa {
 
 	public DetailMahasiswa getDetailMahasiswa() {
 		return DetailMahasiswa;
+    }
+
+    public void showIPS() {
+        System.out.printf("\nIPS dari %s", DetailMahasiswa.getName());
+        System.out.printf("\nIPS : %.2f\n", getIPS());
     }
 
     public void show() {
