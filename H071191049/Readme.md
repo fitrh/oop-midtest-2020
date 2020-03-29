@@ -19,6 +19,7 @@
    - Player Bisa Menjual Item dengan menambahkannya ke daftar Penawaran
    - Item yang ditambahkan ke daftar penawaran Pindah dari Item milik Player
    - Player Bisa Menentukan harga Item untuk ditawarkan
+   - Player Bisa Berubah Jadi StoreOwner dengan Membangun Toko
 4. *Store*
    - Tiap Store Memiliki Owner
    - Item Miliki Store adalah Item Milik Owner
@@ -51,6 +52,11 @@
 <img src="https://user-images.githubusercontent.com/54715920/77844191-eb217580-71d6-11ea-93dc-de672d3207a6.gif" width="240">
 
 ## D. PENGGUNAAN OBJECT ORIENTED
+1. Class and Object, Class dan Object digunakan hampir diseluruh bagian Project ini
+2. Encapsulasi, Encapsulasi juga digunakan pada beberapa bagian seperti attribute private dll.
+3. Inheritance, Inheritance digunakan pada pewarisan class User oleh class Player dan StoreOwner
+4. Abstrak dan Interface, Abstrak tidak saya gunakan karena tidak terlalu tau penggunaannya dan projek saya masih sederhana jadi mungkin tidak perlu pake Abstrak, sedangkan Interface saya gunakan untuk mengimplementasikan Penawaran pada Class Player (Meskipun tidak ada tetap bisa)
+5. Polymerpisme, Polymerpisme terdapat pada method yang dioverriding dari class User ke class Player dan StoreOwner
 
 ## E. HAL YANG INGIN DI IMPROVE
 1. Membuat Menu Untuk Membuat User
