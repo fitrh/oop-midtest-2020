@@ -35,8 +35,8 @@ public class Main {
             if (a == 1) {
 
                 System.out.println("--MENU--");
-                System.out.println("1. Login mahasiswa");
-                System.out.println("2. Login dosen");
+                System.out.println("1. Login Mahasiswa");
+                System.out.println("2. Login Dosen");
                 System.out.print("Masukkan pilihan => ");
                 a = scan.nextInt();
 
@@ -52,7 +52,7 @@ public class Main {
                     // perulangan menu mahasiswa
                     while(login.authMahasiswa(userName, password)) {
                         System.out.println("--WELCOME MAHASISWA--");
-                        System.out.println("1. Lihat profil");
+                        System.out.println("1. Lihat Profil");
                         System.out.println("2. Tambah Mata Kuliah");
                         System.out.println("3. Hapus Mata Kuliah");
                         System.out.println("4. Informasi IPS");
@@ -136,8 +136,8 @@ public class Main {
                     // perulangan menu dosen
                     while(login.authDosen(userName, password)) {
                         System.out.println("--WELCOME DOSEN--");
-                        System.out.println("1. Lihat profil");
-                        System.out.println("2. Lihat mahasiswa bimbingan");
+                        System.out.println("1. Lihat Profil");
+                        System.out.println("2. Lihat Mahasiswa Bimbingan");
                         System.out.println("3. Logout");
                         System.out.print("Masukkan pilihan  => ");
                         a = scan.nextInt();
