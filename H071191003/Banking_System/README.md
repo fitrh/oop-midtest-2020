@@ -51,7 +51,7 @@
 
 2. **Inheritance**
 
-   All classes in the package **com.bankingsystem.transactionlog** implements encapsulation
+   All classes in the package **com.bankingsystem.transactionlog** implements inheritance
 
    | Type            | Class Name                                                   |
    | --------------- | ------------------------------------------------------------ |
