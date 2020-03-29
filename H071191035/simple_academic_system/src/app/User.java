@@ -2,6 +2,7 @@ package app;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 /**
@@ -17,9 +18,8 @@ public class User {
     private int sksTerdaftar;
     private double ipk;
     private List<MataKuliah> matkul = new ArrayList<>();
-    private HashMap<String, Integer> ipsMap = new HashMap<>();
-    String[] matkuls = {"Matematika Dasar", "Pengantar Pemrograman", "WSBM", "Fisika Dasar", "Kimia Dasar", "Biologi Dasar", "Pancasila"};
-    List<String> listMatkul = new ArrayList<>();
+    String[] matkuls = {"Matematika Dasar (3 SKS)", "Pengantar Pemrograman (3 SKS)", "WSBM (2 SKS)", "Fisika Dasar (2 SKS)", "Kimia Dasar (2 SKS)", "Biologi Dasar (2 SKS)", "Pancasila (2 SKS)"};
+    HashSet<String> listMatkul = new HashSet<>();
     private Random rand = new Random();
     
     // constructor
@@ -30,15 +30,7 @@ public class User {
        this.mahasiswa = mahasiswa;
        ipk = (rand.nextFloat() * (4.01 - 2.75)) + 2.75;
 
-       ipsMap.put("Matematika Dasar", 3);
-        ipsMap.put("Pengantar Pemrograman", 3);
-        ipsMap.put("WSBM", 2);
-        ipsMap.put("Fisika Dasar", 2);
-        ipsMap.put("Kimia Dasar", 2);
-        ipsMap.put("Biologi Dasar", 2);
-        ipsMap.put("Pancasila", 2);
-
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < matkuls.length; i++) {
             listMatkul.add(matkuls[rand.nextInt(matkuls.length - 1)]);
         }
    }
@@ -154,12 +146,10 @@ public class User {
     // show IPS
     public void showIps() {
         System.out.printf("Berikut adalah IPS semester lalu dari user %s\n", getUserName());
-        for (int i = 0; i < listMatkul.size(); i++) {
-            System.out.printf("Nama mata kuliah : %s\n", listMatkul.get(i));
-            System.out.printf("Jumlah kredit    : %d\n", ipsMap.get(listMatkul.get(i)));
-            System.out.println();
+        for (String element : this.listMatkul) {
+            System.out.println(element);;
         }
-        System.out.printf("IPK\t\t : %.2f\n", ipk);
+        System.out.printf("IPK : %.2f\n", ipk);
         System.out.println("-------------------------");
     }
 
