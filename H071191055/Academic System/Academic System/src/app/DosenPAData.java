@@ -10,7 +10,8 @@ public class DosenPAData {
 
     private Map<String, DosenPA> dosenMap = new HashMap<>();
     private Map<Integer, DetailDosenPA> detailDosenMap = new HashMap<>();
-    private ArrayList<Mahasiswa> mahasiswaBimbinganList = new ArrayList<>();
+    private Map<Integer, ArrayList<String>> mahasiswaBimbingamMap = new HashMap<>();
+    private ArrayList<String> userNameMahasiswaBimbinganList = new ArrayList<>();
     private MahasiswaData mahasiswaData;
 
     public DosenPAData() throws IOException {
@@ -50,21 +51,23 @@ public class DosenPAData {
         reader.close();
     }
 
-    public void listMahasiswaBimbingan() throws IOException{
+    public void listMahasiswaBimbingan() throws IOException {
         FileReader file = new FileReader("MahasiswaBimbingan.txt");
         BufferedReader reader = new BufferedReader(file);
-        String tempData[];
+        String[] tempData;
         String temp[];
         while (reader.ready()) {
             tempData = reader.readLine().split(";");
             if (isInteger(tempData[0])) {
                 temp = tempData[1].split(",");
-                for (int i = 0; i < temp.length; i++) {
-                    mahasiswaBimbinganList.add(mahasiswaData.getMahasiswa(temp[i]));
+                for (int i = 0; i < tempData.length; i++) {
+                    userNameMahasiswaBimbinganList.add(temp[i]);
                 }
+                mahasiswaBimbingamMap.put(Integer.valueOf(tempData[0]), userNameMahasiswaBimbinganList);
             }
         }
         tempData = null;
+        temp = null;
         reader.close();
     }
 
@@ -76,8 +79,8 @@ public class DosenPAData {
         return detailDosenMap.get(key);
     }
 
-    public ArrayList<Mahasiswa> getMahasiswaBimbingan() {
-        return mahasiswaBimbinganList;
+    public ArrayList<String> getUsernameMB(Integer key) {
+        return mahasiswaBimbingamMap.get(key);
     }
 
     public boolean isInteger(String s) {
