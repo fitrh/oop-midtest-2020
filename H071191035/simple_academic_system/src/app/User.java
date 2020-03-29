@@ -79,6 +79,7 @@ public class User {
                     } else {
                         System.out.println("Melewati batas total SKS yang diberikan...");
                         System.out.println("-------------------------");
+                        sksTerdaftar -= matkul.getSks();
                     }
                 } else {
                     System.out.println("Kuota tak mencukupi...");
