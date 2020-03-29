@@ -88,14 +88,15 @@ public class Menu {
                 System.out.print("> ");
                 choose = sc.nextInt();
                 sc.nextLine();
-        
+                dosenPA = dosenPAData.getDosen(userName);
+                
                 switch (choose) {
                     case 1:
-                        dosenPA = dosenPAData.getDosen(userName);
                         dosenPA.show();
                         Checkout();
                         break;
                     case 2:
+                        dosenPA.set(dosenPAData.getDosen(userName).getIdDosen());
                         dosenPA.showMahasiswaBimbingan();
                         Checkout();
                         break;
@@ -148,7 +149,7 @@ public class Menu {
     }
 
     public boolean Checkout() {
-        System.out.println("\nAnda ingin keluar dari Menu ? (Y/N)");
+        System.out.println("\nAnda ingin keluar ? (Y/N)");
         System.out.print("> ");
         pilih = sc.nextLine();
         if (pilih.equalsIgnoreCase("Y")) {
