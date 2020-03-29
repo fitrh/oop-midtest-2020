@@ -36,6 +36,7 @@
    - Nama Owner dan Store boleh berbeda
    - Tiap Store Bisa Memiliki Motto Penjualan
    - Tiap Store Memiliki Star yang bergantung pada jumlah penjualan
+   - Store Bisa ditutup dan User berubah jadi Player
 5. *Jual Beli Item*
    - Pembelian Item bisa dari Store atau Penawaran yang dilakukan Oleh player
    - Store bisa membeli beberapa item sekaligus
