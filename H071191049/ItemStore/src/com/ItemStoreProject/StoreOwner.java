@@ -1,9 +1,11 @@
 package com.ItemStoreProject;
 import java.util.ArrayList;
 public class StoreOwner extends User{
-    public StoreOwner(String name, int money, ArrayList<Item> items) {
+    //Constructor StoreOwner
+    StoreOwner(String name, int money, ArrayList<Item> items) {
         super(name, money, items);
     }
+    //Overiding Method
     @Override
     public void action() {
         System.out.println("-----------------------------");

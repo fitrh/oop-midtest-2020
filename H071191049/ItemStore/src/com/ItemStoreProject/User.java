@@ -1,39 +1,41 @@
 package com.ItemStoreProject;
 import java.util.ArrayList;
 public class User {
-    protected String name;
-    protected int money;
-    protected ArrayList <Item> items;
-    //konstruktor User
-    public User(String name, int money, ArrayList<Item> items2){
+    //Attribut User
+    private String name;
+    private int money;
+    ArrayList <Item> items;
+
+    //Konnstruktor User
+    User(String name, int money, ArrayList<Item> items){
         this.money = money;
         this.name = name;
-        this.items = items2;
+        this.items = items;
     }
     //set money
-    public void setMoney(int money){
+    void setMoney(int money){
         this.money = money;
     }
     //getter
-    public String getName (){
+    String getName(){
         return name;
     }
-    public ArrayList<Item> getItems (){
+    ArrayList<Item> getItems(){
         checkItem();
         return items;
     }
-    public Item getItem(int i){
+    Item getItem(int i){
         return items.get(i);
     }
-    public int getMoney(){
+    int getMoney(){
         return money;
     }
 
     //polymerpisme action
     public void action(){};
 
-    //Item modif
-    public void showItems (){
+    //Item modifier
+    void showItems(){
         checkItem();
         int i=0;
         System.out.println("-----------------------------");
@@ -43,29 +45,25 @@ public class User {
             System.out.println("-----------------------------");
         }
     }
-    public void checkItem(){
+    private void checkItem(){
         for (int i=0;i<items.size();i++){
             if(items.get(i).getKuantitas()<1){
                 items.remove(i);
             }
         }
     }
-    public void setItem (int id, String itemName, int price, String info, int kuantitas){
+    void setItem(int id, String itemName, int price, String info, int kuantitas){
         checkItem();
         boolean ada = false;
-        for (int i=0;i<items.size();i++){
-            if(itemName.equals(items.get(i).getName())){
-                items.get(i).setKuantitas(items.get(i).getKuantitas()+kuantitas);
+        for (Item item : items) {
+            if (itemName.equals(item.getName())) {
+                item.setKuantitas(item.getKuantitas() + kuantitas);
                 ada = true;
                 return;
             }
         }
-        if(ada==false){
+        if(!ada){
             items.add(new Item(id, itemName,price,kuantitas,info));
         }
-    }
-
-    public void sellItem(int i){
-        items.remove(i);
     }
 }

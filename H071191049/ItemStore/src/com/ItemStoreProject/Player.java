@@ -1,18 +1,18 @@
 package com.ItemStoreProject;
-import java.util.ArrayList;
-public class Player extends User {
 
+import java.util.ArrayList;
+public class Player extends User implements PenawaranProperty {
     private Penawaran penawaran;
-    public Player(String name, int money, ArrayList<Item> items, Item itemPenawaran, int hargaItem) {
+    //Konstruktor Player
+    Player(String name, int money, ArrayList<Item> items, Item itemPenawaran, int hargaItem) {
         super(name, money, items);
         penawaran = new Penawaran();
         if(itemPenawaran!=null){
             penawaran.setItem(itemPenawaran);
             penawaran.setPrice(hargaItem);
         }
-
     }
-
+    //Overiding Method dari User
     @Override
     public void action() {
         System.out.println("-----------------------------");
@@ -29,8 +29,7 @@ public class Player extends User {
         System.out.println("[k] Kembali");
         System.out.println("-----------------------------");
     }
-
-    public void createStore(){}
+    //Penawaran Modif dari PenawranProperty
     public void takeItemToPenawaran(int indexitem, int price){
         if(items.get(indexitem)!=null&&penawaran.getItemDitawarkan()==null){
             penawaran.setItem(items.get(indexitem));

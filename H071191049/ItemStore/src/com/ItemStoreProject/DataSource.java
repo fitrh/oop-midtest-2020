@@ -1,5 +1,4 @@
 package com.ItemStoreProject;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,10 +7,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class DataSource {
-
-    StoreOwner[] owners = getOwners();
+    //baca file
     private String baca (String namaFile) {
-        Path path  = Paths.get("src/com/ItemStoreProject/"+namaFile);
+        Path path  = Paths.get("src/com/ItemStoreProject/DataBase/"+namaFile);
         String fileContent = null;
         try {
             fileContent = new String(Files.readAllBytes(path), StandardCharsets.ISO_8859_1);
@@ -20,6 +18,7 @@ public class DataSource {
         }
         return  fileContent;
     }
+
     //getPlayer
     public Player[] getPlayer() {
         String inputPlayer = baca("Player.txt");
@@ -52,7 +51,9 @@ public class DataSource {
         }
         return player;
     }
+
     //getStore
+    StoreOwner[] owners = getOwners();
     public StoreOwner[] getOwners() {
         String inputStore = baca("Owner.txt");
         String inputItem = baca("Item.txt");
@@ -82,10 +83,12 @@ public class DataSource {
         }
         return store;
     }
+
+    //save data
     public void saveData(Store[] updateStores, StoreOwner[] updateOwner, Player[] updatePlayer){
-        Path playerPath = Paths.get("src/com/ItemStoreProject/Player.txt");
-        Path storePath = Paths.get("src/com/ItemStoreProject/Store.txt");
-        Path ownerPath = Paths.get("src/com/ItemStoreProject/Owner.txt");
+        Path playerPath = Paths.get("src/com/ItemStoreProject/DataBase/Player.txt");
+        Path storePath = Paths.get("src/com/ItemStoreProject/DataBase/Store.txt");
+        Path ownerPath = Paths.get("src/com/ItemStoreProject/DataBase/Owner.txt");
         String[] store = new String[updateStores.length];
         String[] player = new String [updatePlayer.length];
         String[] owner = new String [updateOwner.length];
@@ -130,6 +133,8 @@ public class DataSource {
             e.printStackTrace();
         }
     }
+
+    //write
     private void write(String[] input, Path pathIn) throws IOException {
         String in = "";
         for(int i=0;i<input.length;i++){

@@ -1,30 +1,47 @@
 package com.ItemStoreProject;
-
 import java.util.ArrayList;
-
-public class Store{
+class Store{
     private String name;
     private String motto = "";
     private int penjualan;
     private int star;
     private StoreOwner owner;
-    public Store(StoreOwner owner, String name, int penjualan, String motto){
+    //constructore Store
+    Store(StoreOwner owner, String name, int penjualan, String motto){
         this.owner = owner;
         this.name = name;
         this.penjualan = penjualan;
         this.motto = motto;
-        myStar();
+        setStar();
     }
-    public void setPenjualan (int penjualan){
-        this.penjualan = penjualan;
-    }
-    public int getPenjualan(){
+
+
+    //Getter
+    int getPenjualan(){
         return penjualan;
     }
-    public void myMotto(String motto) {
+    String getName(){
+        return name;
+    }
+    String getMotto(){
+        return motto;
+    }
+    int getStar(){
+        setStar();
+        return star;
+    }
+    StoreOwner getOwner(){
+        return owner;
+    }
+
+    //Setter
+    void setPenjualan(int penjualan){
+        this.penjualan = penjualan;
+    }
+    void setMotto(String motto) {
         this.motto = motto;
     }
-    public void myStar() {
+    private void setStar() {
         if(penjualan<=1){
             star = 1;
         }else if(penjualan<=3){
@@ -37,20 +54,9 @@ public class Store{
             star = 5;
         }
     }
-    public String getName(){
-        return name;
-    }
-    public String getMotto (){
-        return motto;
-    }
-    public int getStar(){
-        myStar();
-        return star;
-    }
-    public StoreOwner getOwner(){
-        return owner;
-    }
-    public void myStore(){
+
+    //Show Store
+    void myStore(){
         ArrayList <Item> items = owner.getItems();
         System.out.println("-----------------------------");
         System.out.println("\tMY STORE ");
