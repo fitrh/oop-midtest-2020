@@ -185,18 +185,8 @@ public class Main
 			System.out.println(user1Name + " declines");
 	}
 
-	private static void interactionPlayerByStore(Xorshift rng)
+	public static void stockRandomItems(Store store, User owner, Xorshift rng)
 	{
-		// Player-Store interaction
-		String user1Name = generateName(rng);
-		User user1 = new User(user1Name, 50000);
-		int money2 = (int) (rng.nextDouble() * 120.0) * 1000;
-		String user2Name = generateName(rng);
-		User user2 = new User(user2Name, money2);
-
-		// New store
-		Store store = new Store(user1);
-
 		// What kind of items to stock?
 		Set<UUID> itemsToAdd = new HashSet<UUID>();
 		for (int i = 0; i < allItems.length; i++)
@@ -216,7 +206,21 @@ public class Main
 		}
 
 		// Finally, stock items
-		store.stockItems(user1, items, itemPrices);
+		store.stockItems(owner, items, itemPrices);
+	}
+
+	private static void interactionPlayerByStore(Xorshift rng)
+	{
+		// Player-Store interaction
+		String user1Name = generateName(rng);
+		User user1 = new User(user1Name, 50000);
+		int money2 = (int) (rng.nextDouble() * 120.0) * 1000;
+		String user2Name = generateName(rng);
+		User user2 = new User(user2Name, money2);
+
+		// New store
+		Store store = new Store(user1);
+		stockRandomItems(store, user1, rng);
 
 		// Start dialog
 		System.out.println("While " + user2Name + " walks around, they see a Store owned by " + user1Name);

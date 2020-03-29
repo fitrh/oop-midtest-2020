@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import id.co.npad93.itemstore.*;
+import id.co.npad93.itemstore.items.*;
 
 public class InteractMain
 {
@@ -71,6 +72,13 @@ public class InteractMain
 		objectOut.close();
 	}
 
+	private static User generateUser(Xorshift rng)
+	{
+		int money = (int) (rng.nextDouble() * 100.0) * 1000;
+		String userName = Main.generateName(rng);
+		return new User(userName, money);
+	}
+
 	private static void interaction(User user, Scanner sc)
 	{
 		Xorshift rng = new Xorshift();
@@ -85,17 +93,85 @@ public class InteractMain
 		}
 
 		// Actions to show user info
-		actions.add(new Action() {
+		actions.add(new Action()
+		{
 			@Override
 			public String name() {return "Show Status";}
+
 			@Override
-			public void action(User u) {Main.printUserInfo(u);}
+			public void action(User u, Xorshift rng, Scanner sc) {Main.printUserInfo(u);}
 		});
 
-		// Generate stores
+		// Generate stores or players
 		int actionsToGenerate = 1 + (int) (rng.nextDouble() * 4);
 		for (int i = 0; i < actionsToGenerate; i++)
 		{
+			if (rng.nextDouble() >= 0.5)
+			{
+				// Store interaction
+				User owner = generateUser(rng);
+				Store store = new Store(owner);
+				Main.stockRandomItems(store, owner, rng);
+				String description = "Go To " + owner.getName() + "'s Store";
+
+				actions.add(new Action()
+				{
+					@Override
+					public String name() {return description;}
+					
+					@Override
+					public void action(User u, Xorshift rng, Scanner sc)
+					{
+						while (true)
+						{
+							StoreItem[] items = store.getItems();
+							System.out.println("You're now at " + owner.getName() + "'s store and they sell these items");
+							for (int i = 0; i < items.length; i++)
+							{
+								StoreItem it = items[i];
+								System.out.printf("%d. %s (%d) price %d\n", i + 1, it.getName(), it.getAmount(), it.getPrice());
+								System.out.println("   " + it.getDescription());
+							}
+							System.out.println("0. Quit");
+							System.out.print("Which item do you want to buy? ");
+							int selectionIndex = sc.nextInt();
+							
+							if (selectionIndex == 0)
+								break;
+							
+							selectionIndex--;
+
+							if (selectionIndex >= 0 && selectionIndex < items.length)
+							{
+								StoreItem selectedItem = items[selectionIndex];
+								System.out.println("Please enter amount to buy (<=0 to cancel): ");
+								int amount = sc.nextInt();
+
+								if (amount > 0)
+								{
+									if (amount > selectedItem.getAmount())
+										System.out.println("Store doesn't have that much amount");
+									else
+									{
+										int price = amount * selectedItem.getPrice();
+										if (user.getMoney() >= price)
+											user.addItem(selectedItem.buy(user, amount));
+										else
+											System.out.printf(
+												"Not enough money (price %d, your money %d)\n",
+												price, user.getMoney()
+											);
+									}
+								}
+							}
+						}
+					}
+				});
+			}
+			else
+			{
+				// Player interaction
+			}
 		}
 
 		// Main loop interaction
@@ -121,7 +197,7 @@ public class InteractMain
 				{}
 
 				if (act != null)
-					act.action(user);
+					act.action(user, rng, sc);
 				else
 					System.out.println("Invalid input " + scannerResult);
 			}
