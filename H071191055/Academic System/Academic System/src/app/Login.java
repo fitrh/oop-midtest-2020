@@ -14,13 +14,14 @@ public class Login {
     private DosenPAData dosenPAData;
     private Mahasiswa mahasiswa;
     private MahasiswaData MahasiswaData;
+    private String userName;
     private static Login login;
-
+    
     private Login() throws IOException {
         MahasiswaData = new MahasiswaData();
         dosenPAData = new DosenPAData();
     }
-
+    
     public static Login getInstance() throws IOException{
         if(login == null) {
             login = new Login();
@@ -67,7 +68,6 @@ public class Login {
     
     public void LoginAction() throws IOException {
         int choose;
-        String userName = null;
         String password;
         boolean checks = true;
         while (checks) {
