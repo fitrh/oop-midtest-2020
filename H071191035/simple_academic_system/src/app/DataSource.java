@@ -55,6 +55,10 @@ public class DataSource {
         return dosenPaMap.get(key);
     }
 
+    public List<Mahasiswa> getBimbinganDosen() {
+        return bimbinganDosen;
+    }
+
     // untuk mengecek apakah String yang diberikan merupakan integer
     public static boolean isInt(String str) {
 
