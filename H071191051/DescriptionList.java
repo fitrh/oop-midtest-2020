@@ -23,6 +23,7 @@ class DescriptionList extends TodoList {
                 System.err.println("file tidak ditemukan");
             }
 
+            // data perbaris akan di tampung di sini
             String data = bufferInput.readLine();
 
             // cek file apakah kosong atau tidak
@@ -58,6 +59,7 @@ class DescriptionList extends TodoList {
                         }
                         System.out.println("Deskripsi       : " + stringTokens.nextToken() + "\n");
                     }
+                    // membaca kembali baris selanjutnya
                     data = bufferInput.readLine();
                 }
                 System.out.println("Tekan '0' untuk kembali ke menu utama");

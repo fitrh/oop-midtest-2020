@@ -22,6 +22,7 @@ class Biodata extends TodoList {
         this.nim = nim;
     }
 
+    // mengambil deskripsi dari User
     @Override
     public String getDescription() {
         String data = "Nama           : " + getName() + "\n" + "Nama panggilan : " + super.getCallName() + "\n"
@@ -31,6 +32,7 @@ class Biodata extends TodoList {
         return data;
     }
 
+    // mengatur umur dengan melihat tanggal lahir dari User
     public void setAge(String age) throws ParseException {
         String s = age;
         SimpleDateFormat dateForm = new SimpleDateFormat("yyyy/MM/dd");
@@ -48,14 +50,17 @@ class Biodata extends TodoList {
         this.age = String.valueOf(difference.getYears()) + " tahun";
     }
 
+    // mengatur fakultas User dengan melihat awalan NIM yang diinput
     public void setFaculty(Map<Character, String> faculty) {
         this.faculty = faculty.get(nim.charAt(0));
     }
 
+    // mengatur angkatan dengan melihat digit ke-5&6 dari NIM User
     public void setRegisterYear(String nim) {
         this.registerYear = 2000 + Integer.parseInt(nim.substring(4, 6));
     }
 
+    // mengatur email User
     public void setEmail(String name) {
         String[] emailName = name.split(" ");
         String s = "";
@@ -66,6 +71,8 @@ class Biodata extends TodoList {
                 + "@student.unhas.ac.id").toLowerCase();
     }
 
+    // mengatur dan mengambil setiap huruf pada nama menjadi lowercase (uppercase
+    // pada setiap huruf pertama perkata)
     public String getName() {
         String fullName = name.toLowerCase();
         String fixName = "";
@@ -79,6 +86,7 @@ class Biodata extends TodoList {
         return fixName;
     }
 
+    // mengambil format tanggal lahir untuk di set age-nya pada setAge()
     public String getDateOfBirth() {
         String[] str = dateOfBirth.split("-");
         String birthDay = "";

@@ -14,7 +14,7 @@ class TodoList {
         this.callName = callName;
     }
 
-    // method yang nantinya akan di override pada delivered class
+    // method yang nantinya akan di override pada sub class
     public void showList() throws IOException {
         System.out.println("+-------------- To-Do-List Today -------------+\n");
     }
@@ -62,7 +62,7 @@ class TodoList {
         fileOutput.close();
     }
 
-    // untuk mengeluarkan opsi (y/n) pada beberapa class
+    // untuk mengeluarkan opsi (y/n) di gunakan pada beberapa class
     public boolean getYerOrNo(String message) {
         System.out.println("\n" + message + "\n");
         System.out.print("> ");

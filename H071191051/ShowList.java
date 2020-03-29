@@ -10,6 +10,7 @@ class ShowList extends TodoList {
         FileReader fileInput = null;
         BufferedReader bufferInput = null;
 
+        // cek file apakah ada atau tidak
         try {
             fileInput = new FileReader("kegiatan.txt");
             bufferInput = new BufferedReader(fileInput);
@@ -17,6 +18,7 @@ class ShowList extends TodoList {
             System.err.println("file tidak ditemukan");
         }
 
+        // data perbaris akan dibaca disini
         String data = bufferInput.readLine();
 
         // format tatanan tabel

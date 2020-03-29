@@ -8,7 +8,7 @@ class Registration {
 
     public void registration() {
         Map<Character, String> facultyMap = new HashMap<Character, String>();
-
+        // meletakkan daftar kode setiap fakultas
         facultyMap.put('A', "Kedokteran");
         facultyMap.put('B', "Farmasi");
         facultyMap.put('C', "Teknik");
@@ -31,20 +31,22 @@ class Registration {
                 String date = sc.next() + sc.nextLine();
                 System.out.print("NIM            : ");
                 String nim = sc.next();
-
+                // memanggil object Biodata
                 Biodata bio = new Biodata(name, date, nim, callName);
                 bio.setFaculty(facultyMap);
                 bio.setRegisterYear(nim);
                 bio.setEmail(bio.getName());
-
+                // try-catch untuk mengecek apakah format tanggal lahir sudah benar
                 try {
                     bio.setAge(bio.getDateOfBirth());
                 } catch (ParseException pe) {
                     System.out.print("");
                 }
 
+                // jika NIM yang diinput tidak ada dalam daftar hashMap di atas, maka:
                 if (bio.getFaculty() == null) {
                     System.out.println("\nNIM tidak ada dalam daftar\n");
+                    // jika format tanggal lahir salah, maka:
                 } else if (bio.getAge() == null) {
                     System.out.println("\nFormat tanggal lahir tidak sesuai (gunakan format dd-MM-yyyy)\n");
                 } else {

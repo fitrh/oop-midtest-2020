@@ -66,7 +66,6 @@ class InitialDisplay {
                 desc = new DescriptionList();
                 desc.descList();
                 System.out.println("+---------------------------------------------+");
-                // clearScreen();
 
             } else if (choice == 6) {
                 clearScreen();
@@ -107,7 +106,7 @@ class InitialDisplay {
     }
 
     // clearScreen-Method untuk menghapus entry sebelumnya pada terminal
-    public void clearScreen() {
+    private void clearScreen() {
         try {
             if (System.getProperty("os.name").contains("Windows")) { // untuk os windows
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

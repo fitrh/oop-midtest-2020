@@ -44,6 +44,7 @@ class EditList extends TodoList {
 
         while (data != null) {
             currentEntry++;
+            // String token untuk membaca data perbaris
             StringTokenizer stringTokens = new StringTokenizer(data, ";");
 
             if (edit == currentEntry) {
@@ -56,11 +57,12 @@ class EditList extends TodoList {
                 System.out.println("Status          : " + stringTokens.nextToken());
                 System.out.println("Deskripsi       : " + stringTokens.nextToken() + "\n");
 
-                // update data
+                // update data dimana String[] newField merupakan data hasil update
                 String[] field = { "nama", "jadwal", "prioritas", "status", "deskripsi" };
                 String[] newField = new String[5];
-
+                // String token untuk membaca baris yang diinput User
                 stringTokens = new StringTokenizer(data, ";");
+                // skip primarykey dari data yang diinput User
                 String dataField = stringTokens.nextToken();
 
                 for (int i = 0; i < field.length; i++) {
@@ -69,6 +71,7 @@ class EditList extends TodoList {
 
                     if (isEdit) {
                         System.out.print("masukkan " + field[i] + " kegiatan baru : ");
+                        // memanggil object addList
                         AddList add = new AddList();
                         sc = new Scanner(System.in);
 
@@ -106,19 +109,25 @@ class EditList extends TodoList {
                 boolean isEdit = getYerOrNo("tekan 'y' untuk lanjut dan tekan 'n' untuk membatalkan");
 
                 if (isEdit) {
+                    // jika pilihan y, maka data pada newField akan dimasukkan ke database sementara
                     System.out.println("\nBerhasil mengedit kegiatan");
                     bufferOutput.write(newField[0].replaceAll("\\s+", "") + ";" + newField[0] + ";" + newField[1] + ";"
                             + newField[2] + ";" + newField[3] + ";" + newField[4]);
                 } else {
+                    // jika pilihan bukan y, maka yang di masukkan adalah data sebelumnya
                     System.out.println("\nEdit kegiatan dibatalkan");
                     bufferOutput.write(data);
                 }
             } else {
+                // mengcopy data dari database asli ke database sementara
                 bufferOutput.write(data);
             }
+            // membuat baris baru pada database sementara
             bufferOutput.newLine();
+            // membaca kembali baris selanjutnya
             data = bufferInput.readLine();
         }
+        // gunakan .flush() untuk menulis data ke file
         bufferOutput.flush();
         closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
     }

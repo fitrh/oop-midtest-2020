@@ -17,6 +17,7 @@ class DeleteList extends TodoList {
         FileWriter fileOutput = new FileWriter(tempFile);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
+        // data perbaris akan di tampung di sini
         String data = bufferInput.readLine();
 
         // cek file apakah kosong atau tidak
@@ -65,14 +66,17 @@ class DeleteList extends TodoList {
             }
 
             if (isDelete) {
+                // skip memasukkan file ke database sementara(di abaikan)
                 System.out.println("\nBerhasil menghapus kegiatan");
             } else {
+                // memasukkan data dari database asli ke database sementara
                 bufferOutput.write(data);
                 bufferOutput.newLine();
             }
+            // membaca kembali baris selanjutnya
             data = bufferInput.readLine();
         }
-        // menulis data ke file
+        // gunakan .flush() untuk menulis data ke file
         bufferOutput.flush();
         closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
     }

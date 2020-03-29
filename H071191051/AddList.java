@@ -7,10 +7,11 @@ class AddList extends TodoList {
     @Override
     public void addList() throws IOException {
         super.addList();
-
+        
         FileWriter fileOutput = null;
         BufferedWriter bufferOutput = null;
 
+        // cek file apakah ada atau tidak
         try {
             fileOutput = new FileWriter("kegiatan.txt", true);
             bufferOutput = new BufferedWriter(fileOutput);
@@ -40,10 +41,12 @@ class AddList extends TodoList {
         String desc = sc.next() + sc.nextLine();
 
         System.out.println("\nBerhasil menambahkan kegiatan");
+        // menambahkan data ke file
         bufferOutput.write(name.replaceAll("\\s+", "") + ";" + name + ";" + schedule + ";" + getPriority + ";"
                 + getStatus + ";" + desc);
+        // menambahkan line pada 
         bufferOutput.newLine();
-
+        // gunakan .flush() untuk menulis data ke file
         bufferOutput.flush();
         closeIO(fileOutput, bufferOutput);
     }
