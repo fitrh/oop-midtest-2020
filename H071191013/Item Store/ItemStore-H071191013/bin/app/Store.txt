@@ -1,0 +1,5 @@
+0;Alfamart;0;Selamat Datang di Alfamart
+1;Sunny Go;0;All For One
+2;Baratie;0;Barang Berkualitas Harga Terjangkau
+3;Arlong Park;0;Berkilau Tapi Bukan Emas
+4;Merry Go;0;All in One
