@@ -60,7 +60,7 @@ public class DosenPAData {
             tempData = reader.readLine().split(";");
             if (isInteger(tempData[0])) {
                 temp = tempData[1].split(",");
-                for (int i = 0; i < tempData.length; i++) {
+                for (int i = 0; i < temp.length; i++) {
                     userNameMahasiswaBimbinganList.add(temp[i]);
                 }
                 mahasiswaBimbingamMap.put(Integer.valueOf(tempData[0]), userNameMahasiswaBimbinganList);

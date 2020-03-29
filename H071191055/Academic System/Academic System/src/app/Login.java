@@ -82,9 +82,9 @@ public class Login {
                     case 1:
                         while (checks) {
                             System.out.println("\n-- Login Mahasiswa --");
-                            System.out.print("Username \t:");
+                            System.out.print("Username \t: ");
                             userName = sc.next();
-                            System.out.print("Password \t:");
+                            System.out.print("Password \t: ");
                             password = sc.next();
                             if (authMahasiswa(userName, password) == false) {
                                 System.out.println("Success");
@@ -98,9 +98,9 @@ public class Login {
                     case 2:
                         while (checks) {
                             System.out.println("\n-- Login Dosen --");
-                            System.out.print("Username \t:");
+                            System.out.print("Username \t: ");
                             userName = sc.next();
-                            System.out.print("Password \t:");
+                            System.out.print("Password \t: ");
                             password = sc.next();
                             if (authDosen(userName, password) == false) {
                                 System.out.println("Success");
