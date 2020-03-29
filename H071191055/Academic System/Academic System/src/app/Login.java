@@ -14,10 +14,18 @@ public class Login {
     private DosenPAData dosenPAData;
     private Mahasiswa mahasiswa;
     private MahasiswaData MahasiswaData;
+    private static Login login;
 
-    public Login() throws IOException {
+    private Login() throws IOException {
         MahasiswaData = new MahasiswaData();
         dosenPAData = new DosenPAData();
+    }
+
+    public static Login getInstance() throws IOException{
+        if(login == null) {
+            login = new Login();
+        }
+        return login;
     }
 
     public boolean authMahasiswa(String userName, String password) throws IOException {
