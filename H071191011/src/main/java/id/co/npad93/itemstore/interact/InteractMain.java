@@ -59,11 +59,12 @@ public class InteractMain
 		}
 
 		// Print info
-		System.out.println("Welcome " + user.getName());
+		System.out.println("Welcome, " + user.getName());
 		Main.printUserInfo(user);
 
 		// Start interaction
 		interaction(user, sc);
+		System.out.println("Goodbye, " + user.getName());
 
 		// Save result
 		FileOutputStream out = new FileOutputStream("user.dat");
@@ -79,13 +80,103 @@ public class InteractMain
 		return new User(userName, money);
 	}
 
+	private static void startStoreInteraction(User user, User owner, Store store, Scanner sc)
+	{
+		while (true)
+		{
+			StoreItem[] items = store.getItems();
+			System.out.println("You're now at " + owner.getName() + "'s store and they sell these items");
+			for (int i = 0; i < items.length; i++)
+			{
+				StoreItem it = items[i];
+				System.out.printf(
+					"%d. %s (%d) price %d\n",
+					i + 1,
+					it.getName(),
+					it.getAmount(),
+					it.getPrice()
+				);
+				System.out.println("   " + it.getDescription());
+			}
+			System.out.println("0. Quit");
+			System.out.print("Which item do you want to buy? ");
+			int selectionIndex = sc.nextInt();
+			
+			if (selectionIndex == 0)
+				break;
+			
+			selectionIndex--;
+
+			if (selectionIndex >= 0 && selectionIndex < items.length)
+			{
+				StoreItem selectedItem = items[selectionIndex];
+				System.out.println("Please enter amount to buy (<=0 to cancel): ");
+				int amount = sc.nextInt();
+
+				if (amount > 0)
+				{
+					if (amount > selectedItem.getAmount())
+						System.out.println("Store doesn't have that much amount");
+					else
+					{
+						int price = amount * selectedItem.getPrice();
+						if (user.getMoney() >= price)
+							user.addItem(selectedItem.buy(user, amount));
+						else
+							System.out.printf(
+								"Not enough money (price %d, your money %d)\n",
+								price, user.getMoney()
+							);
+					}
+				}
+			}
+		}
+	}
+
+	private static void startPlayerInteraction(User user, User target, Scanner sc)
+	{
+		System.out.println(target.getName() + ": Oh, you're approaching me? Ok");
+
+		System.out.println("What you do?");
+		System.out.println("0. Quit");
+		System.out.println("1. Sell Items");
+		System.out.println("2. Buy Items");
+
+		// TODO
+		while (true)
+		{
+			int mainSel = sc.nextInt();
+
+			switch (mainSel)
+			{
+				case 0:
+					return;
+				case 1:
+				{
+					Main.printUserInfo(user);
+					
+					break;
+				}
+				case 2:
+				{
+					break;
+				}
+				default:
+				{
+					System.out.println("Invalid input");
+					break;
+				}
+			}
+		}
+	}
+
 	private static void interaction(User user, Scanner sc)
 	{
 		Xorshift rng = new Xorshift();
 		ArrayList<Action> actions = new ArrayList<Action>();
 
-		// Give player money at random chance
-		if (rng.nextDouble() >= 0.9)
+		// Give player money at 10% chance
+		if (rng.nextDouble() <= 0.1)
 		{
 			int amount = (int) (1 + rng.nextDouble() * 10) * 1000;
 			System.out.println("You received money " + amount);
@@ -99,7 +190,7 @@ public class InteractMain
 			public String name() {return "Show Status";}
 
 			@Override
-			public void action(User u, Xorshift rng, Scanner sc) {Main.printUserInfo(u);}
+			public void action(User u, Scanner sc) {Main.printUserInfo(u);}
 		});
 
 		// Generate stores or players
@@ -114,63 +205,40 @@ public class InteractMain
 				Main.stockRandomItems(store, owner, rng);
 				String description = "Go To " + owner.getName() + "'s Store";
 
+				// Define action
 				actions.add(new Action()
 				{
 					@Override
 					public String name() {return description;}
 					
 					@Override
-					public void action(User u, Xorshift rng, Scanner sc)
+					public void action(User u, Scanner sc)
 					{
-						while (true)
-						{
-							StoreItem[] items = store.getItems();
-							System.out.println("You're now at " + owner.getName() + "'s store and they sell these items");
-							for (int i = 0; i < items.length; i++)
-							{
-								StoreItem it = items[i];
-								System.out.printf("%d. %s (%d) price %d\n", i + 1, it.getName(), it.getAmount(), it.getPrice());
-								System.out.println("   " + it.getDescription());
-							}
-							System.out.println("0. Quit");
-							System.out.print("Which item do you want to buy? ");
-							int selectionIndex = sc.nextInt();
-							
-							if (selectionIndex == 0)
-								break;
-							
-							selectionIndex--;
-
-							if (selectionIndex >= 0 && selectionIndex < items.length)
-							{
-								StoreItem selectedItem = items[selectionIndex];
-								System.out.println("Please enter amount to buy (<=0 to cancel): ");
-								int amount = sc.nextInt();
-
-								if (amount > 0)
-								{
-									if (amount > selectedItem.getAmount())
-										System.out.println("Store doesn't have that much amount");
-									else
-									{
-										int price = amount * selectedItem.getPrice();
-										if (user.getMoney() >= price)
-											user.addItem(selectedItem.buy(user, amount));
-										else
-											System.out.printf(
-												"Not enough money (price %d, your money %d)\n",
-												price, user.getMoney()
-											);
-									}
-								}
-							}
-						}
+						startStoreInteraction(u, owner, store, sc);
 					}
 				});
 			}
 			else
 			{
 				// Player interaction
+				User target = generateUser(rng);
+
+				// Fill with random items
+				Main.stockRandomItems(target, rng);
+
+				// Define action
+				String description = "Approach " + target.getName();
+				actions.add(new Action()
+				{
+					@Override
+					public String name() {return description;}
+					
+					@Override
+					public void action(User u, Scanner sc)
+					{
+						startPlayerInteraction(u, target, sc);
+					}
+				});
 			}
 		}
 
@@ -197,7 +265,7 @@ public class InteractMain
 				{}
 
 				if (act != null)
-					act.action(user, rng, sc);
+					act.action(user, sc);
 				else
 					System.out.println("Invalid input " + scannerResult);
 			}

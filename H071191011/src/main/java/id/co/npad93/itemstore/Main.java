@@ -107,10 +107,39 @@ public class Main
 	public static void printUserInfo(User user)
 	{
 		System.out.printf("Player %s (money %d) inventory:\n", user.getName(), user.getMoney());
-		for (Item i: user.getInventory())
+		Item[] items = user.getInventory();
+		for (int it = 0; it < items.length; it++)
 		{
+			Item i = items[it];
 			System.out.println("- " + i.getName() + " (" + i.getAmount() + ")");
 			System.out.println("  " + i.getDescription());
+		}
+	}
+
+	public static void stockRandomItems(User user, Xorshift rng)
+	{
+		boolean[] userEquipped = new boolean[usableItems.length];
+		for (int i = 0; i < 10; i++)
+		{
+			boolean itemAdded = false;
+
+			// 10% chance to have equipable item
+			if (rng.nextDouble() < 0.1)
+			{
+				// Usable items
+				int index = (int) (rng.nextDouble() * usableItems.length);
+				if (userEquipped[index] == false)
+				{
+					user.addItem(ItemFactory.newItemFromUUID(usableItems[index], 1));
+					userEquipped[index] = true;
+				}
+			}
+
+			if (!itemAdded)
+				// Consumable items
+				user.addItem(ItemFactory.newItemFromUUID(
+					consumableItems[(int) (rng.nextDouble() * consumableItems.length)], 1
+				));
 		}
 	}
 
@@ -125,30 +154,7 @@ public class Main
 		User user2 = new User(user2Name, money2);
 
 		// Stock some items
-		boolean[] user1Equipped = new boolean[usableItems.length];
-		for (int i = 0; i < 10; i++)
-		{
-			boolean itemAdded = false;
-
-			// 10% chance to have equipable item
-			if (rng.nextDouble() < 0.1)
-			{
-				// Usable items
-				int index = (int) (rng.nextDouble() * usableItems.length);
-				if (user1Equipped[index] == false)
-				{
-					user1.addItem(ItemFactory.newItemFromUUID(usableItems[index], 1));
-					user1Equipped[index] = true;
-				}
-			}
-
-			if (!itemAdded)
-				// Consumable items
-				user1.addItem(ItemFactory.newItemFromUUID(
-					consumableItems[(int) (rng.nextDouble() * consumableItems.length)], 1
-				));
-		}
-			
+		stockRandomItems(user1, rng);
 		// Inventory checklist
 		printUserInfo(user1);
 
