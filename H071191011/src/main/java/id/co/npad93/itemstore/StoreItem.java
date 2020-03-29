@@ -89,13 +89,14 @@ public final class StoreItem
 		
 		player.addMoney(-totalPrice);
 		owner.addMoney(totalPrice);
-		Item result = item.separate(amount);
 
-		// If item quantity is 0, remove it from shop item list
-		if (item.getAmount() == 0)
+		if (item.getAmount() == 1)
+		{
 			store.removeItem(this);
-		
-		return result;
+			return item;
+		}
+		else
+			return item.separate(amount);
 	}
 
 	/**

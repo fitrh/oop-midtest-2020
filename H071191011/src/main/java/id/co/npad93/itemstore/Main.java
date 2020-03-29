@@ -111,8 +111,8 @@ public class Main
 		for (int it = 0; it < items.length; it++)
 		{
 			Item i = items[it];
-			System.out.println("- " + i.getName() + " (" + i.getAmount() + ")");
-			System.out.println("  " + i.getDescription());
+			System.out.println((it + 1) + ". " + i.getName() + " (" + i.getAmount() + ")");
+			System.out.println("   " + i.getDescription());
 		}
 	}
 

@@ -58,11 +58,8 @@ public class InteractMain
 			users.add(new UserInfo(username, user));
 		}
 
-		// Print info
-		System.out.println("Welcome, " + user.getName());
-		Main.printUserInfo(user);
-
 		// Start interaction
+		System.out.println("Welcome, " + user.getName());
 		interaction(user, sc);
 		System.out.println("Goodbye, " + user.getName());
 
@@ -124,7 +121,10 @@ public class InteractMain
 					{
 						int price = amount * selectedItem.getPrice();
 						if (user.getMoney() >= price)
+						{
+							System.out.println("You bought " + amount + " " + selectedItem.getName() + " for " + price);
 							user.addItem(selectedItem.buy(user, amount));
+						}
 						else
 							System.out.printf(
 								"Not enough money (price %d, your money %d)\n",
@@ -146,7 +146,6 @@ public class InteractMain
 		System.out.println("1. Sell Items");
 		System.out.println("2. Buy Items");
 
-		// TODO
 		while (true)
 		{
 			int mainSel = sc.nextInt();
@@ -199,7 +198,14 @@ public class InteractMain
 						{
 							// Player agrees
 							System.out.println("You traded one " + tradedItem.getName() + " for " + targetPrice);
-							target.addItem(tradedItem.separate(1));
+							if (tradedItem.getAmount() == 1)
+							{
+								target.addItem(tradedItem);
+								user.removeItem(tradedItem.getID(), 1);
+							}
+							else
+								target.addItem(tradedItem.separate(1));
+
 							target.giveMoney(user, targetPrice);
 						}
 						else
@@ -209,7 +215,7 @@ public class InteractMain
 					{
 						int targetPrice = Integer.MIN_VALUE;
 						System.out.println(target.getName() + " asks for price");
-						System.out.print("How much is the price of the item?");
+						System.out.print("How much is the price of the item? ");
 						while (targetPrice <= 0)
 						{
 							if (targetPrice != Integer.MIN_VALUE)
@@ -222,7 +228,14 @@ public class InteractMain
 						{
 							// Target player agrees
 							System.out.println("You traded one " + tradedItem.getName() + " for " + targetPrice);
-							target.addItem(tradedItem.separate(1));
+							if (tradedItem.getAmount() == 1)
+							{
+								target.addItem(tradedItem);
+								user.removeItem(tradedItem.getID(), 1);
+							}
+							else
+								target.addItem(tradedItem.separate(1));
+
 							target.giveMoney(user, targetPrice);
 						}
 						else
@@ -249,8 +262,16 @@ public class InteractMain
 						// You agree
 						if (user.getMoney() >= price)
 						{
-							System.out.println(target.getName() + " tradeed one " + selectedItem.getName() + " for " + price);
-							user.addItem(selectedItem.separate(1));
+							System.out.println(target.getName() + " traded one " + selectedItem.getName() + " for " + price);
+							
+							if (selectedItem.getAmount() == 1)
+							{
+								user.addItem(selectedItem);
+								target.removeItem(selectedItem.getID(), 1);
+							}
+							else
+								user.addItem(selectedItem.separate(1));
+
 							user.giveMoney(target, price);
 						}
 						else
@@ -282,6 +303,8 @@ public class InteractMain
 			System.out.println("You received money " + amount);
 			user.addMoney(amount);
 		}
+
+		Main.printUserInfo(user);
 
 		// Actions to show user info
 		actions.add(new Action()
