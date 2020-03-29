@@ -5,7 +5,7 @@ package app;
  */
 public interface Dosen {
 
-    public void setMahasiswaBimbingan(Mahasiswa mahasiswa);
+    public void setMahasiswaBimbingan();
     public void showMahasiswaBimmbingan();
 
 }
