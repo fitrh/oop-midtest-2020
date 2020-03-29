@@ -14,9 +14,11 @@ public class DosenPA implements Dosen {
     private String password;
     private DetailDosenPA detailDosenPA;
     private DosenPAData dosenPAData;
+    private ArrayList<String> tempUsernameMB = new ArrayList<>();
     private ArrayList<Mahasiswa> mahasiswaBimbingan = new ArrayList<>();
     private DetailMahasiswa detailMahasiswa;
     private Mahasiswa mahasiswa;
+    private MahasiswaData mahasiswaData;
 
     public DosenPA(int id, String userName, String password, DetailDosenPA detailDosenPA) {
         this.id = id;
@@ -29,7 +31,7 @@ public class DosenPA implements Dosen {
         dosenPAData = new DosenPAData();
         detailMahasiswa = new DetailMahasiswa();
         mahasiswa = new Mahasiswa();
-        set();
+        mahasiswaData = new MahasiswaData();
 	}
 
 	public int getIdDosen() {
@@ -55,15 +57,22 @@ public class DosenPA implements Dosen {
         }
     }
 
-    public void set() {
-        for (int i = 0; i < dosenPAData.getMahasiswaBimbingan().size(); i++) {
-            mahasiswaBimbingan.add(i, dosenPAData.getMahasiswaBimbingan().get(i));
+    @Override
+    public void set(Integer key) {
+        System.out.println("aa");
+        System.out.println(key);
+        for (int i = 0; i < dosenPAData.getUsernameMB(key).size(); i++) {
+            tempUsernameMB.add(dosenPAData.getUsernameMB(key).get(i));
+        }
+
+        for (int i = 0; i < tempUsernameMB.size(); i++) {
+            mahasiswaBimbingan.add(mahasiswaData.getMahasiswa(tempUsernameMB.get(i)));
         }
     }
 
     @Override
     public void showMahasiswaBimbingan() {
-        if (dosenPAData.getMahasiswaBimbingan().isEmpty()) {
+        if (dosenPAData.getUsernameMB(id) == null) {
             System.out.println("Anda belum memiliki mahasiswa bimbingan");
         } else {
             System.out.println("\n-- Daftar Mahasiswa Bimbingan --");
