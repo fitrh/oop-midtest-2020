@@ -1,6 +1,6 @@
-# ITEM STORE PROJECT
+# :convenience_store: ITEM STORE PROJECT :convenience_store:
 
-## A. SPESIFIKASI PROJECT
+## A. SPESIFIKASI PROJECT 
 
 1. Project ini dibuat dengan Intellij IDEA
 2. Project ini dibuat dengan java versi 11.0.5
@@ -13,6 +13,16 @@
 3. *ITEM*
    - Item memiliki nama, kuantitas, price, dan detail
    - Data Item default berasal dari Item.txt yang diinput di class DataSource
+   - Jenis Item yang dijual adalah
+     :straight_ruler: Penggaris
+     :pencil2:Pulpen
+     :pound: Penghapus
+     :closed_book: Buku 
+     :black_nib: Jangkar
+     :scissors: Gunting
+     :purse: Krayon
+     :notebook: Kamus
+     :vibration_mode: Kalkulator
 3. *Player*
    - Player Memiliki Nama, Uang, dan Item
    - Player Bisa Memiliki Lebih dari Satu Item
