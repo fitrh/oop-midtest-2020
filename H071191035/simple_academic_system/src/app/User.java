@@ -1,7 +1,9 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 /**
  * User
  */
@@ -14,6 +16,8 @@ public class User {
     private DosenPa dosenPa;
     private int sksTerdaftar;
     private List<MataKuliah> matkul = new ArrayList<>();
+    private HashMap<String, Integer> ipsMap = new HashMap<>();
+    private Random rand = new Random();
     
     // constructor
     public User() {
@@ -133,6 +137,33 @@ public class User {
                 System.out.println("-------------------------");
             }
         }  
+    }
+
+    // show IPS
+    public void showIps() {
+        ipsMap.put("Matematika Dasar", 3);
+        ipsMap.put("Pengantar Pemrograman", 3);
+        ipsMap.put("WSBM", 2);
+        ipsMap.put("Fisika Dasar", 2);
+        ipsMap.put("Kimia Dasar", 2);
+        ipsMap.put("Biologi Dasar", 2);
+        ipsMap.put("Pancasila", 2);
+
+        String[] matkul = {"Matematika Dasar", "Pengantar Pemrograman", "WSBM", "Fisika Dasar", "Kimia Dasar", "Biologi Dasar", "Pancasila"};
+        List<String> listMatkul = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++) {
+            listMatkul.add(matkul[rand.nextInt(matkul.length - 1)]);
+        }
+
+        System.out.printf("Berikut adalah IPS semester lalu dari user %s\n", getUserName());
+        for (int i = 0; i < listMatkul.size(); i++) {
+            System.out.printf("Nama mata kuliah : %s\n", listMatkul.get(i));
+            System.out.printf("Jumlah kredit    : %d\n", ipsMap.get(listMatkul.get(i)));
+            System.out.println();
+        }
+        System.out.printf("IPK\t\t : %.2f\n", (rand.nextFloat() * (4.01 - 2.75)) + 2.75);
+        System.out.println("-------------------------");
     }
 
 }
