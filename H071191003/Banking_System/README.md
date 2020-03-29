@@ -90,7 +90,7 @@ These are the login details to the pre-made accounts
 
 2. <u>**Did you use an IDE?**</u>
 
-   ​	Yes I did, I use IntelliJ IDEA 
+   ​	Yes I did, I used IntelliJ IDEA 
 
 3. <u>**What is the format for a customer.txt and a info.txt file?**</u>
 
