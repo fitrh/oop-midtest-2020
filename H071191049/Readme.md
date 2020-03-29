@@ -37,7 +37,7 @@
    - Jika suatu user dihapus maka semua unsur milik user akan hilang
 
 
-##C. CONTOH INPUT OUTPUT
+## C. CONTOH INPUT OUTPUT
 
 
 1. Beli Item Dari Store
@@ -50,9 +50,9 @@
 2. Beli Item Dari Player
 <img src="https://user-images.githubusercontent.com/54715920/77844191-eb217580-71d6-11ea-93dc-de672d3207a6.gif" width="240">
 
-##D. PENGGUNAAN OBJECT ORIENTED
+## D. PENGGUNAAN OBJECT ORIENTED
 
-##E. HAL YANG INGIN DI IMPROVE
+## E. HAL YANG INGIN DI IMPROVE
 1. Membuat Menu Untuk Membuat User
 2. Menggunakan User Login untuk mengakses suatu User
 3. Membuat Project dengan JavaFX
