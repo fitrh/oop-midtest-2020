@@ -14,11 +14,12 @@ Tugas Mid OOP 2020 : Program sederhana untuk mencatat jadwal kegiatan
 5. Pilihan pada menu yaitu **melihat kegiatan**, **menambah kegiatan**, **edit kegiatan**, **melihat detail setiap kegiatan**, dan **menghapus kegiatan** serta keluar dari *program*.
 
 ## Contoh *input & output* ##
-    contoh input registrasi --> Username = Anugrah
-                                Password = alfa59
+    contoh input registrasi 
+        Username = Anugrah
+        Password = alfa59
                                      
-    contoh input menambah kegiatan --> Nama kegiatan  : Makan
-                                       Deskripsi      : Makan untuk siang sambil ngoding
+    contoh input menambah kegiatan >>> Nama kegiatan  : Makan
+                                       Deskripsi      : Makan siang sambil nonton drakor
                                        Jadwal         : 11 siang - 1 siang
                                        Status         : belum dikerjakan
                                        Skala prioritas: 5
