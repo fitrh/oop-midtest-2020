@@ -2,30 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c24762b-6cbf-4637-9877-d524d70c872a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/Display.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/SaveData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataBase/Owner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataBase/Owner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataBase/Player.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataBase/Player.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataBase/Store.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataBase/Store.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/DataSource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Item.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Display.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Owner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Player.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Store.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Store.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/Store.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/StoreOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/StoreOwner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/StoreStar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ItemStore/com/ItemStoreProject/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/DataBase/Owner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/DataBase/Owner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/DataBase/Player.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/DataBase/Player.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/DataBase/Store.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/DataBase/Store.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Item.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/AllProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Owner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Player.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/Store.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/StoreOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/StoreOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/StoreStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/PenawaranProperty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ItemStoreProject/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ItemStoreProject/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

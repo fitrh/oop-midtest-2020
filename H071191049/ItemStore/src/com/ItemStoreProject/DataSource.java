@@ -138,6 +138,9 @@ public class DataSource {
     private void write(String[] input, Path pathIn) throws IOException {
         String in = "";
         for(int i=0;i<input.length;i++){
+            if(input[i].equals(null)||input[i].equals("")){
+                continue;
+            }
             in+=input[i]+"\n";
         }
         Files.write(pathIn,in.getBytes(StandardCharsets.ISO_8859_1));

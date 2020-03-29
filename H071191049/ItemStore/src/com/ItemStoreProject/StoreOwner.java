@@ -16,6 +16,7 @@ public class StoreOwner extends User{
         System.out.println("-----------------------------");
         System.out.println("[m] Tokoku");
         System.out.println("[p] Penawaran Player");
+        System.out.println("[t] Tutup Toko");
         System.out.println("[h] Hapus Akun");
         System.out.println("[k] Kembali");
         System.out.println("-----------------------------");

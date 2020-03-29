@@ -1,7 +1,7 @@
 package com.ItemStoreProject;
 import java.util.ArrayList;
 import java.util.Scanner;
-class Display {
+class AllProcess extends Thread{
     private Scanner san = new Scanner(System.in);
     private DataSource dataSource = new DataSource();
     private Player[] players;
@@ -42,7 +42,7 @@ class Display {
             if (player == null) {
                 continue;
             }
-            System.out.printf("[%d] %s\n", indexO, player.getName());
+            System.out.printf("[%d] %s\n",indexO,player.getName());
             indexO++;
         }
         //daftar owner
@@ -98,20 +98,20 @@ class Display {
                     players[i].showItems();
                 }
                 else {
-                    System.out.println("TIdak ada Item");
+                    System.out.println("Tidak ada Item");
                     System.out.println("-----------------------------");
                 }
-                System.out.println("  [k] kembali");
+                System.out.println("  [0] kembali");
                 System.out.println("-----------------------------");
                 System.out.print("> ");
-                String inp = san.next();
-                if(inp.equals("k")){
+                int inp = san.nextInt();
+                if(inp==0){
                     playerAction(i);
                 }
-                itemAction(i, (Integer.parseInt(inp)-1));
+                itemAction(i, inp-1);
                 break;
             case "t":
-                marketPlace(i);
+                marketPlace(i, 1);
                 break;
             case "p":
                 penawaranPlayer(i, 1);
@@ -147,6 +147,10 @@ class Display {
             case "p":
                 penawaranPlayer(i, 0);
                 storeAction(i);
+                break;
+            case "t":
+                closeStore(i);
+                startMenu();
                 break;
             case "h":
                 delete(i,"s");
@@ -187,47 +191,6 @@ class Display {
                 itemAction(indexPlayer, indexItem);
         }
     }
-    //player market place
-    private void marketPlace(int nowPlayer){
-        System.out.println("-----------------------------");
-        System.out.println("   PUSAT PENJUALAN");
-        System.out.println("-----------------------------");
-        for (int i=0;i<owners.length;i++){
-            if(stores[i]==null){
-                continue;
-            }
-
-            System.out.printf("[%d] %s Store\n",(i+1),stores[i].getName());
-            System.out.printf(stores[i].getMotto().equals("")?"":"   |"+stores[i].getMotto()+"\n");
-            System.out.println("   |Star  : "+stores[i].getStar());
-            System.out.println("   |Owner : "+stores[i].getOwner().getName());
-            System.out.println("-----------------------------");
-        }
-        System.out.print("> ");
-        int inp = san.nextInt();
-        buyFromStore(inp-1, nowPlayer);
-    }
-    //store market
-    private void marketPlaceStore(int my){
-        System.out.println("-----------------------------");
-        System.out.println("   PUSAT PENJUALAN");
-        System.out.println("-----------------------------");
-        int index = 0;
-        for (int i=0;i<owners.length;i++){
-            if(stores[i]==null||i==my){
-                continue;
-            }
-            System.out.printf("[%d] %s\n",(index+1),stores[i].getName());
-            System.out.print(stores[i].getMotto().equals("") ? "" : "   |" + stores[i].getMotto() + "\n");
-            System.out.println("   |Star : "+stores[i].getStar());
-            System.out.println("   |Owner : "+stores[i].getOwner().getName());
-            index++;
-        }
-        System.out.print("> ");
-        int input = san.nextInt()-1;
-        input=input>=my?input+1:input;
-        storeFromStore(my, input);
-    }
     //modif store
     private void modifMyStore(int i){
         System.out.print("> ");
@@ -243,7 +206,8 @@ class Display {
                 storeAction(i);
                 break;
             case "m":
-                marketPlaceStore(i);
+                String code = players.getClass().toString().substring(0,1);
+                marketPlace(i,0);
                 break;
             case "b":
                 storeAction(i);
@@ -252,12 +216,40 @@ class Display {
                 modifMyStore(i);
         }
     }
+    //player market place
+    private void marketPlace(int nowPlayer, int code){
+        System.out.println("-----------------------------");
+        System.out.println("   PUSAT PENJUALAN");
+        System.out.println("-----------------------------");
+        int index = 0;
+        for (int i=0;i<owners.length;i++){
+            if(stores[i]==null){
+                continue;
+            }
+            if(code == 0 && i==nowPlayer){
+                continue;
+            }
+            System.out.printf("[%d] %s\n",(index+1),stores[i].getName());
+            System.out.print(stores[i].getMotto().equals("") ? "" : "   |" + stores[i].getMotto() + "\n");
+            System.out.println("   |Star : "+stores[i].getStar());
+            System.out.println("   |Owner : "+stores[i].getOwner().getName());
+            index++;
+        }
+        System.out.print("> ");
+        int inp = san.nextInt();
+        inp=code==0&&inp>=nowPlayer?inp+1:inp;
+        if(code==1){
+            buyFromStore(inp-1, nowPlayer);
+        }else{
+            storeFromStore(nowPlayer, inp);
+        }
+
+    }
     //delete akun
     private void delete(int i, String tipe){
         if(tipe.equals("p")){
             for(int j=i;j<players.length-1;j++){
                 players[j]=players[j+1];
-
             }
             players[players.length-1]=null;
         }
@@ -270,7 +262,6 @@ class Display {
             stores[stores.length-1]=null;
         }
     }
-
     //Store Membeli Di StoreLain
     private void storeFromStore(int nowPlayer, int from) {
         System.out.println("-----------------------------");
@@ -278,7 +269,7 @@ class Display {
         System.out.print(stores[from].getMotto().equals("") ? "" : "  \"" + stores[from].getMotto() + "\"\n");
         System.out.println("-----------------------------");
         owners[from].showItems();
-        System.out.println("[k] Kembalo");
+        System.out.println("[k] Kembali");
         System.out.println("-----------------------------");
         san.nextLine();
         System.out.println("Pilih Item yg Ingin Dibeli");
@@ -421,13 +412,19 @@ class Display {
         System.out.println("Pembelian item berhasil");
     }
     //BuatStore
-        public void createStore(int i){
+    private void createStore(int i){
+        saveData();
         System.out.println("CREATE STORE");
         System.out.print("StoreName  : ");san.nextLine();
         String name = san.nextLine();
         System.out.print("StoreMotto : ");
         String motto = san.nextLine();
-        StoreOwner tambahOwner = new StoreOwner(players[i].getName(), players[i].getMoney(), players[i].getItems());
+        ArrayList<Item> itemSum = players[i].getItems();
+        if(players[i].getPenawaran().getItemDitawarkan()==null){}
+        else{
+            itemSum.add(players[i].getPenawaran().getItemDitawarkan());
+        }
+        StoreOwner tambahOwner = new StoreOwner(players[i].getName(), players[i].getMoney(), itemSum);
         Store tambahStore = new Store(tambahOwner,name, 0, motto);
         StoreOwner[] ownersNew = new StoreOwner[owners.length+1];
         Store storeNew[] = new Store[stores.length+1];
@@ -435,22 +432,51 @@ class Display {
             ownersNew[j] = owners[j];
             storeNew[j] = stores[j];
         }
-        ownersNew[owners.length-1] = tambahOwner;
-        storeNew[stores.length-1] = tambahStore;
-        for (int k=0;k<stores.length;k++){
-            System.out.println(ownersNew[k].getName());
-            System.out.println(owners[k].getName());
-        }
+        ownersNew[owners.length] = tambahOwner;
+        storeNew[stores.length] = tambahStore;
         stores = storeNew;
         owners = ownersNew;
         players[i] = null;
-        System.out.println();
+        System.out.println("TOKO BERHASIL DIBUAT");
+    }
+    //Tutup Toko
+    private void closeStore(int i){
+        saveData();
+        Player tambahPlayer = new Player(owners[i].getName(), owners[i].getMoney(), owners[i].getItems(),null, -1);
+        Player[] playersNew = new Player[players.length+1];
+        for (int j=0;j<players.length;j++){
+            playersNew[j] = players[j];
+        }
+        playersNew[players.length-1] = tambahPlayer;
+        players = playersNew;
+        Store[] storesSementara = new Store[stores.length-1];
+        StoreOwner[]ownersSementara = new StoreOwner[owners.length-1];
+        int index = 0;
+        owners[i]=null;
+        stores[i]=null;
+        for(int j=0;j<owners.length;j++){
+            if(owners[j]==null){
+                continue;
+            }
+            ownersSementara[index] = owners[j];
+            storesSementara[index] = stores[j];
+            index++;
+        }
+        stores = storesSementara;
+        owners = ownersSementara;
+        System.out.println("TOKO BERHASIL DITUTUP");
+        for(int k=0;k<stores.length;k++){
+            System.out.println(stores[k].getName());
+            System.out.println(owners[k].getName());
+        }
     }
     //savedata
-    public void saveData(){
+    private void saveData(){
+        SaveData saveData = new SaveData();
         dataSource.saveData(stores,owners,players);
-        System.out.println("Data Berhasil Di save");
-
+        players = dataSource.getPlayer();
+        owners = dataSource.getOwners();
+        stores = dataSource.getStore();
+        saveData.run();
     }
-
 }
