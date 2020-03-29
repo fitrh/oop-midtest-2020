@@ -1,5 +1,3 @@
-package midtest;
-
 import java.io.*;
 import java.util.*;
 
@@ -8,6 +6,7 @@ class EditList extends TodoList {
 
     @Override
     public void editList() throws IOException {
+        super.editList();
         // baca database yang asli
         File file = new File("kegiatan.txt");
         FileReader fileInput = new FileReader(file);
@@ -22,9 +21,8 @@ class EditList extends TodoList {
 
         // cek file apakah kosong atau tidak
         if (data == null) {
-            System.out.println("\nDaftar kegiatan masih kosong");
-            bufferInput.close();
-            bufferOutput.close();
+            System.out.println("Daftar kegiatan masih kosong");
+            closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
             return;
         }
 
@@ -32,6 +30,14 @@ class EditList extends TodoList {
         System.out.print("Masukkan nomor kegiatan yang ingin diedit : ");
         sc = new Scanner(System.in);
         int edit = sc.nextInt();
+
+        // check apakah nomor yang dipilih ada pada baris yang ada di database
+        boolean dataIsExist = checkLineisExist(edit, bufferInput, bufferOutput, data);
+        if (!dataIsExist) {
+            System.out.println("\nKegiatan tidak ada");
+            closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
+            return;
+        }
 
         // buat looping untuk membaca baris pada file dan mengedit data yang diinput
         int currentEntry = 0;
@@ -63,28 +69,44 @@ class EditList extends TodoList {
 
                     if (isEdit) {
                         System.out.print("masukkan " + field[i] + " kegiatan baru : ");
+                        AddList add = new AddList();
                         sc = new Scanner(System.in);
-                        newField[i] = sc.nextLine();
+
+                        if (i == 2) {
+                            System.out.print("\n");
+                            add.priorityChoice();
+                            String choice = sc.next();
+                            newField[i] = add.getPriority(Integer.parseInt(choice));
+                        } else if (i == 3) {
+                            System.out.print("\n");
+                            add.statusChoice();
+                            String choice = sc.next();
+                            newField[i] = add.getStatus(Integer.parseInt(choice));
+                        } else {
+                            newField[i] = sc.nextLine();
+                        }
+
                     } else {
                         newField[i] = dataField;
                     }
+
                 }
 
                 // menampilkan data yang di edit ke layar
                 stringTokens = new StringTokenizer(data, ";");
-                System.out.println("+------------ kegiatan baru anda -------------+");
+                System.out.println("\n+------------ kegiatan baru anda -------------+");
                 System.out.println("+---------------------------------------------+");
                 stringTokens.nextToken();
-                System.out.println("Nama kegiatan   : " + stringTokens.nextToken() + " -> " + newField[0]);
-                System.out.println("Jadwal          : " + stringTokens.nextToken() + " -> " + newField[1]);
-                System.out.println("Prioritas       : " + stringTokens.nextToken() + " -> " + newField[2]);
-                System.out.println("Status          : " + stringTokens.nextToken() + " -> " + newField[3]);
-                System.out.println("Deskripsi       : " + stringTokens.nextToken() + " -> " + newField[4]);
+                System.out.println("Nama kegiatan   : " + stringTokens.nextToken() + " --> " + newField[0]);
+                System.out.println("Jadwal          : " + stringTokens.nextToken() + " --> " + newField[1]);
+                System.out.println("Prioritas       : " + stringTokens.nextToken() + " --> " + newField[2]);
+                System.out.println("Status          : " + stringTokens.nextToken() + " --> " + newField[3]);
+                System.out.println("Deskripsi       : " + stringTokens.nextToken() + " --> " + newField[4]);
 
                 boolean isEdit = getYerOrNo("tekan 'y' untuk lanjut dan tekan 'n' untuk membatalkan");
 
-                if (isEdit == true) {
-                    System.out.println("\nBerhasil menambahkan kegiatan");
+                if (isEdit) {
+                    System.out.println("\nBerhasil mengedit kegiatan");
                     bufferOutput.write(newField[0].replaceAll("\\s+", "") + ";" + newField[0] + ";" + newField[1] + ";"
                             + newField[2] + ";" + newField[3] + ";" + newField[4]);
                 } else {
@@ -92,13 +114,12 @@ class EditList extends TodoList {
                     bufferOutput.write(data);
                 }
             } else {
-                System.out.println("\nKegiatan tidak ada");
                 bufferOutput.write(data);
             }
             bufferOutput.newLine();
             data = bufferInput.readLine();
         }
         bufferOutput.flush();
-        closeIO(fileInput, fileOutput, bufferInput, bufferOutput);
+        closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
     }
 }

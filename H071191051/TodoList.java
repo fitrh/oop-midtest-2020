@@ -1,5 +1,3 @@
-package midtest;
-
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -16,6 +14,7 @@ class TodoList {
         this.callName = callName;
     }
 
+    // method yang nantinya akan di override pada delivered class
     public void showList() throws IOException {
         System.out.println("+-------------- To-Do-List Today -------------+\n");
     }
@@ -36,6 +35,7 @@ class TodoList {
         System.out.println("+------------ Description List ---------------+\n");
     }
 
+    // berfungsi untuk rename dan delete file
     public void deleteAndRename() {
         File file = new File("kegiatan.txt");
         File file_2 = new File("temp.txt");
@@ -43,6 +43,26 @@ class TodoList {
         file_2.renameTo(file);
     }
 
+    // berfungsi untuk close file IO dan buffer IO
+    public void closeIO(FileWriter fileOutput, BufferedWriter bufferOutput) throws IOException {
+        bufferOutput.close();
+        fileOutput.close();
+    }
+
+    public void closeIO(FileReader fileInput, BufferedReader bufferInput) throws IOException {
+        bufferInput.close();
+        fileInput.close();
+    }
+
+    public void closeIO(FileReader fileInput, BufferedReader bufferInput, FileWriter fileOutput,
+            BufferedWriter bufferOutput) throws IOException {
+        bufferInput.close();
+        bufferOutput.close();
+        fileInput.close();
+        fileOutput.close();
+    }
+
+    // untuk mengeluarkan opsi (y/n) pada beberapa class
     public boolean getYerOrNo(String message) {
         System.out.println("\n" + message + "\n");
         System.out.print("> ");
@@ -54,6 +74,7 @@ class TodoList {
         }
     }
 
+    // mengecek apakah inputan user ada/sesuai dengan line yang ada pada file.txt
     public boolean checkLineisExist(int choice, BufferedReader bufferInput, BufferedWriter bufferOutput, String data)
             throws IOException {
         if (choice > checkTotalLineatFile() || choice < 1) {
@@ -69,24 +90,7 @@ class TodoList {
         }
     }
 
-    public void closeIO(FileReader fileInput, BufferedReader bufferInput) throws IOException {
-        fileInput.close();
-        bufferInput.close();
-    }
-
-    public void closeIO(FileWriter fileOutput, BufferedWriter bufferOutput) throws IOException {
-        fileOutput.close();
-        bufferOutput.close();
-    }
-
-    public void closeIO(FileReader fileInput, FileWriter fileOutput, BufferedReader bufferInput,
-            BufferedWriter bufferOutput) throws IOException {
-        fileInput.close();
-        fileOutput.close();
-        bufferInput.close();
-        bufferOutput.close();
-    }
-
+    // mengecek total baris yang terisi pada file.txt
     public long checkTotalLineatFile() throws IOException {
         Path path = Paths.get("kegiatan.txt");
         return Files.lines(path).count();

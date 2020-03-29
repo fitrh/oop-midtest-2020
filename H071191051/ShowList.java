@@ -1,5 +1,3 @@
-package midtest;
-
 import java.io.*;
 import java.util.*;
 
@@ -8,6 +6,7 @@ class ShowList extends TodoList {
     @Override
     public void showList() throws IOException {
 
+        // baca file terlebih dahulu
         FileReader fileInput = null;
         BufferedReader bufferInput = null;
 
@@ -20,13 +19,14 @@ class ShowList extends TodoList {
 
         String data = bufferInput.readLine();
 
+        // format tatanan tabel
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
         System.out.println("| No. | Nama kegiatan              \t\t| Jadwal\t | Prioritas\t    | Status\t         |");
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
 
-        // jika daftar pada file kosong, maka :
+        // jika daftar kegiatan pada file kosong, maka :
         if (data == null) {
             System.out.println("|\t\t\t\t     Daftar kegiatan masih kosong!     \t\t\t\t\t |");
         }
@@ -48,6 +48,6 @@ class ShowList extends TodoList {
 
         System.out.println(
                 "+--------------------------------------------------------------------------------------------------------+");
-        closeIO(fileInput, bufferInput);
+        bufferInput.close();
     }
 }

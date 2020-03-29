@@ -1,5 +1,3 @@
-package midtest;
-
 import java.text.*;
 import java.util.*;
 

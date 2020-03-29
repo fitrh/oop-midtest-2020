@@ -1,5 +1,3 @@
-package midtest;
-
 import java.io.*;
 import java.util.*;
 
@@ -8,6 +6,7 @@ class AddList extends TodoList {
 
     @Override
     public void addList() throws IOException {
+        super.addList();
 
         FileWriter fileOutput = null;
         BufferedWriter bufferOutput = null;
@@ -26,17 +25,13 @@ class AddList extends TodoList {
         String schedule = sc.nextLine();
 
         System.out.println();
-        System.out.println("1. sangat penting");
-        System.out.println("2. penting");
-        System.out.println("3. kurang penting");
+        priorityChoice();
         System.out.print("Prioritas     : ");
         int priority = sc.nextInt();
         String getPriority = getPriority(priority);
 
         System.out.println();
-        System.out.println("1. selesai");
-        System.out.println("2. sedang dikerjakan");
-        System.out.println("3. belum dikerjakan");
+        statusChoice();
         System.out.print("Status        : ");
         int status = sc.nextInt();
         String getStatus = getStatus(status);
@@ -53,7 +48,7 @@ class AddList extends TodoList {
         closeIO(fileOutput, bufferOutput);
     }
 
-    private String getPriority(int priority) {
+    public String getPriority(int priority) {
         if (priority == 1) {
             return "sangat penting";
         } else if (priority == 2) {
@@ -65,7 +60,7 @@ class AddList extends TodoList {
         }
     }
 
-    private String getStatus(int status) {
+    public String getStatus(int status) {
         if (status == 1) {
             return "selesai";
         } else if (status == 2) {
@@ -75,5 +70,17 @@ class AddList extends TodoList {
         } else {
             return "-";
         }
+    }
+
+    public void priorityChoice() {
+        System.out.println("1. sangat penting");
+        System.out.println("2. penting");
+        System.out.println("3. kurang penting");
+    }
+
+    public void statusChoice() {
+        System.out.println("1. selesai");
+        System.out.println("2. sedang dikerjakan");
+        System.out.println("3. belum dikerjakan");
     }
 }

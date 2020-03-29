@@ -1,5 +1,3 @@
-package midtest;
-
 import java.io.*;
 import java.util.*;
 
@@ -8,6 +6,7 @@ class DeleteList extends TodoList {
 
     @Override
     public void deleteList() throws IOException {
+        super.deleteList();
         // baca database yang asli
         File file = new File("kegiatan.txt");
         FileReader fileInput = new FileReader(file);
@@ -22,9 +21,8 @@ class DeleteList extends TodoList {
 
         // cek file apakah kosong atau tidak
         if (data == null) {
-            System.out.println("\nDaftar kegiatan masih kosong");
-            bufferInput.close();
-            bufferOutput.close();
+            System.out.println("Daftar kegiatan masih kosong");
+            closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
             return;
         }
 
@@ -32,7 +30,15 @@ class DeleteList extends TodoList {
         System.out.print("Masukkan nomor kegiatan yang ingin dihapus : ");
         int delete = sc.nextInt();
 
-        // buat looping untuk membaca baris pada file dan menghapus data yang diinput
+        // cek apakah nomor yang dipilih ada pada baris yang ada di database
+        boolean dataIsExist = checkLineisExist(delete, bufferInput, bufferOutput, data);
+        if (!dataIsExist) {
+            System.out.println("\nKegiatan tidak ada");
+            closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
+            return;
+        }
+
+        // kalau ada, buat looping untuk membaca baris pada file dan menghapus data
         int currentEntry = 0;
 
         while (data != null) {
@@ -50,18 +56,17 @@ class DeleteList extends TodoList {
                 System.out.println("Status          : " + stringTokens.nextToken());
                 System.out.println("Deskripsi       : " + stringTokens.nextToken());
 
-                isDelete = getYerOrNo("Apakah anda yakin ingin menghapus data? (y/n)");
+                isDelete = getYerOrNo("Apakah anda yakin ingin menghapus kegiatan? (y/n)");
 
-                if (isDelete == true) {
-                    System.out.println("\nBerhasil menghapus kegiatan");
-                } else {
-                    // memindahkan data dari original ke sementara
-                    System.out.println("\nKegiatan tidak dihapus");
-                    bufferOutput.write(data);
-                    bufferOutput.newLine();
+                if (!isDelete) {
+                    System.out.println("\nHapus kegiatan dibatalkan");
                 }
+
+            }
+
+            if (isDelete) {
+                System.out.println("\nBerhasil menghapus kegiatan");
             } else {
-                System.out.println("\nKegiatan tidak ada");
                 bufferOutput.write(data);
                 bufferOutput.newLine();
             }
@@ -69,6 +74,6 @@ class DeleteList extends TodoList {
         }
         // menulis data ke file
         bufferOutput.flush();
-        closeIO(fileInput, fileOutput, bufferInput, bufferOutput);
+        closeIO(fileInput, bufferInput, fileOutput, bufferOutput);
     }
 }

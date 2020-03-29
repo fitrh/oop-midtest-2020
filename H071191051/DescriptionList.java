@@ -1,5 +1,3 @@
-package midtest;
-
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +11,8 @@ class DescriptionList extends TodoList {
 
         // buat looping
         while (condition) {
-            // baca file dulu
+            super.descList();
+            // baca file terlebih dahulu
             FileReader fileInput = null;
             BufferedReader bufferInput = null;
 
@@ -28,23 +27,22 @@ class DescriptionList extends TodoList {
 
             // cek file apakah kosong atau tidak
             if (data == null) {
-                System.out.println("\nDaftar kegiatan masih kosong");
-                bufferInput.close();
-                condition = false;
+                System.out.println("Daftar kegiatan masih kosong");
+                closeIO(fileInput, bufferInput);
+                return;
             }
 
             // cek kegiatan no berapa yang ingin dilihat deskripsinya
             System.out.print("Masukkan nomor kegiatan yang ingin dilihat deskripsinya : ");
             sc = new Scanner(System.in);
             int desc = sc.nextInt();
-            if (desc == 0) {
-                bufferInput.close();
-                condition = false;
-            }
             System.out.print("\n");
 
             // cek apakah nomor yang dipilih ada pada baris yang ada di database
-            if (checkTotalLineatFile() < desc || 1 > desc) {
+            if (desc == 0) {
+                closeIO(fileInput, bufferInput);
+                condition = false;
+            } else if (checkTotalLineatFile() < desc || 1 > desc) {
                 System.out.println("Kegiatan tidak ada\n");
             } else {
                 int currentEntry = 0;
@@ -53,7 +51,6 @@ class DescriptionList extends TodoList {
                     StringTokenizer stringTokens = new StringTokenizer(data, ";");
 
                     if (desc == currentEntry) {
-                        super.descList();
                         stringTokens.nextToken();
                         System.out.println("Nama kegiatan   : " + stringTokens.nextToken());
                         for (int i = 0; i < 3; i++) {
@@ -63,9 +60,9 @@ class DescriptionList extends TodoList {
                     }
                     data = bufferInput.readLine();
                 }
+                System.out.println("Tekan '0' untuk kembali ke menu utama");
             }
-            System.out.println("Tekan '0' untuk kembali ke menu utama");
-            bufferInput.close();
+            closeIO(fileInput, bufferInput);
         }
     }
 }
