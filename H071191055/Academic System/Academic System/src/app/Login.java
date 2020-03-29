@@ -9,29 +9,20 @@ import java.util.*;
 public class Login {
 
     static Scanner sc = new Scanner(System.in);
-    private Menu menu;
+    private Menu menu = new Menu();
     private DosenPA dosenPA;
     private DosenPAData dosenPAData;
     private Mahasiswa mahasiswa;
     private MahasiswaData MahasiswaData;
-    private static Login login;
 
-    private Login() throws IOException {
+    public Login() throws IOException {
         MahasiswaData = new MahasiswaData();
         dosenPAData = new DosenPAData();
-        menu = new Menu();
-    }
-
-    public static Login getInstance() throws IOException{
-        if (login == null) {
-            login = new Login();
-        }
-        return login;
     }
 
     public boolean authMahasiswa(String userName, String password) throws IOException {
         mahasiswa = MahasiswaData.getMahasiswa(userName);
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\ListAkunMahasiswa.txt");
+        FileReader file = new FileReader("Academic System\\ListAkunMahasiswa.txt");
         BufferedReader br = new BufferedReader(file);
         String tempData[];
         while (br.ready()) {
@@ -40,6 +31,8 @@ public class Login {
                 //DetailMahasiswa = mahasiswa.getDetailMahasiswa();
                 br.close();
                 return false;
+            } else {
+                //System.out.println("Username / Password salah");
             }
         }
         br.close();
@@ -48,7 +41,7 @@ public class Login {
 
     private boolean authDosen(String userName, String password) throws IOException {
         dosenPA = dosenPAData.getDosen(userName);
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\ListAkunDosen.txt");
+        FileReader file = new FileReader("Academic System\\ListAkunDosen.txt");
         BufferedReader br = new BufferedReader(file);
         String tempData[];
         while (br.ready()) {
@@ -56,6 +49,8 @@ public class Login {
             if (tempData[1].equals(userName) && tempData[2].equals(password)) {
                 br.close();
                 return false;
+            } else {
+                //System.out.println("Username / Password salah");
             }
         }
         br.close();
@@ -89,7 +84,6 @@ public class Login {
                             }
                             System.out.println("Usename/Password salah");
                         }
-
                         menu.MenuMahasiswa(userName);
                         break;
     

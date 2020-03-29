@@ -21,7 +21,7 @@ public class DosenPAData {
     }
 
     public void listDosen() throws IOException{
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\ListAkunDosen.txt");
+        FileReader file = new FileReader("Academic System\\ListAkunDosen.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
@@ -36,7 +36,7 @@ public class DosenPAData {
     }
     
     public void listDetailDosen() throws IOException{
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\DetailDosen.txt");
+        FileReader file = new FileReader("Academic System\\DetailDosen.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
@@ -51,7 +51,7 @@ public class DosenPAData {
     }
 
     public void listMahasiswaBimbingan() throws IOException{
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\MahasiswaBimbingan.txt");
+        FileReader file = new FileReader("Academic System\\MahasiswaBimbingan.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         String temp[];
@@ -60,7 +60,6 @@ public class DosenPAData {
             if (isInteger(tempData[0])) {
                 temp = tempData[1].split(",");
                 for (int i = 0; i < temp.length; i++) {
-                    System.out.println("a");
                     mahasiswaBimbinganList.add(mahasiswaData.getMahasiswa(temp[i]));
                 }
             }
@@ -78,7 +77,6 @@ public class DosenPAData {
     }
 
     public ArrayList<Mahasiswa> getMahasiswaBimbingan() {
-        System.out.println("ada");
         return mahasiswaBimbinganList;
     }
 

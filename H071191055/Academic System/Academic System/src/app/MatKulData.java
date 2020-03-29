@@ -16,7 +16,7 @@ public class MatKulData {
 
     public void listMatKul() throws IOException {
         FileReader file = new FileReader(
-                "D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\ListMatKul.txt");
+                "Academic System\\ListMatKul.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {

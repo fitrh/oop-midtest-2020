@@ -57,7 +57,6 @@ public class DosenPA implements Dosen {
 
     public void set() {
         for (int i = 0; i < dosenPAData.getMahasiswaBimbingan().size(); i++) {
-            System.out.println("");
             mahasiswaBimbingan.add(i, dosenPAData.getMahasiswaBimbingan().get(i));
         }
     }

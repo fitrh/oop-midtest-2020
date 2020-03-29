@@ -18,7 +18,7 @@ public class MahasiswaData {
     }
 
     public void listAkunMahasiswa() throws IOException {
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\ListAkunMahasiswa.txt");
+        FileReader file = new FileReader("Academic System\\ListAkunMahasiswa.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
@@ -36,7 +36,7 @@ public class MahasiswaData {
     }
     
     public void listDetailMahasiswa() throws IOException {
-        FileReader file = new FileReader("D:\\richard\\College\\Semester 2\\Object Oriented Program\\oop-midtest-2020\\H071191055\\Academic System\\src\\DataBase\\DetailMahasiswa.txt");
+        FileReader file = new FileReader("Academic System\\DetailMahasiswa.txt");
         BufferedReader reader = new BufferedReader(file);
         String tempData[];
         while (reader.ready()) {
