@@ -25,6 +25,7 @@ public class DataSource {
             putMahasiswa();
             putUserDosen();
             putUserMahasiswa();
+            addBimbinganDosen();
         } catch (Exception e) {
             System.out.println(e);
         }
