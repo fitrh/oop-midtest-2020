@@ -3,4 +3,3 @@
 2;Berkah;0;Berkilau Tapi Bukan Emas
 3;Alfa;0;Satu Untuk Semua
 4;Serba Ada;0;All in One
-5;BISA;0;BISA BISA
