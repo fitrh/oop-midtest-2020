@@ -37,7 +37,7 @@
 
 - *Mahasiswa.txt*, berperan sebagai database dari detail seorang mahasiswa dengan format penulisan data adalah id;nama_mahasiswa;alamat_email_mahasiswa
 
-- *DosenPa.txt*, berperan sebagai database dari detail seorang dosen dengan format penulisan data adalah id;nama_dosen;alamat_email_dosen
+- *DosenPa.txt*, berperan sebagai database dari detail seorang dosen dengan format penulisan data adalah id;nama_dosen;nomor_telepon;alamat_email_dosen
 
 - *User.txt*, berperan sebagai database dari detail seorang user mahasiswa dengan format penulisan data adalah id;username_mahasiswa;password_mahasiswa
 
