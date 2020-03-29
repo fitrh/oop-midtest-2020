@@ -20,10 +20,6 @@ public class User {
     private Random rand = new Random();
     
     // constructor
-    public User() {
-        sksTerdaftar = 0;
-    }
-    
     public User(int id, String userName, String password, Mahasiswa mahasiswa) {
        this.id = id;
        this.userName = userName;
