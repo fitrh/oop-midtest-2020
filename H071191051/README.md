@@ -25,6 +25,7 @@ Fitur yang di tambahkan :
       3. serta *class* lain yaitu *`Registration.java`* untuk menangani proses registrasi pada program, *`InitialDisplay.java`* untuk menampilkan tampilan awal program dan mengambil pilihan user, dan *`Main.java`* untuk *run* program.
       
 - *project* memiliki sebuah *data base* yaitu *kegiatan.txt* untuk menampung kegiatan dari *User* dengan format perbaris berupa *`nama kegiatan(tanpa spasi);nama kegiatan;jadwal;prioritas;status;deskripsi`*
+- **(Penting)** apabila ingin mengubah jadwal kegiatan lewat file *kegiatan.txt*, maka sertakan 1 baris baru yang kosong setelah jadwal kegiatan terakhir
   
 #### Alur Kerja *Project*
 - untuk menjalankan simulasi *project*, buka dan jalankan *class* *`Main.java`*
