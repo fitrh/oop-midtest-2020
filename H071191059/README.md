@@ -25,7 +25,7 @@ Mid OOP 2020 : Program sederhana untuk mencatat jadwal kegiatan
         Status         : belum dikerjakan
         Skala prioritas: 5
                                              
-    *untuk input dan output yang lain, silahkan jalankan *program*.
+    *untuk input dan output yang lain, silahkan jalankan program.
     
 ## Bagian yang menerapkan konsep *OOP*
 1. **Class & Object**
