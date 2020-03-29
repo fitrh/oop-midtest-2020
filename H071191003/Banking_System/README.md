@@ -43,7 +43,7 @@
 
 5. This will appear
 
-   <p align="center"><img src="assets/Screen Shot 2020-03-28 at 9.28.11 pm.png" alt="Class Diagram" title="Class Diagram"></p>
+   <p align="center"><img src="assets/Screen Shot 2020-03-28 at 9.28.11 pm.png" alt="Class Diagram" title="Menu screenshot"></p>
 
 ### Concepts used
 
@@ -172,7 +172,7 @@ These are the login details to the pre-made accounts
 
 5. Berikut akan muncul
 
-      <p align="center"><img src="assets/Screen Shot 2020-03-28 at 9.28.11 pm.png" alt="Class Diagram" title="Class Diagram"></p>
+      <p align="center"><img src="assets/Screen Shot 2020-03-28 at 9.28.11 pm.png" alt="Class Diagram" title="Menu screenshot"></p>
 
 ### Konsep yang digunakan
 
