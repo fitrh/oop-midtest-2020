@@ -247,6 +247,7 @@ class AllProcess extends Thread{
     }
     //delete akun
     private void delete(int i, String tipe){
+        saveData();
         if(tipe.equals("p")){
             for(int j=i;j<players.length-1;j++){
                 players[j]=players[j+1];
@@ -428,6 +429,17 @@ class AllProcess extends Thread{
         Store tambahStore = new Store(tambahOwner,name, 0, motto);
         StoreOwner[] ownersNew = new StoreOwner[owners.length+1];
         Store storeNew[] = new Store[stores.length+1];
+        Player[] playersNew = new Player[players.length-1];
+        int index = 0;
+        for(int j=0;j<playersNew.length;j++){
+            if(players[j]==null){
+                continue;
+            }
+            playersNew[index]=players[j];
+            index++;
+        }
+        players=playersNew;
+        System.out.println(players[0]);
         for (int j=0;j<owners.length;j++){
             ownersNew[j] = owners[j];
             storeNew[j] = stores[j];
@@ -436,7 +448,6 @@ class AllProcess extends Thread{
         storeNew[stores.length] = tambahStore;
         stores = storeNew;
         owners = ownersNew;
-        players[i] = null;
         System.out.println("TOKO BERHASIL DIBUAT");
     }
     //Tutup Toko
@@ -465,10 +476,6 @@ class AllProcess extends Thread{
         stores = storesSementara;
         owners = ownersSementara;
         System.out.println("TOKO BERHASIL DITUTUP");
-        for(int k=0;k<stores.length;k++){
-            System.out.println(stores[k].getName());
-            System.out.println(owners[k].getName());
-        }
     }
     //savedata
     private void saveData(){
