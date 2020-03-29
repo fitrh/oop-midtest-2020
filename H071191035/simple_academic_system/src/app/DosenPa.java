@@ -11,6 +11,7 @@ public class DosenPa implements Dosen {
     private String namaDosen;
     private String noTelp;
     private String email;
+    private DataSource dataSource;
     private List<Mahasiswa> mahasiswaBimbingan = new ArrayList<>();
 
     // constructor
@@ -40,8 +41,8 @@ public class DosenPa implements Dosen {
 
     // Overriding method untuk kelas Dosen
     @Override
-    public void setMahasiswaBimbingan(Mahasiswa mahasiswa) {
-        mahasiswaBimbingan.add(mahasiswa);
+    public void setMahasiswaBimbingan() {
+        this.mahasiswaBimbingan.addAll(dataSource.getBimbinganDosen());
     }
 
     @Override
