@@ -1,4 +1,4 @@
-Bank
+Bank System
 
 	Spesifikasi Project
 		• Program ini merupakan Sistem Bank Sederhana
