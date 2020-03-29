@@ -23,9 +23,9 @@ Fitur yang di tambahkan :
 
       1. *`TodoList.java`* yang merupakan *super class*;
       
-      2. *`ShowList.java`*, *`AddList.java`*, *`EditList.java`*, *`DeleteList.java`*, *`DescriptionList.java`*, dan *`Biodata.java`*      yang merupakan *subclass* dari *super class* di atas;
+      2. *`ShowList.java`*, *`AddList.java`*, *`EditList.java`*, *`DeleteList.java`*, *`DescriptionList.java`*, dan *`Biodata.java`* yang merupakan *subclass* dari *super class* di atas;
       
-      3. serta *class* lain yaitu *`Registration.java`* untuk menangani proses registrasi pada program, *`InitialDisplay.java`* untuk            menampilkan tampilan awal program dan mengambil pilihan user, dan *`Main.java`* untuk *run* program.
+      3. serta *class* lain yaitu *`Registration.java`* untuk menangani proses registrasi pada program, *`InitialDisplay.java`* untuk menampilkan tampilan awal program dan mengambil pilihan user, dan *`Main.java`* untuk *run* program.
       
 - *project* memiliki sebuah *data base* yaitu *kegiatan.txt* untuk menampung kegiatan dari *User* dengan format perbaris berupa *`nama kegiatan(tanpa spasi);nama kegiatan;jadwal;prioritas;status;deskripsi`*
   
