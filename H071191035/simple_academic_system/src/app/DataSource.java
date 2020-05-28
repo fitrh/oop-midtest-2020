@@ -77,7 +77,7 @@ public class DataSource {
     // baca tulis file untuk data user mahasiswa
     private void putUserMahasiswa() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\User.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\GitHub\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\User.txt"));
         String data[];
 
         while(reader.ready()) {
@@ -97,7 +97,7 @@ public class DataSource {
     // baca tulis file untuk data user dosen pembimbing
     private void putUserDosen() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\DosenPaUser.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\GitHub\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\DosenPaUser.txt"));
         String data[];
 
         while(reader.ready()) {
@@ -117,8 +117,8 @@ public class DataSource {
     // baca tulis file untuk data mahasiswa
     private void putMahasiswa() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\Mahasiswa.txt"));
-        BufferedReader reader2 = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\DosenPa.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\GitHub\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\Mahasiswa.txt"));
+        BufferedReader reader2 = new BufferedReader(new FileReader("D:\\Programming\\GitHub\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\DosenPa.txt"));
         String data[];
         String data2[];
 
@@ -142,7 +142,7 @@ public class DataSource {
     // baca tulis file untuk data dosen pembimbing
     private void putDosen() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\DosenPa.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\GitHub\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\DosenPa.txt"));
         String data[];
 
         while(reader.ready()) {
@@ -162,7 +162,7 @@ public class DataSource {
     // baca tulis file untuk data bimbingan dosen
     private void addBimbinganDosen() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\BimbinganDosen.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Programming\\GitHub\\oop-midtest-2020\\H071191035\\simple_academic_system\\database\\BimbinganDosen.txt"));
         String data[];
 
         while(reader.ready()) {
