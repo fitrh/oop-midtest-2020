@@ -1,0 +1,6 @@
+1;Dr. Joergen;082345678901;joergen11h@dosen.unhas.ac.id
+2;Prof. Hero;083456789012;hero22h@dosen.unhas.ac.id
+3;Drs. Wei;084567890123;wei33h@dosen.unhas.ac.id
+4;Koro Sensei;085678901234;assasination44h@dosen.unhas.ac.id
+5;Mr. Panda;086789012345;panda55h@dosen.unhas.ac.id
+6;Lord Lucifer;081234567890;lucifer66h@dosen.unhas.ac.id
