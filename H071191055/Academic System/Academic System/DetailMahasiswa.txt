@@ -1,0 +1,4 @@
+1;Richard Enrico Sulieanto;H071191055;Ilmu Komputer - S1;Semester Genap 2019/2020;Drs. Diaraya;
+2;aaaa;H071191001;Ilkom;genap;Joergen;
+3;bbbb;H071191002;ilkom;genap;Hero;
+4;cccc;H071191003;ILKOM;GENAP;Diaraya;
