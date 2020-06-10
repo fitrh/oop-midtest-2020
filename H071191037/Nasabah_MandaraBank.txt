@@ -1,0 +1,2 @@
+1;Mandara Bank;Daeng Agus;0932122323;agus;132323;2700000
+2;Mandara Bank;Ahmad Ali;0933282135;ali;212121;600000

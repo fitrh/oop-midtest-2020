@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a8488c4-7e88-47b1-af99-1af7ff2847ca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/BACABank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/BACABank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/BROBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/BROBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/MandaraBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/MandaraBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bank/RekeningDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bank/RekeningDetail.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ZdmO2hzaFzos2cfABhK18b9xmO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.java.io" />
+      <recent name="com.bank" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Mid_Porject\src\com\bank\java\io" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.bank.Main" />
+      <module name="Mid_Porject" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a8488c4-7e88-47b1-af99-1af7ff2847ca" name="Default Changelist" comment="" />
+      <created>1585177309542</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585177309542</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="446" y="50" key="#com.intellij.ide.util.MemberChooser" timestamp="1585226031289">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="446" y="50" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1585226031289" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585185834263">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585185834263" />
+    <state width="1237" height="280" key="GridCell.Tab.0.bottom" timestamp="1585463830598">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="280" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state width="1237" height="280" key="GridCell.Tab.0.center" timestamp="1585463830598">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="280" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state width="1237" height="280" key="GridCell.Tab.0.left" timestamp="1585463830598">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="280" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state width="1237" height="280" key="GridCell.Tab.0.right" timestamp="1585463830598">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="280" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585463830598" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1585189781709">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1585189781709" />
+    <state x="348" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1585223022450">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="348" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1585223022450" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1585204738656">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1585204738656" />
+  </component>
+</project>
