@@ -1,0 +1,30 @@
+Program Perpustakaan Normal 
+------------------------------
+Kategori Buku dan Pengarang:
+1. Kamus, Al Munawir
+2. Majalah,Uknown
+3. TextBook, People
+Pilih Kategori ----> [1/2/3]
+------------------------------
+Aturan Peminjaman Buku
+Peminjaman maksimal 1 Minggu [7 hari]
+Denda sebanyak Rp.500,00 per hari untuk setiap koleksi
+------------------------------
+Nama Anggota :a
+Nomor Anggota :2
+Pilih Kategori Buku :1
+Kategori Kamus : 
+1. Kamus Bahasa Inggris
+2. Kamus Bahasa Jepang
+3. Kamus Bahasa Indonesia 
+4. Kamus Bahasa Lontara
+5. Kamus Bahasa Korea
+Koleksi yang Anda Pilih ? : 2
+Koleksi Yang Anda ingin pinjam adalah : 2
+
+Lama Pinjam (Jumlah Hari) : 2
+
+Biaya yang harus Anda Bayar : Rp. 2000
+Denda : Rp. 0
+
+Total Biaya yang harus dibayar : Rp. 2000
