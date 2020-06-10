@@ -1,0 +1,9 @@
+0;Penggaris;8000;Untuk Menggaris
+1;Pulpen;5000;Untuk Menulis
+2;Tipe-X;7000;Untuk Menghapus
+3;Buku;5000;Untuk Tempat Menulis
+4;Jangkar;8000;Untuk Membuat Lingkaran
+5;Tisu;6500;Untuk Membersihkan
+6;Krayon;10000;Untuk Mewarnai
+7;Kamus;50000;Untuk Mencari Kata
+8;Kalkulator;70000;Untuk Membantu Menghitung
