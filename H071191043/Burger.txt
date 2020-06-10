@@ -1,0 +1,15 @@
+1,Cheese Burger,35000
+2,Burger King Teriyaki,35000
+3,Burger King Deluxe Beffbacon,37000
+4,Burger King Mushroom,42000
+5,Burger King BBQ Beefbacon,41000
+6,Cheese Burger XL Meal,49000
+7,Double Whopper Meal,69000
+8,Steakhouse BBQ Meal,59000
+9,Double Deal,30000
+10,Tendercrisp Burger,25000
+11,Quattro Cheese,50000
+12,Mozzarella Cheese Burger,42000
+13,Blackpepper 4 Cheese Xl,59000
+14,Chili 4 Cheese Xl Meal,59000
+15,King Deal King Fillet Meal,25000
