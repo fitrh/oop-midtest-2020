@@ -1,0 +1,12 @@
+           -BURGER-         |           -ADDITION-
+    1. Chicken Muffin       |       7.  Cola
+    2. Beef Burger          |       8.  Sprite
+    3. Triple Burger        |       9.  Fanta
+    4. Big Mac              |       10. Potato
+    5. Cheese Burger        |       11. Tomato(FREE)
+    6. Chicken Burger       |       12. Ketchup(FREE)
+                            |       13. Air Mineral
+                            |       14. Iced Lemon
+                            |       15. Orange Juice
+                            |       16. Sundae Chocolate
+                            |       17. Sundae Strawberry
