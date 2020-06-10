@@ -1,0 +1,40 @@
+/*Use Case*/
+*Administrator
+menambah data pustakawan
+menampilkan semua buku
+
+*Pustakawan
+melihat daftar buku
+melihat record semua peminjaman
+melihat record peminjaman per anggota
+menambah buku
+menghapus buku
+mengedit detil buku
+meminjami
+mengembalikan
+
+*Anggota
+Melihat semua daftar buku
+mencari berdasarkan judul
+-------------------author
+-------------------penerbit
+
+/model/
+*Model Buku 
+menambah buku
+menghapus buku
+mengedit detil buku
+melihat semua daftar buku
+mencari buku berdasarkan judul
+mencari buku berdasarkan author
+mencari buku berdasarkan penerbit
+
+*model Admin
+Menambah Data pustaka
+
+*model pustakawan
+pengembalian buku
+peminjaman buku
+
+
+
